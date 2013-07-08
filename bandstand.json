@@ -1,0 +1,30 @@
+{
+  "dependencies": [
+    {
+      "name": "Drupal",
+      "url": "https://github.com/drupal/drupal.git",
+      "vcs": "git",
+      "version": "7.x",
+      "location": ""
+    },
+    {
+      "name": "Magic Forms",
+      "url": "git@github.com:matthewbaggett/drupal_magic_forms.git",
+      "vcs": "git",
+      "location": "sites/all/modules/magic_forms"
+    },
+    {
+      "name": "Private Party",
+      "url": "git@github.com:matthewbaggett/drupal_private_party.git",
+      "vcs": "git",
+      "location": "sites/all/modules/private_party"
+    },
+    {
+      "name": "Active Record",
+      "url": "git@github.com:matthewbaggett/drupal_active_record.git",
+      "vcs": "git",
+      "location": "sites/all/modules/active_record"
+    }
+  ]
+
+}
