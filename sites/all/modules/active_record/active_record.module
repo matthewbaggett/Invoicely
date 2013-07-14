@@ -1,0 +1,34 @@
+<?php 
+/**
+ * Functionally, this drupal module provides an Active Record style way of accessing drupal objects.
+ * It also provides more complicated functionality, as versionable custom objects, and a search-builder.
+ * @author Matthew Baggett <matthew@baggett.me>
+ */
+
+// Load core of Active Record module.
+require_once("lib/active_record.php");
+require_once("lib/versioned_active_record.php");
+
+// Load searcher
+require_once("lib/search.php");
+require_once("lib/search_condition.php");
+
+// Load core Models
+require_once("models/role.inc");
+require_once("models/user_role.inc");
+require_once("models/user.inc");
+
+function active_record_permission() {
+	return array(
+		"version control"			=> array('title' => "Have Version Control"),
+	);
+}
+
+function active_record_has_version_permission(){
+	return active_record_check_permission('version control');
+}
+
+function active_record_check_permission($permission){
+	global $user;
+	return user_access($permission, $user);
+}
