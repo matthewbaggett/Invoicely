@@ -7,15 +7,11 @@ $configuration = file_get_contents('bandstand.json');
 $configuration = json_decode($configuration);
 foreach($configuration->dependencies as $dependency){
   echo "Unpacking {$dependency->name}...\n";
-  if (file_exists($dependency->location)) {
-    $command = "cd {$dependency->location}; git pull";
-  } else {
-    $command = "mkdir {$dependency->location} -p; cd {$dependency->location}; pwd; git clone {$dependency->url} . --verbose";
-  }
-  // Run it
-  $tmp = shell_exec($command);
-  // Output
-  $output = "<span style=\"color: #6BE234;\">\$</span> <span style=\"color: #729FCF;\">{$command}\n</span>";
-  $output .= htmlentities(trim($tmp)) . "\n";
-  echo $output;
-}
+  $tmp_location = "tmp/" . str_replace(" ", "_", $dependency->name);
+  shell_exec("mkdir -p {$tmp_location}");
+  shell_exec("git clone {$dependency->url} {$tmp_location}");
+  shell_exec("mkdir -p {$dependency->location}");
+  shell_exec("cp -Rv {$tmp_location}/* {$dependency->location}");
+}exit;
+echo "Cleaning up..\n";
+shell_exec('rm -Rf tmp/ ');

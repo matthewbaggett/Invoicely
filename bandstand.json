@@ -5,7 +5,7 @@
       "url": "https://github.com/drupal/drupal.git",
       "vcs": "git",
       "version": "7.x",
-      "location": ""
+      "location": "."
     },
     {
       "name": "Magic Forms",
