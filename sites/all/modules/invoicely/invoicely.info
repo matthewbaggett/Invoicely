@@ -1,0 +1,6 @@
+name = Invoicely
+description = Invoicing system
+core = 7.x
+
+dependencies[] = mailsystem
+dependencies[] = active_record
