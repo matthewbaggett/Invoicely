@@ -1,5 +1,38 @@
 <?php
+function invoicely_menu() {
+  $items['receipts']         = array(
+    'title'            => 'My Receipts',
+    'description'      => 'Administer My Receipts',
+    'page callback'    => 'invoicely_receipts_list',
+    'file' 			       => 'invoicely.receipts.inc',
+    'access arguments' => array('view receipts')
+  );
+  $items['invoices']         = array(
+    'title'            => 'My Invoices',
+    'description'      => 'Administer My Invoices',
+    'page callback'    => 'invoicely_invoices_list',
+    'file' 			       => 'invoicely.invoices.inc',
+    'access arguments' => array('view invoices')
+  );
 
-function invoicely_init(){
-
+  return $items;
 }
+
+/**
+ * Implements hook_permission().
+ *
+ * Defines a permission for managing the mail_system variable.
+ */
+function invoicely_permission() {
+  return array(
+    'view invoices' => array(
+      'title' => t('View Invoices'),
+      'description' => t('Allow a user to view their own invoices'),
+    ),
+    'view receipts' => array(
+      'title' => t('View Receipts'),
+      'description' => t('Allow a user to view their own receipts'),
+    ),
+  );
+}
+

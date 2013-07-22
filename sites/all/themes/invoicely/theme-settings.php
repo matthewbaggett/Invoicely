@@ -29,7 +29,7 @@ function invoicely_form_system_theme_settings_alter(&$form, $form_state, $form_i
     '#type'          => 'checkbox',
     '#title'         => t('Use CDN to load in the invoicely files'),
     '#default_value' => theme_get_setting('cdn_invoicely'),
-    '#description'   => t('Use cdn (a third party hosting server) to host the invoicely files, invoicely Theme will not use the local CSS files anymore and instead the visitor will download them from ') . l('invoicelycdn.com', 'http://invoicelycdn.com')
+    '#description'   => t('Use cdn (a third party hosting server) to host the invoicely files, invoicely Theme will not use the local CSS files anymore and instead the visitor will download them from ') . l('bootstrapcdn.com', 'http://invoicelycdn.com')
                         .'<div class="alert alert-error">' . t('WARNING: this technique will give you a performance boost but will also make you dependant on a third party who has no obligations towards you concerning uptime and service quality.') . '</div>',
   );
 

@@ -278,7 +278,7 @@ function invoicely_css_alter(&$css) {
   // Add invoicely CDN file and overrides.
   if (theme_get_setting('cdn_invoicely')){
     // Add CDN.
-    $cdn = '//netdna.invoicelycdn.com/twitter-invoicely/'. theme_get_setting('cdn_invoicely_version')  .'/css/invoicely-combined.min.css';
+    $cdn = '//netdna.bootstrapcdn.com/twitter-bootstrap/'. theme_get_setting('cdn_invoicely_version')  .'/css/bootstrap-combined.min.css';
     $css[$cdn] = array(
       'data' => $cdn,
       'type' => 'external',
@@ -343,7 +343,7 @@ function invoicely_js_alter(&$js) {
 
   $js = array_diff_key($js, $excludes);
   if (theme_get_setting('cdn_invoicely')) {
-    $files[] = '//netdna.invoicelycdn.com/twitter-invoicely/'. theme_get_setting('cdn_invoicely_version')  .'/js/invoicely.min.js';
+    $files[] = '//netdna.bootstrapcdn.com/twitter-bootstrap/'. theme_get_setting('cdn_invoicely_version')  .'/js/bootstrap.min.js';
   }
 
   // Rearrange / Add JS
