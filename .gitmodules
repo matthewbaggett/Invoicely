@@ -1,0 +1,9 @@
+[submodule "sites/all/modules/active_record"]
+	path = sites/all/modules/active_record
+	url = git@github.com:matthewbaggett/drupal_active_record.git
+[submodule "sites/all/modules/magic_forms"]
+	path = sites/all/modules/magic_forms
+	url = git@github.com:matthewbaggett/drupal_magic_forms.git
+[submodule "sites/all/modules/private_party"]
+	path = sites/all/modules/private_party
+	url = git@github.com:matthewbaggett/drupal_private_party.git

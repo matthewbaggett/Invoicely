@@ -22,37 +22,36 @@ include_once './includes/bootstrap.inc';
 drupal_bootstrap(DRUPAL_BOOTSTRAP_FULL);
 
 $libraries = array(
-  "sites/all/modules/magic_forms" => "git@github.com:matthewbaggett/drupal_magic_forms.git",
-  "sites/all/modules/active_record" => "git@github.com:matthewbaggett/drupal_active_record.git",
 );
 
 // The commands
 $commands = array(
-  'echo $PWD',
+  'pwd',
   'whoami',
   'hostname',
   'git pull',
 );
 
-foreach ($libraries as $path => $location) {
-  if (file_exists("{$path}")) {
-    $commands[] = "cd {$path}; git pull";
-  } else {
-    $commands[] = "mkdir {$path} -p; cd {$path}; pwd; git clone {$location} . --verbose";
+if(count($libraries) > 0){
+  foreach ($libraries as $path => $location) {
+    if (file_exists("{$path}")) {
+      $commands[] = "cd {$path}; git pull";
+    } else {
+      $commands[] = "mkdir {$path} -p; cd {$path}; pwd; git clone {$location} .";
+    }
   }
 }
 
 // Run the commands for output
 $output = '';
 foreach ($commands AS $command) {
-  // Run it
-  $tmp = shell_exec($command);
-  // Output
   if(PHP_SAPI !== 'cli'){
     $output .= "<span style=\"color: #6BE234;\">\$</span> <span style=\"color: #729FCF;\">{$command}\n</span>";
+    $tmp = shell_exec($command);
     $output .= htmlentities(trim($tmp)) . "\n";
   }else{
     $output .= "\$ {$command}\n";
+    $tmp = shell_exec($command);
     $output .= trim($tmp) . "\n";
   }
 }
