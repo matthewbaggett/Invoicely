@@ -3,3 +3,5 @@ description = Invoicing system
 core = 7.x
 
 dependencies[] = active_record
+
+files[] = models/invoices.inc

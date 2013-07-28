@@ -1,5 +1,11 @@
 <?php
 
 function invoicely_receipts_list(){
-  die("D:");
+    $user = user_active_record::current();
+    $view = new StdClass();
+    $view->receipts = receipt_record::search()
+        ->where('uid', $user->uid)
+        ->where('deleted', 'No')
+        ->exec();
+    return invoicely_template_view('templates/receipts.phtml', $view);
 }
