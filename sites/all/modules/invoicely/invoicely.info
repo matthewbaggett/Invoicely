@@ -4,4 +4,7 @@ core = 7.x
 
 dependencies[] = active_record
 
+files[] = models/company.inc
 files[] = models/invoices.inc
+files[] = models/receipt_lines.inc
+files[] = models/receipts.inc

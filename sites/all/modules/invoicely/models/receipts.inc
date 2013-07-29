@@ -14,9 +14,15 @@ class receipt_record extends active_record{
         return receipt_line_record::search()->where('rid', $this->rid)->exec();
     }
 
+    public function get_number_of_items(){
+        return count($this->get_receipt_lines());
+    }
+
     public function get_total_amount(){
         $total = 0;
-        foreach($this->get_receipt_lines() as $receipt_line){
+        $receipt_lines = $this->get_receipt_lines();
+        krumo($receipt_lines);
+        foreach($receipt_lines as $receipt_line){
             /* @val $receipt_line receipt_line_record */
             $total = $total + $receipt_line->get_amount();
         }
