@@ -9,3 +9,8 @@ function invoicely_receipts_list(){
         ->exec();
     return invoicely_template_view('templates/receipts.phtml', $view);
 }
+
+function invoicely_receipts_add(){
+    $form = receipt_record::magic_form();
+    return $form->__toString();
+}

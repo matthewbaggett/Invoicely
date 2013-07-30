@@ -1,21 +1,29 @@
 <?php
-function invoicely_menu() {
-  $items['receipts']         = array(
-    'title'            => 'My Receipts',
-    'description'      => 'Administer My Receipts',
-    'page callback'    => 'invoicely_receipts_list',
-    'file' 			       => 'invoicely.receipts.inc',
-    'access arguments' => array('view receipts')
-  );
-  $items['invoices']         = array(
-    'title'            => 'My Invoices',
-    'description'      => 'Administer My Invoices',
-    'page callback'    => 'invoicely_invoices_list',
-    'file' 			       => 'invoicely.invoices.inc',
-    'access arguments' => array('view invoices')
-  );
+function invoicely_menu()
+{
+    $items['receipts'] = array(
+        'title' => 'My Receipts',
+        'description' => 'Administer My Receipts',
+        'page callback' => 'invoicely_receipts_list',
+        'file' => 'invoicely.receipts.inc',
+        'access arguments' => array('view receipts')
+    );
+    $items['receipts/add'] = array(
+        'title' => 'Add new Receipt',
+        'description' => 'Add a new Receipt',
+        'page callback' => 'invoicely_receipts_add',
+        'file' => 'invoicely.receipts.inc',
+        'access arguments' => array('view receipts')
+    );
+    $items['invoices'] = array(
+        'title' => 'My Invoices',
+        'description' => 'Administer My Invoices',
+        'page callback' => 'invoicely_invoices_list',
+        'file' => 'invoicely.invoices.inc',
+        'access arguments' => array('view invoices')
+    );
 
-  return $items;
+    return $items;
 }
 
 /**
@@ -23,28 +31,30 @@ function invoicely_menu() {
  *
  * Defines a permission for managing the mail_system variable.
  */
-function invoicely_permission() {
-  return array(
-    'view invoices' => array(
-      'title' => t('View Invoices'),
-      'description' => t('Allow a user to view their own invoices'),
-    ),
-    'view receipts' => array(
-      'title' => t('View Receipts'),
-      'description' => t('Allow a user to view their own receipts'),
-    ),
-  );
+function invoicely_permission()
+{
+    return array(
+        'view invoices' => array(
+            'title' => t('View Invoices'),
+            'description' => t('Allow a user to view their own invoices'),
+        ),
+        'view receipts' => array(
+            'title' => t('View Receipts'),
+            'description' => t('Allow a user to view their own receipts'),
+        ),
+    );
 }
 
 /**
  * Crunch through a view
  *
- * @param string       $file File of the template to call.
+ * @param string $file File of the template to call.
  * @param array|object $view Optional view array.
  *
  * @return string
  */
-function invoicely_template_view($file, $view = null) {
+function invoicely_template_view($file, $view = null)
+{
     $file = DRUPAL_ROOT . "/" . drupal_get_path('module', 'invoicely') . "/" . $file;
     if (!file_exists($file)) {
         return "Cannot find {$file}";
