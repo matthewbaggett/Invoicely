@@ -8,7 +8,7 @@ foreach($view->invoices as $invoice){
     $invoice->get_date_issued('Y-m-d H:i:s'),
     $invoice->invoice_number,
     "&pound; " . $invoice->amount_charged,
-    ($invoice->paid == "No"?$invoice->amount_charged - $invoice->amount_paid . " unpaid.":"Yes"),
+    ($invoice->paid == "No"?$invoice->amount_charged - $invoice->amount_paid . " unpaid.":"Yes, on {$invoice->get_date_paid()}"),
     $invoice->notes
 
   );
