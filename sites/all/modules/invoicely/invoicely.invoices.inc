@@ -6,6 +6,7 @@ function invoicely_invoices_list(){
     $view->invoices = invoice_record::search()
         ->where('uid', $user->uid)
         ->where('deleted', 'No')
+        ->order('date_issued', 'DESC')
         ->exec();
     return invoicely_template_view('templates/invoices.phtml', $view);
 }
