@@ -5,7 +5,7 @@ if ((!isset($_REQUEST['password']) || $_REQUEST['password'] !== 'up7S0o0BED595Um
 }
 
 ob_start();
-chdir("../");
+chdir("./");
 
 error_reporting(E_ALL);
 ini_set('display_errors', true);
