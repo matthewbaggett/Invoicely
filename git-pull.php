@@ -5,7 +5,7 @@ if ((!isset($_REQUEST['password']) || $_REQUEST['password'] !== 'up7S0o0BED595Um
 }
 
 ob_start();
-chdir("./");
+chdir("../");
 
 error_reporting(E_ALL);
 ini_set('display_errors', true);
@@ -13,23 +13,17 @@ ini_set('display_startup_errors', true);
 ini_set('memory_limit', '2G');
 set_time_limit(0);
 
-define('DRUPAL_ROOT', getcwd());
-
-if(PHP_SAPI == 'cli'){
-  $_SERVER['REMOTE_ADDR'] = isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : '127.0.0.1';
-}
-include_once './includes/bootstrap.inc';
-drupal_bootstrap(DRUPAL_BOOTSTRAP_FULL);
-
-$libraries = array(
-);
+$libraries = array();
 
 // The commands
 $commands = array(
-  'pwd',
+  'echo $PWD',
   'whoami',
   'hostname',
+  'git reset --hard',
   'git pull',
+  'git submodule init',
+  'git submodule update'
 );
 
 if(count($libraries) > 0){
@@ -37,7 +31,7 @@ if(count($libraries) > 0){
     if (file_exists("{$path}")) {
       $commands[] = "cd {$path}; git pull";
     } else {
-      $commands[] = "mkdir {$path} -p; cd {$path}; pwd; git clone {$location} .";
+      $commands[] = "mkdir {$path} -p; cd {$path}; pwd; git clone {$location} . --verbose";
     }
   }
 }
@@ -45,15 +39,11 @@ if(count($libraries) > 0){
 // Run the commands for output
 $output = '';
 foreach ($commands AS $command) {
-  if(PHP_SAPI !== 'cli'){
-    $output .= "<span style=\"color: #6BE234;\">\$</span> <span style=\"color: #729FCF;\">{$command}\n</span>";
-    $tmp = shell_exec($command);
-    $output .= htmlentities(trim($tmp)) . "\n";
-  }else{
-    $output .= "\$ {$command}\n";
-    $tmp = shell_exec($command);
-    $output .= trim($tmp) . "\n";
-  }
+  // Run it
+  $tmp = shell_exec($command);
+  // Output
+  $output .= "<span style=\"color: #6BE234;\">\$</span> <span style=\"color: #729FCF;\">{$command}\n</span>";
+  $output .= htmlentities(trim($tmp)) . "\n";
 }
 
 if (PHP_SAPI !== 'cli') {
@@ -83,12 +73,12 @@ if (PHP_SAPI !== 'cli') {
 }
 echo $output;
 
-$to = "matthew@baggett.me";
+$to = "matthew@fouroneone.us";
 // To send HTML mail, the Content-type header must be set
 $headers = 'MIME-Version: 1.0' . "\r\n";
 $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
 $headers .= 'To: ' . $to . "\r\n";
-$headers .= 'From: GitHub AutoDeploy on ' . gethostname() . " <service@gamitu.de>\r\n";
+$headers .= 'From: GitHub AutoDeploy on ' . gethostname() . " <service@pushy.fouroneone.us>\r\n";
 
 mail(
   $to,
