@@ -16,11 +16,18 @@ function invoicely_menu()
         'access arguments' => array('view receipts')
     );
     $items['invoices'] = array(
-        'title' => 'My Invoices',
-        'description' => 'Administer My Invoices',
-        'page callback' => 'invoicely_invoices_list',
-        'file' => 'invoicely.invoices.inc',
-        'access arguments' => array('view invoices')
+      'title' => 'My Invoices',
+      'description' => 'Administer My Invoices',
+      'page callback' => 'invoicely_invoices_list',
+      'file' => 'invoicely.invoices.inc',
+      'access arguments' => array('view invoices')
+    );
+    $items['mileage'] = array(
+      'title' => 'My Invoices',
+      'description' => 'Administer My Invoices',
+      'page callback' => 'invoicely_invoices_list',
+      'file' => 'invoicely.mileage.inc',
+      'access arguments' => array('view mileage')
     );
 
     return $items;
@@ -41,6 +48,10 @@ function invoicely_permission()
         'view receipts' => array(
             'title' => t('View Receipts'),
             'description' => t('Allow a user to view their own receipts'),
+        ),
+        'view mileage' => array(
+          'title' => t('View Mileage'),
+          'description' => t('Allow a user to view their own mileage log'),
         ),
     );
 }
