@@ -341,6 +341,9 @@ function invoicely_js_alter(&$js) {
     $js[$progress] = drupal_js_defaults($progress);
   }
 
+  $invoicely = $theme_path . '/js/invoicely.js';
+  $js[$invoicely] = drupal_js_defaults($invoicely);
+
   // Fix broken Views AJAX pagers.
   if (module_exists('views') && !empty($js[drupal_get_path('module', 'views') . '/js/ajax_view.js'])) {
     // Override core ajax prototype function to append throbber inside links,
