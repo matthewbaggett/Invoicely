@@ -10,9 +10,18 @@ function invoicely_invoices_dash(){
     ->exec();
 
   $view->invoice_chart_data = array(array('Date', 'Pounds'));
-  $results = db_query("SELECT yearmonth, amount_paid_cumulative, financial_year FROM invoicely_invoice_view_monthly_totals WHERE uid = {$user->uid}");
+  $view->invoice_chart_results = db_query("
+    SELECT
+      yearmonth,
+      amount_paid_cumulative,
+      financial_year
+    FROM
+      invoicely_invoice_view_monthly_totals
+    WHERE
+      uid = {$user->uid}
+  ");
 
-  foreach($results as $result){
+  foreach($view->invoice_chart_results as $result){
     $view->invoice_chart_data[] = array(
       $result->yearmonth,
       floatval($result->amount_paid_cumulative)
