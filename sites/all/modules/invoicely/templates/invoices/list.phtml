@@ -18,5 +18,6 @@ foreach($view->invoices as $invoice){
   );
 }
 ?>
-<?php echo theme('table', array('header' => $header, 'rows' => $rows, 'empty' => t('No invoices'))); ?>
 <?php echo l(t("Add new Invoice"), "invoices/add"); ?>
+<?php echo theme('table', array('header' => $header, 'rows' => $rows, 'empty' => t('No invoices'))); ?>
+
