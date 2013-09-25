@@ -17,8 +17,9 @@ foreach($view->invoices as $invoice){
     ),
     $invoice->notes
   );
-  $rows[] = array('Total', "&pound; {$cumulative_amount}", '');
+
 }
+$rows[] = array('Total', "&pound; {$cumulative_amount}", '');
 ?>
 <?php echo l(t("Add new Invoice"), "invoices/add"); ?>
 <?php echo theme('table', array('header' => $header, 'rows' => $rows, 'empty' => t('No invoices'))); ?>
