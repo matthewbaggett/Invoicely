@@ -12,6 +12,7 @@ function invoicely_receipts_import(){
     /* @var $upload magic_form_field_submit; */
     $upload = $form->get_field('upload');
     $csv = $upload->get_data();
+    krumo($csv);
     $data = str_getcsv($csv);
     krumo($data);
     exit;
