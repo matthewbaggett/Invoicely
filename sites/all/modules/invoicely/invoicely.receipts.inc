@@ -1,5 +1,10 @@
 <?php
 
+function invoicely_receipts_dash(){
+  $view = new StdClass();
+  return invoicely_template_view('templates/receipts/dash.phtml', $view);
+}
+
 function invoicely_receipts_list(){
     $user = user_active_record::current();
     $view = new StdClass();
