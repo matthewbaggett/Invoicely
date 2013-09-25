@@ -43,13 +43,18 @@ function invoicely_invoices_list(){
 
   // Search by dates
   if(isset($_REQUEST['year']) && isset($_REQUEST['month'])){
-    $date = strtotime("{$_REQUEST['year']}-{$_REQUEST['month']}-01");
+    $date       = strtotime("{$_REQUEST['year']}-{$_REQUEST['month']}-01");
     $view->invoices_search->where('date_issued', date("Y-m-01", $date), '>=');
     $view->invoices_search->where('date_issued', date("Y-m-31", $date), '<=');
   }elseif(isset($_REQUEST['year'])){
-    $date = strtotime("{$_REQUEST['year']}-01-01");
+    $date       = strtotime("{$_REQUEST['year']}-01-01");
     $view->invoices_search->where('date_issued', date("Y-01-01", $date), '>=');
     $view->invoices_search->where('date_issued', date("Y-12-31", $date), '<=');
+  }elseif(isset($_REQUEST['year_start']) && isset($_REQUEST['year_end']) && isset($_REQUEST['month_start']) && isset($_REQUEST['month_end'])){
+    $date_start = strtotime("{$_REQUEST['year_start']}-{$_REQUEST['month_start']}-01");
+    $date_end   = strtotime("{$_REQUEST['year_end']}-{$_REQUEST['month_end']}-01");
+    $view->invoices_search->where('date_issued', date("Y-m-01", $date_start), '>=');
+    $view->invoices_search->where('date_issued', date("Y-m-31", $date_end), '<=');
   }
 
   $view->invoices = $view->invoices_search->exec();
