@@ -1,17 +1,56 @@
 <?php
-  $year_total_results = db_query("
+global $user;
+$available_financial_years_results = db_query("
   SELECT
-    SUM(amount_paid_cumulative) as amount_paid_cumulative,
     financial_year
   FROM
-    invoicely_invoice_view_monthly_totals
-  GROUP BY financial_year
+    invoicely_get_financial_years_available
+  WHERE
+    uid = {$user->uid}
+");
+$available_financial_years = array();
+foreach($available_financial_years_results as $available_financial_year){
+  $available_financial_years[] = $available_financial_year->financial_year;
+}
+foreach($available_financial_years as $available_financial_year){
+  $year_invoice_total_results = db_query("
+    SELECT
+      SUM(amount_paid_cumulative) as amount_paid_cumulative,
+      financial_year
+    FROM
+      invoicely_invoice_view_monthly_totals
+    WHERE
+      financial_year = {$available_financial_year}
+    GROUP BY financial_year
   ");
-?>
 
-<dl>
-  <?php foreach($year_total_results as $year_total_result): ?>
-    <dt><?php echo t("Invoices :year", array(':year' => $year_total_result->financial_year)); ?></dt>
-    <dl>&pound; <?php echo $year_total_result->amount_paid_cumulative; ?></dl>
-  <?php endforeach; ?>
-</dl>
+  $year_mileage_total_results = db_query("
+    SELECT
+      financial_year,
+      distance,
+      amount as mileage_allowance
+    FROM
+      invoicely_mileage_view_yearly_amounts
+    WHERE
+      financial_year = {$available_financial_year}
+  ");
+
+  $tax_liability = 0;
+  ?>
+
+  <dl>
+    <?php foreach($year_invoice_total_results as $year_total_result): ?>
+      <?php $tax_liability += $year_total_result->amount_paid_cumulative; ?>
+      <dt><?php echo t("Invoices :year", array(':year' => $year_total_result->financial_year)); ?></dt>
+      <dl>&pound; <?php echo $year_total_result->amount_paid_cumulative; ?></dl>
+    <?php endforeach; ?>
+    <?php foreach($year_mileage_total_results as $year_mileage_result): ?>
+      <?php $tax_liability -= $year_mileage_result->mileage_allowance; ?>
+      <dt><?php echo t("Mileage :year", array(':year' => $year_mileage_result->financial_year)); ?></dt>
+      <dl><?php echo $year_mileage_result->distance; ?> miles worth &pound;<?php echo $year_mileage_result->mileage_allowance;?></dl>
+    <?php endforeach; ?>
+    <dt><?php echo t("Liability: "); ?></dt>
+    <dl>&pound;<?php echo $tax_liability; ?></dl>
+  </dl>
+
+<?php } ?>
