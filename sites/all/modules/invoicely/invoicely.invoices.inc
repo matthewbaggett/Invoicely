@@ -28,7 +28,7 @@ function invoicely_invoices_list(){
   $view->invoices_search = invoice_record::search()
     ->where('uid', $user->uid)
     ->where('deleted', 'No')
-    ->order('date_issued', 'DESC');
+    ->order('date_issued', 'ASC');
 
   // Search by dates
   if(isset($_REQUEST['year']) && isset($_REQUEST['month'])){
