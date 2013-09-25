@@ -1,7 +1,7 @@
 DROP FUNCTION IF EXISTS `get_financial_year`;
 
 CREATE FUNCTION `get_financial_year` (date_given DATETIME)
-RETURNS INT DETERMINISTIC
+RETURNS VARCHAR(9) DETERMINISTIC
 RETURN 
 		CASE 
 			WHEN MONTH(date_given)>=4 
