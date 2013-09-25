@@ -1,7 +1,7 @@
 <script>
   google.setOnLoadCallback(drawChart);
   function drawChart() {
-    var data = google.visualization.arrayToDataTable(<?php echo json_encode($view->mileage_chart_data); ?>);
+    var data = google.visualization.arrayToDataTable(<?php echo json_encode($view->invoice_chart_data); ?>);
 
     var options = {
       title: 'Payments',
@@ -25,9 +25,9 @@ $header = array(
 );
 $rows = array();
 // remove first element - Its a heading.
-array_shift($view->mileage_chart_data);
+array_shift($view->invoice_chart_data);
 $cumulative_amount=0;
-foreach($view->mileage_chart_data as $month){
+foreach($view->invoice_chart_data as $month){
   $date_bits = explode("-", $month[0]);
   $date_fy_bits = explode("-", $month[2]);
   $cumulative_amount+=$month[1];
