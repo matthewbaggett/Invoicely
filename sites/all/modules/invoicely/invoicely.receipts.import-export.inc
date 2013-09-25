@@ -9,7 +9,11 @@ function invoicely_receipts_import(){
   $view->form_import->add_field($field_import_file);
   $view->form_import->add_field(new magic_form_field_submit('upload', 'Upload'));
   $view->form_import->submit(function(magic_form $form){
-    krumo($form->get_field('upload'));
+    /* @var $upload magic_form_field_submit; */
+    $upload = $form->get_field('upload');
+    $csv = $upload->get_data();
+    $data = str_getcsv($csv);
+    krumo($data);
     exit;
   });
 
