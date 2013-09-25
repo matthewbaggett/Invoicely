@@ -8,29 +8,29 @@
 /**
  * Preprocesses variables for html.tpl.php.
  */
-function bunnehbutt_preprocess_html(&$vars) {
-  _bunnehbutt_load_bootstrap();
-  _bunnehbutt_load_html5shiv();
-  _bunnehbutt_load_assets();
+function invoicelyui_preprocess_html(&$vars) {
+  _invoicelyui_load_bootstrap();
+  _invoicelyui_load_html5shiv();
+  _invoicelyui_load_assets();
 }
 
 /**
  * Processes variables for html.tpl.php.
  */
-function bunnehbutt_process_html(&$vars) {
-  if ($body_top = _bunnehbutt_region_blocks_markup('body_top')) {
+function invoicelyui_process_html(&$vars) {
+  if ($body_top = _invoicelyui_region_blocks_markup('body_top')) {
     $vars['page_top'] = '<div class="conceal">' . $body_top . '</div>' . $vars['page_top'];
   }
-  if ($body_bottom = _bunnehbutt_region_blocks_markup('body_bottom')) {
+  if ($body_bottom = _invoicelyui_region_blocks_markup('body_bottom')) {
     $vars['page_bottom'] .= '<div class="conceal">' . $body_bottom . '</div>';
   }
-  $vars['head_bottom'] = _bunnehbutt_add_html_head_bottom();
+  $vars['head_bottom'] = _invoicelyui_add_html_head_bottom();
 }
 
 /**
  * Preprocesses variables for page.tpl.php.
  */
-function bunnehbutt_preprocess_page(&$vars) {
+function invoicelyui_preprocess_page(&$vars) {
   $page = $vars['page'];
 
   // Prepare navbar menu:
@@ -56,7 +56,7 @@ function bunnehbutt_preprocess_page(&$vars) {
 /**
  * Processes variables for page.tpl.php.
  */
-function bunnehbutt_process_page(&$vars) {
+function invoicelyui_process_page(&$vars) {
   $page = $vars['page'];
   
   // Provide additional variables to theme:
@@ -81,7 +81,7 @@ function bunnehbutt_process_page(&$vars) {
 /**
  * Overrides theme_menu_local_tasks().
  */
-function bunnehbutt_menu_local_tasks(&$vars) {
+function invoicelyui_menu_local_tasks(&$vars) {
   $out = '';
   if (!empty($vars['primary'])) {
     $vars['primary']['#prefix'] = '<ul class="nav nav-' . theme_get_setting('primary_tasks_style') . '">';
@@ -99,7 +99,7 @@ function bunnehbutt_menu_local_tasks(&$vars) {
 /**
  * Overrides theme_item_list().
  */
-function bunnehbutt_item_list($vars) {
+function invoicelyui_item_list($vars) {
   if (isset($vars['attributes']['class']) && in_array('pager', $vars['attributes']['class'])) {
     unset($vars['attributes']['class']);
     foreach ($vars['items'] as $i => &$item) {
@@ -120,7 +120,7 @@ function bunnehbutt_item_list($vars) {
 /**
  * Preprocesses variables for theme_button().
  */
-function bunnehbutt_preprocess_button(&$vars) {
+function invoicelyui_preprocess_button(&$vars) {
   $vars['element']['#attributes']['class'][] = 'btn';
   if (isset($vars['element']['#parents'][0]) && $vars['element']['#parents'][0] == 'submit') {
     $vars['element']['#attributes']['class'][] = 'btn-primary';

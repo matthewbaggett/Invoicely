@@ -8,6 +8,6 @@
 /**
  * Processes variables for node.tpl.php.
  */
-function bunnehbutt_process_node(&$vars) {
-  list($vars['title'], ) = _bunnehbutt_parse_title($vars['title']);
+function invoicelyui_process_node(&$vars) {
+  list($vars['title'], ) = _invoicelyui_parse_title($vars['title']);
 }

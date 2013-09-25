@@ -44,7 +44,7 @@ INSTALLATION
    * Place extracted files inside the folder sites/all/libraries.
    * Make sure that the bootstrap.css file is reachable at sites/all/libraries/bootstrap/css/bootstrap.css.
 
-4. That's it! Enable bunnehbutt.
+4. That's it! Enable invoicelyui.
 
 
 CONFIGURATION
@@ -61,6 +61,6 @@ INFO
 ----
 
 * Live demo: http://tonystar.ru
-* Project home page: http://tonystar.ru/projects/bunnehbutt
+* Project home page: http://tonystar.ru/projects/invoicelyui
 * Created and maintained by: Anton Staroverov [tonystar]
   (http://drupal.org/user/787240)

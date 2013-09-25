@@ -2,13 +2,13 @@
 
 /**
  * @file
- * Theme setting callbacks for the bunnehbutt theme.
+ * Theme setting callbacks for the invoicelyui theme.
  */
 
 /**
  * Implements hook_form_FORM_ID_alter() for system_theme_settings.
  */
-function bunnehbutt_form_system_theme_settings_alter(&$form, &$form_state) {
+function invoicelyui_form_system_theme_settings_alter(&$form, &$form_state) {
   $form['libraries'] = array(
     '#type' => 'fieldset',
     '#title' => t('Libraries'),

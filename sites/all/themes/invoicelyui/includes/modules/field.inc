@@ -8,7 +8,7 @@
 /**
  * Overrides theme_field__FIELD_ID() for field_tags.
  */
-function bunnehbutt_field__field_tags($vars) {
+function invoicelyui_field__field_tags($vars) {
   $out = '';
   foreach ($vars['items'] as $item) {
     $item['#options']['attributes']['class'][] = 'badge';

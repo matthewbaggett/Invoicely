@@ -8,10 +8,10 @@
 /**
  * Upgrades jQuery library.
  */
-function _bunnehbutt_upgrade_jquery(&$js_config) {
+function _invoicelyui_upgrade_jquery(&$js_config) {
   $source = theme_get_setting('jquery_source');
   if (module_exists('jquery_update') && $source != 'drupal') {
-    _bunnehbutt_admin_message(t('bunnehbutt does not need <strong>jQuery Update</strong> module anymore! Please <a href="@modules">disable it</a>.', array('@modules' => url('admin/modules'))), 'warning');
+    _invoicelyui_admin_message(t('invoicelyui does not need <strong>jQuery Update</strong> module anymore! Please <a href="@modules">disable it</a>.', array('@modules' => url('admin/modules'))), 'warning');
     return;
   }
   $version = theme_get_setting('jquery_version');
@@ -30,7 +30,7 @@ function _bunnehbutt_upgrade_jquery(&$js_config) {
 /**
  * Loads Twitter Bootstrap library.
  */
-function _bunnehbutt_load_bootstrap() {
+function _invoicelyui_load_bootstrap() {
   $version = theme_get_setting('bootstrap_version');
   $js_path = '/js/bootstrap.min.js';
   $js_options = array(
@@ -60,18 +60,18 @@ function _bunnehbutt_load_bootstrap() {
     default:
       return;
   }
-  _bunnehbutt_add_asset('js', $bootstrap_path . $js_path, $js_options);
-  _bunnehbutt_add_asset('css', $bootstrap_path . $css_path, $css_options);
+  _invoicelyui_add_asset('js', $bootstrap_path . $js_path, $js_options);
+  _invoicelyui_add_asset('css', $bootstrap_path . $css_path, $css_options);
   if (isset($cssr_path)) {
-    _bunnehbutt_add_asset('css', $bootstrap_path . $cssr_path, $css_options);
+    _invoicelyui_add_asset('css', $bootstrap_path . $cssr_path, $css_options);
   }
 }
 
 /**
  * Loads HTML5 Shiv library.
  */
-function _bunnehbutt_load_html5shiv() {
-  _bunnehbutt_add_asset(
+function _invoicelyui_load_html5shiv() {
+  _invoicelyui_add_asset(
     'js', '//html5shiv.googlecode.com/svn/trunk/html5.js',
     array('browsers' => 'obsolete'));
 }
@@ -79,23 +79,23 @@ function _bunnehbutt_load_html5shiv() {
 /**
  * Loads assets.
  */
-function _bunnehbutt_load_assets() {
-  $assets_dir = drupal_get_path('theme', 'bunnehbutt') . '/assets';
+function _invoicelyui_load_assets() {
+  $assets_dir = drupal_get_path('theme', 'invoicelyui') . '/assets';
   
   if (theme_get_setting('max_width_940')) {
-    _bunnehbutt_add_asset(
+    _invoicelyui_add_asset(
       'css', $assets_dir . '/css/max-width-940.css',
       array(
         'group' => CSS_THEME,
         'browsers' => 'modern',
         'media' => 'screen',
       ));
-    _bunnehbutt_add_asset(
+    _invoicelyui_add_asset(
       'js', $assets_dir . '/js/max-width-940.js',
       array('browsers' => 'modern'));
   }
   if (theme_get_setting('affixed_sidebars')) {
-    _bunnehbutt_add_asset(
+    _invoicelyui_add_asset(
       'js', $assets_dir . '/js/affixed-sidebars.js',
       array('browsers' => 'modern'));
   }

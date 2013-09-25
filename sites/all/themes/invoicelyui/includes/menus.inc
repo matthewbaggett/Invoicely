@@ -8,14 +8,14 @@
 /**
  * Overrides theme_menu_tree__MENU_ID() for main menu.
  */
-function bunnehbutt_menu_tree__main_menu($vars) {
+function invoicelyui_menu_tree__main_menu($vars) {
   return '<ul class="nav">' . $vars['tree'] . '</ul>';
 }
 
 /**
  * Overrides theme_menu_link__MENU_ID() for main_menu.
  */
-function bunnehbutt_menu_link__main_menu($vars) {
+function invoicelyui_menu_link__main_menu($vars) {
   $elem = $vars['element'];
 
   // Prevent XSS exploits:

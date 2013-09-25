@@ -8,6 +8,6 @@
 /**
  * Preprocesses variables for poll_bar.tpl.php.
  */
-function bunnehbutt_preprocess_poll_bar(&$vars) {
+function invoicelyui_preprocess_poll_bar(&$vars) {
   $vars['theme_hook_suggestions'] = array('poll_bar');
 }

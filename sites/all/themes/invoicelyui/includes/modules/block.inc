@@ -8,7 +8,7 @@
 /**
  * Preprocesses variables for block.tpl.php.
  */
-function bunnehbutt_preprocess_block(&$vars) {
+function invoicelyui_preprocess_block(&$vars) {
   $block = $vars['block'];
 
   if ($block->region == 'featured') {

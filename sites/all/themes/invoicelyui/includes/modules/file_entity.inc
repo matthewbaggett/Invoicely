@@ -8,7 +8,7 @@
 /**
  * Preprocesses variables for file_entity.tpl.php.
  */
-function bunnehbutt_preprocess_file_entity(&$vars) {
+function invoicelyui_preprocess_file_entity(&$vars) {
   if (isset($vars['filename']) && !empty($vars['filename'])) {
     $vars['content']['caption'] = array(
       '#markup' => '<div class="caption">' . $vars['filename'] . '</div>',

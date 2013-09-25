@@ -8,7 +8,7 @@
 /**
  * Parses title.
  */
-function _bunnehbutt_parse_title($title) {
+function _invoicelyui_parse_title($title) {
   $subtitle = '';
   if (strpos($title, ' ~ ')) {
     $parts = explode(' ~ ', $title);
@@ -21,7 +21,7 @@ function _bunnehbutt_parse_title($title) {
 /**
   * Displays message for admin.
   */
-function _bunnehbutt_admin_message($message, $type = 'status') {
+function _invoicelyui_admin_message($message, $type = 'status') {
   if (user_access('administer')) {
     drupal_set_message($message, $type);
   }
@@ -30,7 +30,7 @@ function _bunnehbutt_admin_message($message, $type = 'status') {
 /**
   * Returns markup of all blocks in the region.
   */
-function _bunnehbutt_region_blocks_markup($region) {
+function _invoicelyui_region_blocks_markup($region) {
   $elems = block_get_blocks_by_region($region);
   if (is_array($elems)) {
     foreach ($elems as &$elem) {
@@ -46,9 +46,9 @@ function _bunnehbutt_region_blocks_markup($region) {
 /**
  * Adds js/css file.
  */
-function _bunnehbutt_add_asset($type, $data, $options) {
+function _invoicelyui_add_asset($type, $data, $options) {
   if (isset($options['browsers']) && !is_array($options['browsers'])) {
-    $options['browsers'] = _bunnehbutt_browsers_to_array($options['browsers']);
+    $options['browsers'] = _invoicelyui_browsers_to_array($options['browsers']);
   }
   switch ($type) {
     case 'css':
@@ -62,7 +62,7 @@ function _bunnehbutt_add_asset($type, $data, $options) {
           '#browsers' => $options['browsers'],
         );
         $elements = drupal_pre_render_conditional_comments($elements);
-        _bunnehbutt_add_html_head_bottom(drupal_render($elements));
+        _invoicelyui_add_html_head_bottom(drupal_render($elements));
       }
       else {
         drupal_add_js($data, $options);
@@ -74,7 +74,7 @@ function _bunnehbutt_add_asset($type, $data, $options) {
 /**
  * Converts string representation of browsers to the array.
  */
-function _bunnehbutt_browsers_to_array($browsers) {
+function _invoicelyui_browsers_to_array($browsers) {
   switch ($browsers) {
     case 'modern':
       return array('IE' => 'gte IE 9', '!IE' => TRUE);
@@ -87,7 +87,7 @@ function _bunnehbutt_browsers_to_array($browsers) {
 /**
  * Allows to add an extra html markup to the bottom of <head>.
  */
-function _bunnehbutt_add_html_head_bottom($data = NULL) {
+function _invoicelyui_add_html_head_bottom($data = NULL) {
   $head_bottom = &drupal_static(__FUNCTION__);
   if (!isset($head_bottom)) {
     $head_bottom = '';

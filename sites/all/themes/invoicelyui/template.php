@@ -27,7 +27,7 @@ foreach ($requires as $require) {
 /**
  * Implements hook_theme().
  */
-function bunnehbutt_theme($existing, $type, $theme, $path) {
+function invoicelyui_theme($existing, $type, $theme, $path) {
   return array(
     'navbar_brand' => array(
       'variables' => array(
@@ -68,13 +68,13 @@ function bunnehbutt_theme($existing, $type, $theme, $path) {
 /**
  * Implements hook_css_alter().
  */
-function bunnehbutt_css_alter(&$css) {
+function invoicelyui_css_alter(&$css) {
   unset($css['modules/poll/poll.css']);
 }
 
 /**
  * Implements hook_js_alter().
  */
-function bunnehbutt_js_alter(&$js) {
-  _bunnehbutt_upgrade_jquery($js['misc/jquery.js']);
+function invoicelyui_js_alter(&$js) {
+  _invoicelyui_upgrade_jquery($js['misc/jquery.js']);
 }
