@@ -27,10 +27,11 @@ $rows = array();
 // remove first element - Its a heading.
 array_shift($view->invoice_chart_data);
 $cumulative_amount=0;
+krumo($view->invoice_chart_results);
 foreach($view->invoice_chart_results as $month){
   $date_bits = explode("-", $month->yearmonth);
   $date_fy_bits = explode("-", $month->financial_year);
-  $cumulative_amount+=$month[1];
+  $cumulative_amount+=$month->amount_paid_cumulative;
   $rows[] = array(
     $month->yearmonth,
     l($month->financial_year, 'invoices/list', array('query' => array('year' => $date_fy_bits[0], 'month' => $date_fy_bits[1]))),
