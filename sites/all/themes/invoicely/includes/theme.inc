@@ -281,7 +281,7 @@ function invoicely_css_alter(&$css) {
   // Add Bootstrap CDN file and overrides.
   if (theme_get_setting('invoicely_cdn')){
     // Add CDN.
-    $cdn = '//netdna.invoicelycdn.com/invoicely/'. theme_get_setting('invoicely_cdn')  .'/css/invoicely.min.css';
+    $cdn = '//netdna.bootstrapcdn.com/bootstrap/'. theme_get_setting('invoicely_cdn')  .'/css/bootstrap.min.css';
     $css[$cdn] = array(
       'data' => $cdn,
       'type' => 'external',
@@ -346,7 +346,7 @@ function invoicely_js_alter(&$js) {
 
   // Add CDN.
   if (theme_get_setting('invoicely_cdn')) {
-    $cdn = '//netdna.invoicelycdn.com/invoicely/'. theme_get_setting('invoicely_cdn')  .'/js/invoicely.min.js';
+    $cdn = '//netdna.bootstrapcdn.com/bootstrap/'. theme_get_setting('invoicely_cdn')  .'/js/bootstrap.min.js';
     $js[$cdn] = drupal_js_defaults();
     $js[$cdn]['data'] = $cdn;
     $js[$cdn]['type'] = 'external';
