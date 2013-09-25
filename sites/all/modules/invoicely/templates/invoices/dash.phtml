@@ -30,5 +30,4 @@ foreach($view->mileage_chart_data as $month){
   );
 }
 ?>
-<?php echo l(t("Add new Invoice"), "invoices/add"); ?>
 <?php echo theme('table', array('header' => $header, 'rows' => $rows, 'empty' => t('No invoices'))); ?>

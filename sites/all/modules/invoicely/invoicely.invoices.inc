@@ -25,11 +25,21 @@ function invoicely_invoices_dash(){
 function invoicely_invoices_list(){
   $user = user_active_record::current();
   $view = new StdClass();
-  $view->invoices = invoice_record::search()
+  $view->invoices_search = invoice_record::search()
     ->where('uid', $user->uid)
     ->where('deleted', 'No')
-    ->order('date_issued', 'DESC')
-    ->exec();
+    ->order('date_issued', 'DESC');
+
+  // Search by dates
+  if(isset($_REQUEST['year']) && isset($_REQUEST['month'])){
+    $view->invoices_search->where('date_issued','<=',date("Y-m-\3\1", strtotime("{$_REQUEST['year']}-{$_REQUEST['month']}-01")));
+    $view->invoices_search->where('date_issued','>=',date("Y-m-\0\1", strtotime("{$_REQUEST['year']}-{$_REQUEST['month']}-01")));
+  }elseif(isset($_REQUEST['year'])){
+    $view->invoices_search->where('date_issued','<=',date("Y-\1\2-\3\1", strtotime("{$_REQUEST['year']}-01-01")));
+    $view->invoices_search->where('date_issued','>=',date("Y-\0\1-\0\1", strtotime("{$_REQUEST['year']}-01-01")));
+  }
+
+  $view->invoices = $view->invoices_search->exec();
   return invoicely_template_view('templates/invoices/list.phtml', $view);
 }
 
