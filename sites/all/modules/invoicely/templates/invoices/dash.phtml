@@ -1,0 +1,17 @@
+<script>
+  google.setOnLoadCallback(drawChart);
+  function drawChart() {
+    var data = google.visualization.arrayToDataTable(<?php echo json_encode($view->mileage_chart_data); ?>);
+
+    var options = {
+      title: 'Payments',
+      hAxis: {title: 'Date',  titleTextStyle: {color: '#333'}},
+      vAxis: {minValue: 0}
+    };
+
+    var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
+    chart.draw(data, options);
+  }
+</script>
+
+<div id="chart_div" style="width: 900px; height: 500px;"></div>

@@ -15,6 +15,6 @@ function invoicely_mileage_dashboard(){
     drupal_add_js("https://www.google.com/jsapi");
     drupal_add_js('google.load("visualization", "1", {packages:["corechart"]});', 'inline');
 
-    return invoicely_template_view('templates/mileage/dashboard.phtml', $view);
+    return invoicely_template_view('templates/mileage/dash.phtml', $view);
 }
 

@@ -4,6 +4,13 @@ function invoicely_menu()
     $items['receipts'] = array(
         'title' => 'My Receipts',
         'description' => 'Administer My Receipts',
+        'page callback' => 'invoicely_receipts_dash',
+        'file' => 'invoicely.receipts.inc',
+        'access arguments' => array('view receipts')
+    );
+    $items['receipts/list'] = array(
+        'title' => 'My Receipts - List',
+        'description' => 'Administer My Receipts',
         'page callback' => 'invoicely_receipts_list',
         'file' => 'invoicely.receipts.inc',
         'access arguments' => array('view receipts')
@@ -16,18 +23,25 @@ function invoicely_menu()
         'access arguments' => array('view receipts')
     );
     $items['invoices'] = array(
-      'title' => 'My Invoices',
-      'description' => 'Administer My Invoices',
-      'page callback' => 'invoicely_invoices_list',
-      'file' => 'invoicely.invoices.inc',
-      'access arguments' => array('view invoices')
+        'title' => 'My Invoices',
+        'description' => 'Administer My Invoices',
+        'page callback' => 'invoicely_invoices_dash',
+        'file' => 'invoicely.invoices.inc',
+        'access arguments' => array('view invoices')
+    );
+    $items['invoices/list'] = array(
+        'title' => 'My Invoices - List',
+        'description' => 'Administer My Invoices',
+        'page callback' => 'invoicely_invoices_list',
+        'file' => 'invoicely.invoices.inc',
+        'access arguments' => array('view invoices')
     );
     $items['mileage'] = array(
-      'title' => 'My Mileage',
-      'description' => 'Administer My Mileage',
-      'page callback' => 'invoicely_mileage_dashboard',
-      'file' => 'invoicely.mileage.inc',
-      'access arguments' => array('view mileage')
+        'title' => 'My Mileage',
+        'description' => 'Administer My Mileage',
+        'page callback' => 'invoicely_mileage_dashboard',
+        'file' => 'invoicely.mileage.inc',
+        'access arguments' => array('view mileage')
     );
 
     return $items;
