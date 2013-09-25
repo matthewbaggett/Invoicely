@@ -49,8 +49,10 @@ foreach($available_financial_years as $available_financial_year){
       <dt><?php echo t("Mileage :year", array(':year' => $year_mileage_result->financial_year)); ?></dt>
       <dl><?php echo $year_mileage_result->distance; ?> miles worth &pound;<?php echo $year_mileage_result->mileage_allowance;?></dl>
     <?php endforeach; ?>
-    <dt><?php echo t("Liability: "); ?></dt>
+    <dt><?php echo t("Liability"); ?>:</dt>
     <dl>&pound;<?php echo $tax_liability; ?></dl>
+    <dt><?php echo t("Crude taxation ceiling"); ?>:</dt>
+    <dl>&pound;<?php echo $tax_liability*0.2; ?> (<?php echo t("Calculated as 20% of Liability"); ?>)</dl>
   </dl>
 
 <?php } ?>
