@@ -1,5 +1,5 @@
 name = invoicelyui
-description = Jiggly jiggly booties.
+description = Invoicely theme
 core = 7.x
 
 settings[jquery_source] = googlecdn

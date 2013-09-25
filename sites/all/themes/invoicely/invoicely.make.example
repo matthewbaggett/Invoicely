@@ -1,8 +1,0 @@
-core = 7.x
-api = 2
-
-libraries[invoicely][download][type] = "get"
-libraries[invoicely][download][url] = "http://twitter.github.io/invoicely/assets/invoicely.zip"
-libraries[invoicely][directory_name] = "invoicely"
-libraries[invoicely][destination] = "themes/invoicely"
-libraries[invoicely][overwrite] = TRUE
