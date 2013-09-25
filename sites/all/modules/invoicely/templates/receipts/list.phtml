@@ -1,5 +1,12 @@
 <?php
-$header = array('Retailer', 'Date', 'Item Count', 'Amount', 'VAT', 'Total');
+$header = array(
+  t('Retailer'),
+  t('Date'),
+  t('Item Count'),
+  t('Amount'),
+  t('VAT'),
+  t('Total')
+);
 $rows = array();
 foreach($view->receipts as $receipt){
     /* @var $receipt receipt_record */
@@ -13,5 +20,6 @@ foreach($view->receipts as $receipt){
     );
 }
 ?>
-<?php echo theme('table', array('header' => $header, 'rows' => $rows, 'empty' => t('No receipts'))); ?>
 <?php echo l(t("Add new Receipt"), "receipts/add"); ?>
+<?php echo theme('table', array('header' => $header, 'rows' => $rows, 'empty' => t('No receipts'))); ?>
+

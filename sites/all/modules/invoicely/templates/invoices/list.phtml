@@ -1,5 +1,12 @@
 <?php
-$header = array('Client/Agency', 'Date', 'Invoice Number', 'Amount Charged', 'Paid', 'Notes');
+$header = array(
+  t('Client / Agency'),
+  t('Date Issued'),
+  t('Invoice Number'),
+  t('Amount Charged'),
+  t('Paid'),
+  t('Notes')
+);
 $rows = array();
 $cumulative_amount = 0;
 foreach($view->invoices as $invoice){
