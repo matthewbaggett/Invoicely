@@ -19,9 +19,10 @@
 <?php
 $header = array('Month', 'Amount Billed');
 $rows = array();
+// remove first element - Its a heading.
+array_pop($view->mileage_chart_data);
 foreach($view->mileage_chart_data as $month){
   $date_bits = explode("-", $month[0]);
-  krumo($date_bits);
   $rows[] = array(
     $month[0],
     $month[1],
