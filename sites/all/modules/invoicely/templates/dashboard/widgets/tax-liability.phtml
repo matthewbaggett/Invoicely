@@ -20,7 +20,7 @@ foreach($available_financial_years as $available_financial_year){
     FROM
       invoicely_invoice_view_monthly_totals
     WHERE
-      financial_year = {$available_financial_year}
+      financial_year = '{$available_financial_year}'
     GROUP BY financial_year
   ");
 
@@ -32,27 +32,29 @@ foreach($available_financial_years as $available_financial_year){
     FROM
       invoicely_mileage_view_yearly_amounts
     WHERE
-      financial_year = {$available_financial_year}
+      financial_year = '{$available_financial_year}'
   ");
 
   $tax_liability = 0;
   ?>
-
-  <dl>
-    <?php foreach($year_invoice_total_results as $year_total_result): ?>
-      <?php $tax_liability += $year_total_result->amount_paid_cumulative; ?>
-      <dt><?php echo t("Invoices :year", array(':year' => $year_total_result->financial_year)); ?></dt>
-      <dl>&pound; <?php echo $year_total_result->amount_paid_cumulative; ?></dl>
-    <?php endforeach; ?>
-    <?php foreach($year_mileage_total_results as $year_mileage_result): ?>
-      <?php $tax_liability -= $year_mileage_result->mileage_allowance; ?>
-      <dt><?php echo t("Mileage :year", array(':year' => $year_mileage_result->financial_year)); ?></dt>
-      <dl><?php echo $year_mileage_result->distance; ?> miles worth &pound;<?php echo $year_mileage_result->mileage_allowance;?></dl>
-    <?php endforeach; ?>
-    <dt><?php echo t("Liability"); ?>:</dt>
-    <dl>&pound;<?php echo $tax_liability; ?></dl>
-    <dt><?php echo t("Crude taxation ceiling"); ?>:</dt>
-    <dl>&pound;<?php echo $tax_liability*0.2; ?> (<?php echo t("Calculated as 20% of Liability"); ?>)</dl>
-  </dl>
+  <div class="widget">
+    <h3><?php echo t("Liability for year :year", array(':year' => $available_financial_year)); ?></h3>
+    <dl>
+      <?php foreach($year_invoice_total_results as $year_total_result): ?>
+        <?php $tax_liability += $year_total_result->amount_paid_cumulative; ?>
+        <dt><?php echo t("Invoices :year", array(':year' => $year_total_result->financial_year)); ?></dt>
+        <dl>&pound; <?php echo $year_total_result->amount_paid_cumulative; ?></dl>
+      <?php endforeach; ?>
+      <?php foreach($year_mileage_total_results as $year_mileage_result): ?>
+        <?php $tax_liability -= $year_mileage_result->mileage_allowance; ?>
+        <dt><?php echo t("Mileage :year", array(':year' => $year_mileage_result->financial_year)); ?></dt>
+        <dl><?php echo $year_mileage_result->distance; ?> miles worth &pound;<?php echo $year_mileage_result->mileage_allowance;?></dl>
+      <?php endforeach; ?>
+      <dt><?php echo t("Liability"); ?>:</dt>
+      <dl>&pound;<?php echo $tax_liability; ?></dl>
+      <dt><?php echo t("Crude taxation ceiling"); ?>:</dt>
+      <dl>&pound;<?php echo $tax_liability*0.2; ?> (<?php echo t("Calculated as 20% of Liability"); ?>)</dl>
+    </dl>
+  </div>
 
 <?php } ?>
