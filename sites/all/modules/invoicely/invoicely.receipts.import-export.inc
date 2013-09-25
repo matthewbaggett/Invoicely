@@ -8,8 +8,8 @@ function invoicely_receipts_import(){
   $view->form_import = new magic_form();
   $view->form_import->add_field($field_import_file);
   $view->form_import->add_field(new magic_form_field_submit('upload', 'Upload'));
-  $view->form_import->submit(function($form){
-    krumo($form);
+  $view->form_import->submit(function(magic_form $form){
+    krumo($form->get_field('upload'));
     exit;
   });
 
