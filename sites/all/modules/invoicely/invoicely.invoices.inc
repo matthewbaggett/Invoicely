@@ -33,7 +33,6 @@ function invoicely_invoices_dash(){
   return invoicely_template_view('templates/invoices/dash.phtml', $view);
 }
 
-
 function invoicely_invoices_list(){
   $user = user_active_record::current();
   $view = new StdClass();

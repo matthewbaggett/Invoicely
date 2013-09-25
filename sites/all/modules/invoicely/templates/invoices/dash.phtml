@@ -28,14 +28,14 @@ $rows = array();
 array_shift($view->invoice_chart_data);
 $cumulative_amount=0;
 foreach($view->invoice_chart_results as $month){
-  $date_bits = explode("-", $month[0]);
-  $date_fy_bits = explode("-", $month[2]);
+  $date_bits = explode("-", $month->yearmonth);
+  $date_fy_bits = explode("-", $month->financial_year);
   $cumulative_amount+=$month[1];
   $rows[] = array(
-    $month[0],
-    l($month[2], 'invoices/list', array('query' => array('year' => $date_fy_bits[0], 'month' => $date_fy_bits[1]))),
-    "&pound; {$month[1]}",
-    l("View Invoices in {$month[0]}", 'invoices/list', array('query' => array('year' => $date_bits[0], 'month' => $date_bits[1])))
+    $month->yearmonth,
+    l($month->financial_year, 'invoices/list', array('query' => array('year' => $date_fy_bits[0], 'month' => $date_fy_bits[1]))),
+    "&pound; {$month->amount_paid_cumulative}",
+    l("View Invoices in {$month->yearmonth}", 'invoices/list', array('query' => array('year' => $date_bits[0], 'month' => $date_bits[1])))
   );
 }
 $rows[] = array('Total', "&pound; {$cumulative_amount}", '');
