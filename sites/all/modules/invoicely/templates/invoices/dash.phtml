@@ -39,6 +39,6 @@ foreach($view->invoice_chart_results as $month){
     l("View Invoices in {$month->yearmonth}", 'invoices/list', array('query' => array('year' => $date_bits[0], 'month' => $date_bits[1])))
   );
 }
-$rows[] = array('Total', "&pound; {$cumulative_amount}", '');
+$rows[] = array('Total', '', "&pound; {$cumulative_amount}", '');
 ?>
 <?php echo theme('table', array('header' => $header, 'rows' => $rows, 'empty' => t('No invoices'))); ?>
