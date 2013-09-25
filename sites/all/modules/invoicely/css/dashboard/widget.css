@@ -1,0 +1,29 @@
+.widgets{
+    float: left; display: block;
+    width: 100%;
+}
+.widgets .widget{
+    float: left; display: block;
+    border: 1px solid #555555;
+    width: 31%;
+    margin-right: 2%;
+    margin-bottom: 2%;
+}
+.widgets .widget:nth-child(3n){
+    margin-right: 0%;
+}
+.widgets .widget h3{
+    float: left; display: block;
+    width: 100%;
+}
+.widgets .widget dl{
+    float: left; display: block;
+}
+.widgets .widget dl dt,
+.widgets .widget dl dd{
+    float: left; display: block;
+}
+.widgets .widget dl dt{
+    clear: left;
+}
+.widgets .widget dl dd{}
