@@ -11,6 +11,7 @@ function invoicely_receipts_list(){
     $view->receipts = receipt_record::search()
         ->where('uid', $user->uid)
         ->where('deleted', 'No')
+        ->order('date','DESC')
         ->exec();
     return invoicely_template_view('templates/receipts/list.phtml', $view);
 }
