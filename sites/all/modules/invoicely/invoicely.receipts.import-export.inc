@@ -47,7 +47,7 @@ function invoicely_receipts_import(){
             $reciept = new receipt_record();
             $reciept->uid = $uid;
             $reciept->cid = $company->cid;
-            $reciept->date = date("Y-m-d", strtotime($transaction['Date']));
+            $reciept->date = date("Y-m-d", strtotime(str_replace("/","-",$transaction['Date'])));
             $reciept->save();
             $reciept_line = new receipt_line_record();
             $reciept_line->name = isset($transaction['Description']) > 0?$transaction['Description']:'Unknown Item';
