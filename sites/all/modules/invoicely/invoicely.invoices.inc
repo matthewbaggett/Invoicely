@@ -10,7 +10,7 @@ function invoicely_invoices_dash(){
     ->exec();
 
   $view->invoice_chart_data = array(array('Date', 'Pounds'));
-  $view->invoice_chart_results = db_query("
+  $view->invoice_chart_results = active_record_dumb_model::query("
     SELECT
       yearmonth,
       amount_paid_cumulative,
@@ -20,7 +20,6 @@ function invoicely_invoices_dash(){
     WHERE
       uid = {$user->uid}
   ");
-  $view->invoice_chart_results = $view->invoice_chart_results->fetchAssoc();
 
   foreach($view->invoice_chart_results as $result){
     $view->invoice_chart_data[] = array(
