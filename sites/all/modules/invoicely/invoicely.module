@@ -1,6 +1,13 @@
 <?php
 function invoicely_menu()
 {
+    $items['dashboard'] = array(
+        'title' => 'My Dashboard',
+        'description' => 'Invoicely Dashboard',
+        'page callback' => 'invoicely_dash',
+        'file' => 'invoicely.dashboard.inc',
+        'access arguments' => array('view dashboard')
+    );
     $items['receipts'] = array(
         'title' => 'My Receipts',
         'description' => 'Administer My Receipts',
@@ -55,6 +62,10 @@ function invoicely_menu()
 function invoicely_permission()
 {
     return array(
+        'view dashboard' => array(
+            'title' => t("View Dashboard"),
+            'description' => t("View own invoicely dashboard"),
+        ),
         'view invoices' => array(
             'title' => t('View Invoices'),
             'description' => t('Allow a user to view their own invoices'),

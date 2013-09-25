@@ -1,0 +1,10 @@
+<?php
+  $year_total_results = db_query("SELECT SUM(amount_paid_cumulative) as amount_paid_cumulative, financial_year FROM invoicely.invoicely_invoice_view_monthly_totals GROUP BY financial_year");
+?>
+
+<dl>
+  <?php foreach($year_total_results as $year_total_result): ?>
+    <dt><?php echo l("Invoices :year", array(':year' => $year_total_result->financial_year)); ?></dt>
+    <dl><?php echo $year_total_result->amount_paid_cumulative; ?></dl>
+  <?php endforeach; ?>
+</dl>
