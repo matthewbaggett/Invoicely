@@ -6,9 +6,9 @@ foreach($view->invoices as $invoice){
   /* @var $invoice invoice_record */
   $cumulative_amount+=$invoice->amount_charged;
   $rows[] = array(
-    $invoice->get_client()->name . ($invoice->get_client()->agency?" ({$invoice->get_client()->agency})":""),
+    l($invoice->get_client()->name . ($invoice->get_client()->agency?" ({$invoice->get_client()->agency})":""), "clients/view/{$invoice->get_client()->cid}"),
     $invoice->get_date_issued(),
-    $invoice->invoice_number,
+    l($invoice->invoice_number, "invoices/view/{$invoice->iid}"),
     "&pound; " . $invoice->amount_charged,
     (
       $invoice->paid == "No" ?
