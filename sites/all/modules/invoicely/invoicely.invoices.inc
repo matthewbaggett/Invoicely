@@ -20,6 +20,7 @@ function invoicely_invoices_dash(){
     WHERE
       uid = {$user->uid}
   ");
+  $view->invoice_chart_results = $view->invoice_chart_results->fetchAssoc();
 
   foreach($view->invoice_chart_results as $result){
     $view->invoice_chart_data[] = array(
