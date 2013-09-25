@@ -29,6 +29,18 @@ function invoicely_menu()
         'file' => 'invoicely.receipts.inc',
         'access arguments' => array('view receipts')
     );
+    $items['receipts/import'] = array(
+      'title' => 'Import Receipts',
+      'page callback' => 'invoicely_receipts_import',
+      'file' => 'invoicely.receipts.import-export.inc',
+      'access arguments' => array('view receipts')
+    );
+    $items['receipts/export'] = array(
+      'title' => 'Export Receipts',
+      'page callback' => 'invoicely_receipts_export',
+      'file' => 'invoicely.receipts.import-export.inc',
+      'access arguments' => array('view receipts')
+    );
     $items['invoices'] = array(
         'title' => 'My Invoices',
         'description' => 'Administer My Invoices',
