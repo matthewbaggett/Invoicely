@@ -8,6 +8,6 @@ function invoicely_invoices_list(){
         ->where('deleted', 'No')
         ->order('date_issued', 'DESC')
         ->exec();
-    return invoicely_template_view('templates/invoices.phtml', $view);
+    return invoicely_template_view('templates/invoices/list.phtml', $view);
 }
 

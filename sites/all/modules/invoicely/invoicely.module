@@ -25,7 +25,7 @@ function invoicely_menu()
     $items['mileage'] = array(
       'title' => 'My Invoices',
       'description' => 'Administer My Invoices',
-      'page callback' => 'invoicely_invoices_list',
+      'page callback' => 'invoicely_mileage_dashboard',
       'file' => 'invoicely.mileage.inc',
       'access arguments' => array('view mileage')
     );

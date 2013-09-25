@@ -7,7 +7,7 @@ function invoicely_receipts_list(){
         ->where('uid', $user->uid)
         ->where('deleted', 'No')
         ->exec();
-    return invoicely_template_view('templates/receipts.phtml', $view);
+    return invoicely_template_view('templates/receipts/list.phtml', $view);
 }
 
 function invoicely_receipts_add(){

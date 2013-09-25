@@ -7,6 +7,8 @@ SELECT
 	r.`name` as route_name,
 	IF(m.`direction` = 'Return', r.distance*2, r.distance) as `distance`,
 	YEAR(m.`date`) as `year`,
+	MONTH(m.`date`) as `month`,
+	CONCAT(YEAR(m.`date`), '-', MONTH(m.`date`)) as `yearmonth`,
 	CASE WHEN MONTH(m.`date`)>=4 THEN
           concat(YEAR(m.`date`), '-',YEAR(m.`date`)+1)
    ELSE concat(YEAR(m.`date`)-1,'-', YEAR(m.`date`)) END AS financial_year
