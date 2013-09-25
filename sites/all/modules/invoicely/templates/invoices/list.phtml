@@ -1,8 +1,10 @@
 <?php
 $header = array('Client/Agency', 'Date', 'Invoice Number', 'Amount Charged', 'Paid', 'Notes');
 $rows = array();
+$cumulative_amount = 0;
 foreach($view->invoices as $invoice){
   /* @var $invoice invoice_record */
+  $cumulative_amount+=$invoice->amount_charged;
   $rows[] = array(
     $invoice->get_client()->name . ($invoice->get_client()->agency?" ({$invoice->get_client()->agency})":""),
     $invoice->get_date_issued(),
@@ -14,8 +16,8 @@ foreach($view->invoices as $invoice){
         ($invoice->date_paid?"Yes, on {$invoice->get_date_paid()}":"Yes.")
     ),
     $invoice->notes
-
   );
+  $rows[] = array('Total', "&pound; {$cumulative_amount}", '');
 }
 ?>
 <?php echo l(t("Add new Invoice"), "invoices/add"); ?>
