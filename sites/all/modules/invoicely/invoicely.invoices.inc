@@ -9,7 +9,7 @@ function invoicely_invoices_dash(){
     ->order('date_issued', 'DESC')
     ->exec();
 
-  $view->mileage_chart_data = array(array('Date', 'Miles', 'Cumulative'));
+  $view->mileage_chart_data = array(array('Date', 'Miles'));
   $results = db_query("SELECT yearmonth, amount_paid_cumulative FROM invoicely_invoice_view_monthly_totals WHERE uid = {$user->uid}");
 
   $cumulative = 0;
