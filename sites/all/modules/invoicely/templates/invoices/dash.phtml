@@ -21,6 +21,7 @@ $header = array('Month', 'Amount Billed');
 $rows = array();
 foreach($view->mileage_chart_data as $month){
   $date_bits = explode("-", $month[0]);
+  krumo($date_bits);
   $rows[] = array(
     $month[0],
     $month[1],
