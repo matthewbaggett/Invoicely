@@ -17,15 +17,15 @@
 <div id="chart_div" style="width: 900px; height: 500px;"></div>
 
 <?php
-$header = array('Month', 'Amount Billed');
+$header = array('Month', 'Amount Billed', 'Actions');
 $rows = array();
 // remove first element - Its a heading.
-array_pop($view->mileage_chart_data);
+array_shift($view->mileage_chart_data);
 foreach($view->mileage_chart_data as $month){
   $date_bits = explode("-", $month[0]);
   $rows[] = array(
     $month[0],
-    $month[1],
+    "&pound; {$month[1]}",
     l("View Invoices in {$month[0]}", 'invoices/list', array('query' => array('year' => $date_bits[0], 'month' => $date_bits[1])))
   );
 }
