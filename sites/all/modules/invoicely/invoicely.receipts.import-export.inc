@@ -7,10 +7,10 @@ function invoicely_receipts_import(){
 
   $view->form_import = new magic_form();
   $view->form_import->add_field($field_import_file);
-  $view->form_import->add_field(new magic_form_field_submit('upload', 'Upload'));
+  $view->form_import->add_field(new magic_form_field_submit('upload_button', 'Upload'));
   $view->form_import->submit(function(magic_form $form){
     /* @var $upload magic_form_field_submit; */
-    $upload = $form->get_field('upload');
+    $upload = $form->get_field('import_file');
     $csv = $upload->get_data();
     krumo($csv);
     $data = str_getcsv($csv);
