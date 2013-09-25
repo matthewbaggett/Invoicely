@@ -8,7 +8,7 @@ function invoicely_mileage_dashboard(){
     $results = db_query("SELECT yearmonth, SUM(distance) as distance FROM invoicely_mileage_view GROUP BY yearmonth ORDER BY yearmonth");
 
     foreach($results as $result){
-        $view->mileage_chart_data[] = array($result->yearmonth, $result->distance);
+        $view->mileage_chart_data[] = array($result->yearmonth, floatval($result->distance));
     }
     drupal_add_js("https://www.google.com/jsapi");
     drupal_add_js('google.load("visualization", "1", {packages:["corechart"]});', 'inline');
