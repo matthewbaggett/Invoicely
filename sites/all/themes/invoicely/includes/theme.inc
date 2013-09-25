@@ -290,10 +290,22 @@ function invoicely_css_alter(&$css) {
       'preprocess' => FALSE,
       'group' => CSS_THEME,
       'browsers' => array('IE' => TRUE, '!IE' => TRUE),
-      'weight' => -2,
+      'weight' => -3,
     );
     // Add overrides.
     $override = $theme_path . '/css/overrides.css';
+    $css[$override] = array(
+      'data' => $override,
+      'type' => 'file',
+      'every_page' => TRUE,
+      'media' => 'all',
+      'preprocess' => TRUE,
+      'group' => CSS_THEME,
+      'browsers' => array('IE' => TRUE, '!IE' => TRUE),
+      'weight' => -2,
+    );
+
+    $override = $theme_path . '/css/invoicely.css';
     $css[$override] = array(
       'data' => $override,
       'type' => 'file',
