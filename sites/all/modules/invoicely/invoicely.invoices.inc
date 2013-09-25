@@ -10,7 +10,7 @@ function invoicely_invoices_dash(){
     ->exec();
 
   $view->mileage_chart_data = array(array('Date', 'Pounds'));
-  $results = db_query("SELECT yearmonth, amount_paid_cumulative FROM invoicely_invoice_view_monthly_totals WHERE uid = {$user->uid}");
+  $results = db_query("SELECT yearmonth, amount_paid_cumulative, financial_year FROM invoicely_invoice_view_monthly_totals WHERE uid = {$user->uid}");
 
   foreach($results as $result){
     $view->mileage_chart_data[] = array($result->yearmonth, floatval($result->amount_paid_cumulative));
