@@ -85,7 +85,7 @@ function invoicely_invoices_add(){
     magic_form_field_number::factory('amount_paid','Amount Paid')
   );
   $view->form->add_field(
-    magic_form_field_submit::factory('paid','Paid?')
+    magic_form_field_select::factory('paid','Paid?')
       ->add_options(array('No' => t('No'), 'Yes' => t('Yes')))
   );
   $view->form->add_field(
