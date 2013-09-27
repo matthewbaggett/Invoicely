@@ -28,7 +28,14 @@
 }
 .git-revision a.revision{
     color: #DDDDDD;
-    float: right;
+    position: absolute;
     display: block;
     clear: right;
+    transform: rotate(45deg) scale(1) skew(1deg) translate(0px);
+    -webkit-transform: rotate(45deg) scale(1) skew(1deg) translate(0px);
+    -moz-transform: rotate(45deg) scale(1) skew(1deg) translate(0px);
+    -o-transform: rotate(45deg) scale(1) skew(1deg) translate(0px);
+    -ms-transform: rotate(45deg) scale(1) skew(1deg) translate(0px);
+    top: 0;
+    right: 0;
 }
