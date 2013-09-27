@@ -8,6 +8,10 @@
     display: block;
 }
 
+.dropdown-menu{
+    margin-top: -5px;
+}
+
 .git-revision{
     position: fixed;
     top: 0;
