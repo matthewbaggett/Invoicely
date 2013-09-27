@@ -98,8 +98,6 @@ function invoicely_invoices_add(){
     magic_form_field_submit::factory('submit', 'Submit Invoice')
   );
   $view->form->submit(function(magic_form $form) use($user){
-    header("Content-type: text/plain");
-    var_dump($form);
 
     $invoice = new invoice_record();
     $invoice->uid = $user->uid;
@@ -115,6 +113,8 @@ function invoicely_invoices_add(){
     $invoice->deleted         = "No";
 
     $invoice->save();
+
+    header("Location: " . url('invoices/list', array('query' => array('year' => $invoice->get_date_issued("Y"), 'month' => $invoice->get_date_issued("m")))));
     exit;
   });
   return invoicely_template_view('templates/invoices/add.phtml', $view);
