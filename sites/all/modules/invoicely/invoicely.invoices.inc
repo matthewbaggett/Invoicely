@@ -93,10 +93,24 @@ function invoicely_invoices_add(){
   $view->form->add_field(
     magic_form_field_submit::factory('submit', 'Submit Invoice')
   );
-  $view->form->submit(function(magic_form $form){
+  $view->form->submit(function(magic_form $form) use($user){
     header("Content-type: text/plain");
     var_dump($form);
-    exit;
+
+
+    $invoice = new invoice_record();
+    $invoice->uid = $user->uid;
+    $invoice->invoice_number = $form->get_field('invoice_number')->get_value();
+    $invoice->date_issued = $form->get_field('date_issued')->get_value();
+    $invoice->date_paid = $form->get_field('date_paid')->get_value();
+    $invoice->amount_charged = $form->get_field('amount_charged')->get_value();
+    $invoice->amount_paid = $form->get_field('amount_paid')->get_value();
+    $invoice->paid = "No";
+    $invoice->cid = $form->get_field('company')->get_value();
+    $invoice->file = $form->get_field('attachment')->get_value();
+    $invoice->notes = $form->get_field('notes')->get_value();
+
+    $invoice->save();
   });
   return invoicely_template_view('templates/invoices/add.phtml', $view);
 }
