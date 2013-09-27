@@ -130,3 +130,4 @@ function invoicely_template_view($file, $view = null)
 
     return $markup;
 }
+

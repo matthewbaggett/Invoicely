@@ -1,3 +1,8 @@
+<?php if(function_exists("invoicely_get_git_revision")): ?>
+  <div class="git-revision">
+    <?php echo substr(invoicely_get_git_revision(),0,10); ?>
+  </div>
+<?php endif; ?>
 <header id="navbar" role="banner" class="navbar navbar-default navbar-fixed-top">
   <div class="container">
     <div class="navbar-header">

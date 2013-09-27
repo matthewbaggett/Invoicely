@@ -40,7 +40,7 @@ function invoicely_theme(&$existing, $type, $theme, $path) {
     && (arg(0) == 'admin' || flood_is_allowed($GLOBALS['theme'] . '_rebuild_registry_warning', 3))
   ) {
     flood_register_event($GLOBALS['theme'] . '_rebuild_registry_warning');
-    drupal_set_message(t('For easier theme development, the theme registry is being rebuilt on every page request. It is <em>extremely</em> important to <a href="!link">turn off this feature</a> on production websites.', array('!link' => url('admin/appearance/settings/' . $GLOBALS['theme']))), 'warning', FALSE);
+    drupal_set_message(t('For easier theme development, the theme registry is being rebuilt on every page request. It is <em>extremely</em> important to <a href="!link">turn off this feature</a> on production websites.', array('!link' => url('admin/appearance/settings/' . $GLOBALS['theme']))), 'warning', false);
   }
   
   return array(
@@ -48,14 +48,14 @@ function invoicely_theme(&$existing, $type, $theme, $path) {
       'variables' => array(
         'links' => array(),
         'attributes' => array(),
-        'heading' => NULL
+        'heading' => null
       ),
     ),
     'invoicely_btn_dropdown' => array(
       'variables' => array(
         'links' => array(),
         'attributes' => array(),
-        'type' => NULL
+        'type' => null
       ),
     ),
     'invoicely_modal' => array(
@@ -64,7 +64,7 @@ function invoicely_theme(&$existing, $type, $theme, $path) {
         'body' => '',
         'footer' => '',
         'attributes' => array(),
-        'html_heading' => FALSE,
+        'html_heading' => false,
       ),
     ),
     'invoicely_accordion' => array(
@@ -126,11 +126,11 @@ function invoicely_preprocess_page(&$variables) {
     $variables['content_column_class'] = ' class="col-sm-10"';
   }
   else {
-    $variables['content_column_class'] = NULL;
+    $variables['content_column_class'] = null;
   }
 
   // Primary nav
-  $variables['primary_nav'] = FALSE;
+  $variables['primary_nav'] = false;
   if ($variables['main_menu']) {
     // Build links
     $variables['primary_nav'] = menu_tree(variable_get('menu_main_links_source', 'main-menu'));
@@ -139,7 +139,7 @@ function invoicely_preprocess_page(&$variables) {
   }
 
   // Secondary nav
-  $variables['secondary_nav'] = FALSE;
+  $variables['secondary_nav'] = false;
   if ($variables['secondary_menu']) {
     // Build links
     $variables['secondary_nav'] = menu_tree(variable_get('menu_secondary_links_source', 'user-menu'));
@@ -199,7 +199,7 @@ function invoicely_menu_local_action($variables) {
     }
 
     // Force HTML so we can add the icon rendering element.
-    $options['html'] = TRUE;
+    $options['html'] = true;
     $output .= l($icon . $link['title'], $link['href'], $options);
   }
   elseif (!empty($link['localized_options']['html'])) {
@@ -295,4 +295,13 @@ function invoicely_preprocess_icon(&$variables) {
   if ($bundle['provider'] === 'invoicely') {
     $variables['attributes']['class'][] = 'glyphicon';
   }
+}
+
+/**
+ * Get the revision currently present.
+ *
+ * @return string
+ */
+function invoicely_get_git_revision(){
+  return exec("cd " . DRUPAL_ROOT . "; git rev-parse HEAD");
 }
