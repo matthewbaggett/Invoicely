@@ -1,4 +1,4 @@
-CREATE OR REPLACE VIEW invoicely_invoice_view_monthly_totals AS
+CREATE OR REPLACE VIEW invoicely_reciept_view_monthly_totals AS
 
 SELECT 
 	ii.`uid` as `uid`,
