@@ -215,11 +215,11 @@ $databases = array (
   array (
     'default' => 
     array (
-      'database'  => $_ENV['DRUPAL_DB_DATABASE'],
-      'username'  => $_ENV['DRUPAL_DB_USERNAME'],
-      'password'  => $_ENV['DRUPAL_DB_PASSWORD'],
-      'host'      => $_ENV['DRUPAL_DB_HOSTNAME'],
-      'port'      => $_ENV['DRUPAL_DB_PORT'],
+      'database'  => $_SERVER['DRUPAL_DB_DATABASE'],
+      'username'  => $_SERVER['DRUPAL_DB_USERNAME'],
+      'password'  => $_SERVER['DRUPAL_DB_PASSWORD'],
+      'host'      => $_SERVER['DRUPAL_DB_HOSTNAME'],
+      'port'      => $_SERVER['DRUPAL_DB_PORT'],
       'driver'    => 'mysql',
       'prefix'    => '',
     ),
