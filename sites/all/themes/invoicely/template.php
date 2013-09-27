@@ -303,5 +303,8 @@ function invoicely_preprocess_icon(&$variables) {
  * @return string
  */
 function invoicely_get_git_revision(){
-  return exec("cd " . DRUPAL_ROOT . "; git rev-parse HEAD");
+  if(!isset($_GLOBALS['git_revision'])){
+    $_GLOBALS['git_revision'] = exec("cd " . DRUPAL_ROOT . "; git rev-parse HEAD");
+  }
+  return $_GLOBALS['git_revision'];
 }
