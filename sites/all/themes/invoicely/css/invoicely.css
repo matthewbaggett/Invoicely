@@ -18,7 +18,7 @@
     z-index: 2000;
 }
 .git-revision a.forkme{
-    background-image: url(https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png);
+    background-image: url(../images/forkme.png);
     float: right;
     display: block;
     height: 149px;
@@ -35,11 +35,9 @@
     -moz-transform: rotate(45deg) scale(1) skew(1deg) translate(0px);
     -o-transform: rotate(45deg) scale(1) skew(1deg) translate(0px);
     -ms-transform: rotate(45deg) scale(1) skew(1deg) translate(0px);
-    height: 149px;
-    width: 145px;
-    right: 45px;
     text-align: center;
-    top: 45px;
+    right: 34px;
+    top: 63px;
     text-shadow: 1px 1px 0px #000000, -1px -1px 0px #000000, -1px 1px 0px #000000, 1px -1px 0px #000000;
     font-family: monospace;
     font-size: 13px;
