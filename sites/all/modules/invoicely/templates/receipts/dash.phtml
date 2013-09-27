@@ -38,7 +38,7 @@ foreach($view->monthly_totals as $receipt){
     $receipt->amount_max,
     $receipt->amount_average,
     "<ul>" .
-    "<li>" . l("View Receipts in {$receipt->yearmonth}", 'reciepts/list', array('query' => array('year' => $date_bits[0], 'month' => $date_bits[1]))) . "</li>" .
+    "  <li>" . l("View Receipts in {$receipt->yearmonth}", 'reciepts/list', array('query' => array('year' => $date_bits[0], 'month' => $date_bits[1]))) . "</li>" .
     "</ul>"
   );
 }
