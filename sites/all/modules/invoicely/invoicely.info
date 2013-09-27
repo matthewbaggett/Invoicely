@@ -11,5 +11,6 @@ files[] = models/mileage_route.inc
 files[] = models/receipt_lines.inc
 files[] = models/receipts.inc
 files[] = models/tax_rates.inc
+files[] = models/user.inc
 
 stylesheets[all][] = css/dashboard/widget.css
