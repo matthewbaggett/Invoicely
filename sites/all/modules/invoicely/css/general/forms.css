@@ -1,0 +1,15 @@
+form.magic_form {}
+form.magic_form .form_row,
+form.magic_form .form_group {}
+form.magic_form .form_row {}
+form.magic_form .form_row label{
+    float: left; display: block;
+    width: 150px;
+    clear: left;
+}
+form.magic_form .form_row .widget{
+    float: left; display: block;
+    width: 150px;
+    clear: none;
+}
+form.magic_form .form_group {}

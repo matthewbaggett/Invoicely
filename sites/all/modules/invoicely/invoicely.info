@@ -13,4 +13,5 @@ files[] = models/receipts.inc
 files[] = models/tax_rates.inc
 files[] = models/user.inc
 
+stylesheets[all][] = css/general/forms.css
 stylesheets[all][] = css/dashboard/widget.css
