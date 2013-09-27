@@ -13,7 +13,6 @@
     top: 0;
     right: 0;
     font-size: 9px;
-    font-family: verdana, arial, sans-serif;
     color: #DDDDDD;
     font-style: italic;
     z-index: 2000;
@@ -37,8 +36,15 @@
     -o-transform: rotate(45deg) scale(1) skew(1deg) translate(0px);
     -ms-transform: rotate(45deg) scale(1) skew(1deg) translate(0px);
     height: 149px;
+    width: 145px;
     right: 45px;
     text-align: center;
     top: 45px;
     text-shadow: 1px 1px 0px #000000, -1px -1px 0px #000000, -1px 1px 0px #000000, 1px -1px 0px #000000;
+    font-family: monospace;
+    font-size: 13px;
+    text-decoration: none;
+}
+.git-revision a.revision:hover{
+    text-decoration: none;
 }
