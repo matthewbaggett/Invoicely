@@ -61,45 +61,49 @@ function invoicely_invoices_list(){
   return invoicely_template_view('templates/invoices/list.phtml', $view);
 }
 
-function invoicely_invoices_add(){
+function invoicely_invoices_edit($invoice_id = null){
   $user = user_record::current();
+  if($invoice_id){
+    $invoice = invoice_record::search()->where('iid', $invoice_id)->execOne();
+  }else{
+    $invoice = new invoice_record();
+  }
   $view = new StdClass();
   $view->form = new magic_form();
   $view->form->add_field(
-    magic_form_field_text::factory('invoice_number', 'Invoice Number')
+    magic_form_field_text::factory('invoice_number', 'Invoice Number', $invoice->invoice_number)
   );
   $view->form->add_field(
-    magic_form_field_select::factory('company','Company')
+    magic_form_field_select::factory('company', 'Company', $invoice->cid)
       ->add_options($user->get_companies())
   );
   $view->form->add_field(
-    magic_form_field_date::factory('date_issued','Date Issued')
+    magic_form_field_date::factory('date_issued', 'Date Issued', $invoice->date_issued)
   );
   $view->form->add_field(
-    magic_form_field_date::factory('date_paid','Date Paid')
+    magic_form_field_date::factory('date_paid', 'Date Paid', $invoice->date_paid)
   );
   $view->form->add_field(
-    magic_form_field_number::factory('amount_charged','Amount Charged')
+    magic_form_field_number::factory('amount_charged', 'Amount Charged', $invoice->amount_charged)
   );
   $view->form->add_field(
-    magic_form_field_number::factory('amount_paid','Amount Paid')
+    magic_form_field_number::factory('amount_paid', 'Amount Paid', $invoice->amount_paid)
   );
   $view->form->add_field(
-    magic_form_field_select::factory('paid','Paid?')
+    magic_form_field_select::factory('paid', 'Paid?', $invoice->paid)
       ->add_options(array('No' => t('No'), 'Yes' => t('Yes')))
   );
   $view->form->add_field(
     magic_form_field_file::factory('attachment', 'Attach PDF Invoice')
   );
   $view->form->add_field(
-    magic_form_field_textarea::factory('notes', 'Notes')
+    magic_form_field_textarea::factory('notes', 'Notes', $invoice->notes)
   );
   $view->form->add_field(
     magic_form_field_submit::factory('submit', 'Submit Invoice')
   );
-  $view->form->submit(function(magic_form $form) use($user){
+  $view->form->submit(function(magic_form $form) use($user, $invoice){
 
-    $invoice = new invoice_record();
     $invoice->uid = $user->uid;
     $invoice->invoice_number  = $form->get_field('invoice_number')->get_value();
     $invoice->date_issued     = $form->get_field('date_issued')->get_value();

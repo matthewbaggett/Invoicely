@@ -25,7 +25,15 @@ function invoicely_menu()
     $items['receipts/add'] = array(
         'title' => 'Add new Receipt',
         'description' => 'Add a new Receipt',
-        'page callback' => 'invoicely_receipts_add',
+        'page callback' => 'invoicely_receipts_edit',
+        'file' => 'invoicely.receipts.inc',
+        'access arguments' => array('view receipts')
+    );
+    $items['receipts/edit/%'] = array(
+        'title' => 'Edit Receipt',
+        'description' => 'Edit a Receipt',
+        'page callback' => 'invoicely_receipts_edit',
+        'page arguments'   => array(2),
         'file' => 'invoicely.receipts.inc',
         'access arguments' => array('view receipts')
     );
