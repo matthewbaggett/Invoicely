@@ -112,6 +112,7 @@ function invoicely_invoices_add(){
     $invoice->cid             = $form->get_field('company')->get_value();
     $invoice->file            = $form->get_field('attachment')->get_value();
     $invoice->notes           = $form->get_field('notes')->get_value();
+    $invoice->deleted         = "No";
 
     $invoice->save();
     exit;
