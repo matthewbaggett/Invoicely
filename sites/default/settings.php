@@ -215,13 +215,13 @@ $databases = array (
   array (
     'default' => 
     array (
-      'database' => 'invoicely',
-      'username' => 'invoicely',
-      'password' => 'yKxsrFSBWa6nbbu2',
-      'host' => 'localhost',
-      'port' => '',
-      'driver' => 'mysql',
-      'prefix' => '',
+      'database'  => $_ENV['DRUPAL_DB_DATABASE'],
+      'username'  => $_ENV['DRUPAL_DB_USERNAME'],
+      'password'  => $_ENV['DRUPAL_DB_PASSWORD'],
+      'host'      => $_ENV['DRUPAL_DB_HOSTNAME'],
+      'port'      => $_ENV['DRUPAL_DB_PORT'],
+      'driver'    => 'mysql',
+      'prefix'    => '',
     ),
   ),
 );
