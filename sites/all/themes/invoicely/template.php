@@ -308,3 +308,15 @@ function invoicely_get_git_revision(){
   }
   return $_GLOBALS['git_revision'];
 }
+
+/**
+ * Get the last commit message
+ *
+ * @return string
+ */
+function invoicely_get_git_commit_message(){
+  if(!isset($_GLOBALS['git_commit_message'])){
+    $_GLOBALS['git_commit_message'] = exec("cd " . DRUPAL_ROOT . "; git log -n 1 HEAD --format=%s");
+  }
+  return $_GLOBALS['git_commit_message'];
+}
