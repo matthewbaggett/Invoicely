@@ -36,6 +36,9 @@
     -moz-transform: rotate(45deg) scale(1) skew(1deg) translate(0px);
     -o-transform: rotate(45deg) scale(1) skew(1deg) translate(0px);
     -ms-transform: rotate(45deg) scale(1) skew(1deg) translate(0px);
-    top: 0;
-    right: 0;
+    height: 149px;
+    right: 45px;
+    text-align: center;
+    top: 45px;
+    text-shadow: 1px 1px 0px #000000, -1px -1px 0px #000000, -1px 1px 0px #000000, 1px -1px 0px #000000;
 }
