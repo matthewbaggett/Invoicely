@@ -1,4 +1,8 @@
 <?php
+// Check password.
+if ((!isset($_REQUEST['password']) || $_REQUEST['password'] !== $_ENV['DRUPAL_UPDATE_PASSWORD']) && PHP_SAPI !== 'cli') {
+  die("Wrong password");
+}
 error_reporting(E_ALL);
 ini_set('display_errors', TRUE);
 ini_set('display_startup_errors', TRUE);
