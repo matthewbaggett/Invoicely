@@ -61,3 +61,43 @@ function invoicely_invoices_list(){
   return invoicely_template_view('templates/invoices/list.phtml', $view);
 }
 
+function invoicely_invoices_add(){
+  $user = user_active_record::current();
+  $view = new StdClass();
+  $view->form = new magic_form();
+  $view->form->add_field(
+    magic_form_field_text::factory('invoice_number', 'Invoice Number')
+  );
+  $view->form->add_field(
+    magic_form_field_select::factory('company','Company')
+      ->add_options($user->get_companies())
+  );
+  $view->form->add_field(
+    magic_form_field_date::factory('date_issued','Date Issued')
+  );
+  $view->form->add_field(
+    magic_form_field_date::factory('date_paid','Date Paid')
+  );
+  $view->form->add_field(
+    magic_form_field_number::factory('amount_charged','Amount Charged')
+  );
+  $view->form->add_field(
+    magic_form_field_number::factory('amount_paid','Amount Paid')
+  );
+  $view->form->add_field(
+    magic_form_field_file::factory('attachment', 'Attach PDF Invoice')
+  );
+  $view->form->add_field(
+    magic_form_field_textarea::factory('notes', 'Notes')
+  );
+  $view->form->add_field(
+    magic_form_field_submit::factory('submit', 'Submit Invoice')
+  );
+  $view->form->submit(function(magic_form $form){
+    header("Content-type: text/plain");
+    var_dump($form);
+    exit;
+  });
+  return invoicely_template_view('templates/invoices/add.phtml', $view);
+}
+

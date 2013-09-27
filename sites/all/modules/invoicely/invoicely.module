@@ -48,6 +48,13 @@ function invoicely_menu()
         'file' => 'invoicely.invoices.inc',
         'access arguments' => array('view invoices')
     );
+    $items['invoices/add'] = array(
+        'title' => 'My Invoices - Add',
+        'description' => 'Add new Invoice',
+        'page callback' => 'invoicely_invoices_add',
+        'file' => 'invoicely.invoices.inc',
+        'access arguments' => array('view invoices')
+    );
     $items['invoices/list'] = array(
         'title' => 'My Invoices - List',
         'description' => 'Administer My Invoices',
