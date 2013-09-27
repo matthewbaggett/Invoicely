@@ -36,11 +36,11 @@
     -o-transform: rotate(45deg) scale(1) skew(1deg) translate(0px);
     -ms-transform: rotate(45deg) scale(1) skew(1deg) translate(0px);
     text-align: center;
-    right: 34px;
-    top: 63px;
+    right: 21px;
+    top: 56px;
     text-shadow: 1px 1px 0px #000000, -1px -1px 0px #000000, -1px 1px 0px #000000, 1px -1px 0px #000000;
     font-family: monospace;
-    font-size: 13px;
+    font-size: 20px;
     text-decoration: none;
 }
 .git-revision a.revision:hover{
