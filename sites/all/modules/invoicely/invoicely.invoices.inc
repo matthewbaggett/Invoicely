@@ -62,7 +62,7 @@ function invoicely_invoices_list(){
 }
 
 function invoicely_invoices_add(){
-  $user = user_active_record::current();
+  $user = user_record::current();
   $view = new StdClass();
   $view->form = new magic_form();
   $view->form->add_field(
