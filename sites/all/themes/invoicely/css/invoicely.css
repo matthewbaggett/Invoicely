@@ -16,6 +16,7 @@
     font-family: verdana, arial, sans-serif;
     color: #DDDDDD;
     font-style: italic;
+    z-index: 2000;
 }
 .git-revision a.forkme{
     background-image: url(https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png);
