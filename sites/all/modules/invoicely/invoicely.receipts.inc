@@ -2,6 +2,11 @@
 
 function invoicely_receipts_dash(){
   $view = new StdClass();
+  $view->monthly_totals = active_record_dumb_model::query("SELECT * FROM invoicely.invoicely_reciept_view_monthly_totals WHERE uid = 1");
+  $view->monthly_totals_chart_data = array();
+  foreach($view->monthly_totals as $monthly_total){
+    $view->monthly_totals_chart_data = array($monthly_total->yearmonth, $monthly_total->amount_cumulative);
+  }
   return invoicely_template_view('templates/receipts/dash.phtml', $view);
 }
 

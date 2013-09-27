@@ -1,1 +1,48 @@
-Coming soon.
+<script>
+  google.setOnLoadCallback(drawChart);
+  function drawChart() {
+    var data = google.visualization.arrayToDataTable(<?php echo json_encode($view->monthly_totals_chart_data); ?>);
+
+    var options = {
+      title: 'Mileage this year',
+      hAxis: {title: 'Date',  titleTextStyle: {color: '#333'}},
+      vAxis: {minValue: 0}
+    };
+
+    var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
+    chart.draw(data, options);
+  }
+</script>
+
+<div class="dash_chart" id="chart_div"></div>
+
+<?php
+$header = array(
+  t('Date'),
+  t('Financial Year'),
+  t('Total'),
+  t('Min'),
+  t('Max'),
+  t('Average'),
+  t('Actions')
+);
+$rows = array();
+foreach($view->monthly_totals as $receipt){
+  /* @var $receipt receipt_record */
+  $date_bits = explode("-", $receipt->yearmonth);
+  $rows[] = array(
+    $receipt->yearmonth,
+    $receipt->financial_year,
+    $receipt->amount_cumulative,
+    $receipt->amount_min,
+    $receipt->amount_max,
+    $receipt->amount_average,
+    "<ul>" .
+    "<li>" . l("View Receipts in {$receipt->yearmonth}", 'reciepts/list', array('query' => array('year' => $date_bits[0], 'month' => $date_bits[1]))) . "</li>" .
+    "</ul>"
+  );
+}
+?>
+<?php echo l(t("Add new Receipt"), "receipts/add"); ?>
+<?php echo theme('table', array('header' => $header, 'rows' => $rows, 'empty' => t('No receipts'))); ?>
+
