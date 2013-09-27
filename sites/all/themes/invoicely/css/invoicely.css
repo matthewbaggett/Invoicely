@@ -10,13 +10,24 @@
 
 .git-revision{
     position: fixed;
-    bottom: 0;
+    top: 0;
     right: 0;
     font-size: 9px;
     font-family: verdana, arial, sans-serif;
     color: #DDDDDD;
     font-style: italic;
 }
-.git-revision a{
+.git-revision a.forkme{
+    background-image: url(https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png);
+    float: right;
+    display: block;
+    height: 149px;
+    width: 149px;
+    clear: right;
+}
+.git-revision a.revision{
     color: #DDDDDD;
+    float: right;
+    display: block;
+    clear: right;
 }

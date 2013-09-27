@@ -1,6 +1,7 @@
 <?php if(function_exists("invoicely_get_git_revision")): ?>
   <div class="git-revision">
-    <?php echo l(substr(invoicely_get_git_revision(),0,10), "https://github.com/matthewbaggett/Invoicely/commit/" . invoicely_get_git_revision()); ?>
+    <?php echo l("", "https://github.com/matthewbaggett/Invoicely/", array('class' => array('forkme'))); ?>
+    <?php echo l(substr(invoicely_get_git_revision(),0,10), "https://github.com/matthewbaggett/Invoicely/commit/" . invoicely_get_git_revision(), array('class' => array('revision'))); ?>
   </div>
 <?php endif; ?>
 <header id="navbar" role="banner" class="navbar navbar-default navbar-fixed-top">
