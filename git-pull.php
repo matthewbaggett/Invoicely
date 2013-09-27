@@ -1,6 +1,6 @@
 <?php
 // Check password.
-if ((!isset($_REQUEST['password']) || $_REQUEST['password'] !== 'up7S0o0BED595Um') && PHP_SAPI !== 'cli') {
+if ((!isset($_REQUEST['password']) || $_REQUEST['password'] !== $_ENV['DRUPAL_UPDATE_PASSWORD']) && PHP_SAPI !== 'cli') {
   die("Wrong password");
 }
 
