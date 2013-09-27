@@ -18,6 +18,7 @@ class user_record extends user_active_record{
     if(!$this->_companies){
       $this->_companies = company_record::search()
         ->where('uid', $this->uid)
+        ->order('name', 'ASC')
         ->exec();
     }
     return $this->_companies;
