@@ -28,15 +28,22 @@ class receipts_repeated_frequencies_record extends receipt_line_record{
 
     public function get_following_dates($date){
       $array_of_dates = array();
-      while(true){
+      $done = false;
+      $cycle = 0;
+      while($done == false){
         $next_date = $this->get_next_date($date);
         if(!time() < strtotime($next_date)){
           $array_of_dates[strtotime($next_date)] = $next_date;
         }else{
-          break;
+          $done = true;
+        }
+        $cycle++;
+        if($cycle > 15){
+          $done = true;
         }
       }
       ksort($array_of_dates);
+      krumo($array_of_dates);
       return $array_of_dates;
     }
 }
