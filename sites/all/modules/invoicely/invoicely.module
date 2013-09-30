@@ -49,6 +49,18 @@ function invoicely_menu()
       'file' => 'invoicely.receipts.import-export.inc',
       'access arguments' => array('view receipts')
     );
+    $items['receipts/repeated/list'] = array(
+      'title' => 'View Repeated Receipts',
+      'page callback' => 'invoicely_receipts_repeated_list',
+      'file' => 'invoicely.receipts-repeated.inc',
+      'access arguments' => array('view receipts')
+    );
+    $items['receipts/repeated/add'] = array(
+      'title' => 'Add Repeated Receipt',
+      'page callback' => 'invoicely_receipts_repeated_add',
+      'file' => 'invoicely.receipts-repeated.inc',
+      'access arguments' => array('view receipts')
+    );
     $items['invoices'] = array(
         'title' => 'My Invoices',
         'description' => 'Administer My Invoices',
