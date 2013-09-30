@@ -3,7 +3,7 @@ class receipt_repeated_record extends receipt_record{
   protected $_table = "invoicely_receipts_repeated";
 
   public function get_date_first_occurrence($format = "Y-m-d"){
-    return date($format, strtotime($this->date));
+    return date($format, strtotime($this->date_first_occurrence));
   }
 
   public function get_receipt_lines(){
