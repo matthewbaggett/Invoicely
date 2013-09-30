@@ -10,7 +10,7 @@ class receipts_repeated_frequencies_record extends receipt_line_record{
 
     private function get_next_date($date){
       $timestamp = strtotime($date);
-      $year = date("y", $timestamp);
+      $year = date("Y", $timestamp);
       $month = date("m", $timestamp);
       $day = date("d", $timestamp);
       switch($this->machine_name){
