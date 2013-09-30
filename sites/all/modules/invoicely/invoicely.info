@@ -12,6 +12,7 @@ files[] = models/receipt_lines.inc
 files[] = models/receipt_lines_repeated.inc
 files[] = models/receipts.inc
 files[] = models/receipts_repeated.inc
+files[] = models/receipts_repeated_frequencies.inc
 files[] = models/tax_rates.inc
 files[] = models/user.inc
 
