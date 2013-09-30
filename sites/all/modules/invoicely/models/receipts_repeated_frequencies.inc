@@ -4,12 +4,10 @@ class receipts_repeated_frequencies_record extends receipt_line_record{
 
     private function parse($string_date){
       $result = date("Y-m-d", strtotime($string_date));
-      echo "{$string_date} -> {$result}<br />";
       return $result;
     }
 
-    private function get_next_date($date){
-      $timestamp = strtotime($date);
+    private function get_next_date($timestamp){
       $year = date("Y", $timestamp);
       $month = date("m", $timestamp);
       $day = date("d", $timestamp);
@@ -32,14 +30,15 @@ class receipts_repeated_frequencies_record extends receipt_line_record{
     }
 
     public function get_following_dates($date){
+      $timestamp = strtotime($date);
       $array_of_dates = array();
       $done = false;
       $cycle = 0;
       while($done == false){
-        $next_date = $this->get_next_date($date);
+        $next_date = $this->get_next_date($timestamp);
         if(!time() < strtotime($next_date)){
           $array_of_dates[strtotime($next_date)] = $next_date;
-          $date = strtotime($next_date);
+          $timestamp = strtotime($next_date);
         }else{
           $done = true;
         }
