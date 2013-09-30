@@ -16,12 +16,15 @@ class receipts_repeated_frequencies_record extends receipt_line_record{
       switch($this->machine_name){
         case 'monthly':
           $month++;
+          echo "{$this->machine_name}: " . date("Y-m-d", $timestamp) . " - " . "{$year}-{$month}-{$day} <br />";
           return $this->parse("{$year}-{$month}-{$day}");
         case 'weekly':
           $day = $day + 7;
+          echo "{$this->machine_name}: " . date("Y-m-d", $timestamp) . " - " . "{$year}-{$month}-{$day} <br />";
           return $this->parse("{$year}-{$month}-{$day}");
         case 'quarterly':
           $month = $month + 3;
+          echo "{$this->machine_name}: " . date("Y-m-d", $timestamp) . " - " . "{$year}-{$month}-{$day} <br />";
           return $this->parse("{$year}-{$month}-{$day}");
         default:
           throw new exception("Missing frequency machine name: {$this->machine_name}");
