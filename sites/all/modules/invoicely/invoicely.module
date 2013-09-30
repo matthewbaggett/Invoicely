@@ -1,96 +1,95 @@
 <?php
-function invoicely_menu()
-{
-    $items['dashboard'] = array(
-        'title' => 'My Dashboard',
-        'description' => 'Invoicely Dashboard',
-        'page callback' => 'invoicely_dash',
-        'file' => 'invoicely.dashboard.inc',
-        'access arguments' => array('view dashboard')
-    );
-    $items['receipts'] = array(
-        'title' => 'My Receipts',
-        'description' => 'Administer My Receipts',
-        'page callback' => 'invoicely_receipts_dash',
-        'file' => 'invoicely.receipts.inc',
-        'access arguments' => array('view receipts')
-    );
-    $items['receipts/list'] = array(
-        'title' => 'My Receipts - List',
-        'description' => 'Administer My Receipts',
-        'page callback' => 'invoicely_receipts_list',
-        'file' => 'invoicely.receipts.inc',
-        'access arguments' => array('view receipts')
-    );
-    $items['receipts/add'] = array(
-        'title' => 'Add new Receipt',
-        'description' => 'Add a new Receipt',
-        'page callback' => 'invoicely_receipts_edit',
-        'file' => 'invoicely.receipts.inc',
-        'access arguments' => array('view receipts')
-    );
-    $items['receipts/edit/%'] = array(
-        'title' => 'Edit Receipt',
-        'description' => 'Edit a Receipt',
-        'page callback' => 'invoicely_receipts_edit',
-        'page arguments'   => array(2),
-        'file' => 'invoicely.receipts.inc',
-        'access arguments' => array('view receipts')
-    );
-    $items['receipts/import'] = array(
-      'title' => 'Import Receipts',
-      'page callback' => 'invoicely_receipts_import',
-      'file' => 'invoicely.receipts.import-export.inc',
-      'access arguments' => array('view receipts')
-    );
-    $items['receipts/export'] = array(
-      'title' => 'Export Receipts',
-      'page callback' => 'invoicely_receipts_export',
-      'file' => 'invoicely.receipts.import-export.inc',
-      'access arguments' => array('view receipts')
-    );
-    $items['receipts/repeated/list'] = array(
-      'title' => 'View Repeated Receipts',
-      'page callback' => 'invoicely_receipts_repeated_list',
-      'file' => 'invoicely.receipts-repeated.inc',
-      'access arguments' => array('view receipts')
-    );
-    $items['receipts/repeated/add'] = array(
-      'title' => 'Add Repeated Receipt',
-      'page callback' => 'invoicely_receipts_repeated_add',
-      'file' => 'invoicely.receipts-repeated.inc',
-      'access arguments' => array('view receipts')
-    );
-    $items['invoices'] = array(
-        'title' => 'My Invoices',
-        'description' => 'Administer My Invoices',
-        'page callback' => 'invoicely_invoices_dash',
-        'file' => 'invoicely.invoices.inc',
-        'access arguments' => array('view invoices')
-    );
-    $items['invoices/add'] = array(
-        'title' => 'My Invoices - Add',
-        'description' => 'Add new Invoice',
-        'page callback' => 'invoicely_invoices_add',
-        'file' => 'invoicely.invoices.inc',
-        'access arguments' => array('view invoices')
-    );
-    $items['invoices/list'] = array(
-        'title' => 'My Invoices - List',
-        'description' => 'Administer My Invoices',
-        'page callback' => 'invoicely_invoices_list',
-        'file' => 'invoicely.invoices.inc',
-        'access arguments' => array('view invoices')
-    );
-    $items['mileage'] = array(
-        'title' => 'My Mileage',
-        'description' => 'Administer My Mileage',
-        'page callback' => 'invoicely_mileage_dashboard',
-        'file' => 'invoicely.mileage.inc',
-        'access arguments' => array('view mileage')
-    );
+function invoicely_menu() {
+  $items['dashboard']              = array(
+    'title'            => 'My Dashboard',
+    'description'      => 'Invoicely Dashboard',
+    'page callback'    => 'invoicely_dash',
+    'file'             => 'invoicely.dashboard.inc',
+    'access arguments' => array('view dashboard')
+  );
+  $items['receipts']               = array(
+    'title'            => 'My Receipts',
+    'description'      => 'Administer My Receipts',
+    'page callback'    => 'invoicely_receipts_dash',
+    'file'             => 'invoicely.receipts.inc',
+    'access arguments' => array('view receipts')
+  );
+  $items['receipts/list']          = array(
+    'title'            => 'My Receipts - List',
+    'description'      => 'Administer My Receipts',
+    'page callback'    => 'invoicely_receipts_list',
+    'file'             => 'invoicely.receipts.inc',
+    'access arguments' => array('view receipts')
+  );
+  $items['receipts/add']           = array(
+    'title'            => 'New',
+    'description'      => 'Add a new Receipt',
+    'page callback'    => 'invoicely_receipts_edit',
+    'file'             => 'invoicely.receipts.inc',
+    'access arguments' => array('view receipts')
+  );
+  $items['receipts/edit/%']        = array(
+    'title'            => 'Edit Receipt',
+    'description'      => 'Edit a Receipt',
+    'page callback'    => 'invoicely_receipts_edit',
+    'page arguments'   => array(2),
+    'file'             => 'invoicely.receipts.inc',
+    'access arguments' => array('view receipts')
+  );
+  $items['receipts/import']        = array(
+    'title'            => 'Import',
+    'page callback'    => 'invoicely_receipts_import',
+    'file'             => 'invoicely.receipts.import-export.inc',
+    'access arguments' => array('view receipts')
+  );
+  $items['receipts/export']        = array(
+    'title'            => 'Export',
+    'page callback'    => 'invoicely_receipts_export',
+    'file'             => 'invoicely.receipts.import-export.inc',
+    'access arguments' => array('view receipts')
+  );
+  $items['receipts/repeated/list'] = array(
+    'title'            => 'Repeated Receipts - View',
+    'page callback'    => 'invoicely_receipts_repeated_list',
+    'file'             => 'invoicely.receipts-repeated.inc',
+    'access arguments' => array('view receipts')
+  );
+  $items['receipts/repeated/add']  = array(
+    'title'            => 'Repeated Receipts - Add',
+    'page callback'    => 'invoicely_receipts_repeated_add',
+    'file'             => 'invoicely.receipts-repeated.inc',
+    'access arguments' => array('view receipts')
+  );
+  $items['invoices']               = array(
+    'title'            => 'My Invoices',
+    'description'      => 'Administer My Invoices',
+    'page callback'    => 'invoicely_invoices_dash',
+    'file'             => 'invoicely.invoices.inc',
+    'access arguments' => array('view invoices')
+  );
+  $items['invoices/add']           = array(
+    'title'            => 'My Invoices - Add',
+    'description'      => 'Add new Invoice',
+    'page callback'    => 'invoicely_invoices_add',
+    'file'             => 'invoicely.invoices.inc',
+    'access arguments' => array('view invoices')
+  );
+  $items['invoices/list']          = array(
+    'title'            => 'My Invoices - List',
+    'description'      => 'Administer My Invoices',
+    'page callback'    => 'invoicely_invoices_list',
+    'file'             => 'invoicely.invoices.inc',
+    'access arguments' => array('view invoices')
+  );
+  $items['mileage']                = array(
+    'title'            => 'My Mileage',
+    'description'      => 'Administer My Mileage',
+    'page callback'    => 'invoicely_mileage_dashboard',
+    'file'             => 'invoicely.mileage.inc',
+    'access arguments' => array('view mileage')
+  );
 
-    return $items;
+  return $items;
 }
 
 /**

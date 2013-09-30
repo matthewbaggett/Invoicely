@@ -41,4 +41,14 @@ class receipt_record extends active_record{
         }
         return number_format($total,2);
     }
+
+    public function get_summary(){
+      $output = "<ul>";
+      foreach($this->get_receipt_lines() as $receipt_line){
+        /** var $receipt_line receipt_line_record */
+        $output .= "<li>" . l($receipt_line->name, "receipts/repeated/list/{$this->get_id()}") . "</li>";
+      }
+      $output.= "</ul>";
+      return $output;
+    }
 }

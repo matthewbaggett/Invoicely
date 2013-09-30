@@ -2,6 +2,7 @@
 $header = array(
   t('Retailer'),
   t('Date'),
+  t('Summary'),
   t('Item Count'),
   t('Amount'),
   t('VAT'),
@@ -13,6 +14,7 @@ foreach($view->receipts as $receipt){
     $rows[] = array(
         $receipt->get_retailer()->name,
         $receipt->get_date('Y-m-d H:i:s'),
+        $receipt->get_summary(),
         $receipt->get_number_of_items(),
         "&pound; " . $receipt->get_total_amount_pretax(),
         "&pound; " . $receipt->get_total_vat(),
