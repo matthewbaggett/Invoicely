@@ -34,6 +34,7 @@ class receipts_repeated_frequencies_record extends receipt_line_record{
         $next_date = $this->get_next_date($date);
         if(!time() < strtotime($next_date)){
           $array_of_dates[strtotime($next_date)] = $next_date;
+          $date = strtotime($next_date);
         }else{
           $done = true;
         }
