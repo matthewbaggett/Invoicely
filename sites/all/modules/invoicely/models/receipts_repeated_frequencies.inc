@@ -3,7 +3,9 @@ class receipts_repeated_frequencies_record extends receipt_line_record{
     protected $_table = "invoicely_receipts_repeated_frequencies";
 
     private function parse($string_date){
-      return date("Y-m-d", strtotime($string_date));
+      $result = date("Y-m-d", strtotime($string_date));
+      echo "{$string_date} -> {$result}<br />";
+      return $result;
     }
 
     private function get_next_date($date){
