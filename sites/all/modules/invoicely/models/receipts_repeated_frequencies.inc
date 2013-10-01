@@ -50,11 +50,12 @@ class receipts_repeated_frequencies_record extends receipt_line_record {
 
     while ($done == false) {
       $next_date = $this->get_next_date($timestamp);
-      if (!time() < strtotime($next_date)) {
+      echo time() . " < " . strtotime($next_date) . "<br/>";
+      if (time() < strtotime($next_date)) {
+        $done = true;
+      } else {
         $array_of_dates[strtotime($next_date)] = $next_date;
         $timestamp                             = strtotime($next_date);
-      } else {
-        $done = true;
       }
     }
 
