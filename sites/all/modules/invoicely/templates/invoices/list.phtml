@@ -17,10 +17,10 @@ foreach($view->invoices as $invoice){
     l($invoice->get_client()->name . ($invoice->get_client()->agency?" ({$invoice->get_client()->agency})":""), "clients/view/{$invoice->get_client()->cid}"),
     $invoice->get_date_issued(),
     l($invoice->invoice_number, "invoices/view/{$invoice->iid}"),
-    "&pound; " . $invoice->amount_charged,
+    invoicely_get_currency() . " "  . $invoice->amount_charged,
     (
       $invoice->paid == "No" ?
-        "&pound; " . ($invoice->amount_charged - $invoice->amount_paid) . " " . t("unpaid.") :
+        invoicely_get_currency() . " "  . ($invoice->amount_charged - $invoice->amount_paid) . " " . t("unpaid.") :
         ($invoice->date_paid ? t("Yes, on :datepaid", array(':datepaid' => $invoice->get_date_paid())) : t("Yes."))
     ),
     $invoice->notes,
@@ -28,7 +28,7 @@ foreach($view->invoices as $invoice){
   );
 
 }
-$rows[] = array(t('Total'), "", "", "&pound; {$cumulative_amount}", '', '');
+$rows[] = array(t('Total'), "", "", invoicely_get_currency() . " {$cumulative_amount}", '', '');
 ?>
 <?php echo l(t("Add new Invoice"), "invoices/add"); ?>
 <?php echo theme('table', array('header' => $header, 'rows' => $rows, 'empty' => t('No invoices'))); ?>

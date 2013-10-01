@@ -22,9 +22,9 @@ foreach($view->repeated_receipts as $receipt){
         $receipt->get_frequency()->get_label(),
         $receipt->get_occurrence_dates_html(),
         $receipt->get_number_of_items(),
-        "&pound; " . $receipt->get_total_amount_pretax(),
-        "&pound; " . $receipt->get_total_vat(),
-        "&pound; " . $receipt->get_total_amount()
+        invoicely_get_currency() . " " . $receipt->get_total_amount_pretax(),
+        invoicely_get_currency() . " " . $receipt->get_total_vat(),
+        invoicely_get_currency() . " " . $receipt->get_total_amount()
     );
 }
 ?>
