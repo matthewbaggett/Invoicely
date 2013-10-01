@@ -20,7 +20,7 @@ class receipt_record extends active_record{
 
     public function get_total_amount_pretax(){
         $total = $this->get_total_amount() - $this->get_total_vat();
-        return number_format($total,2);
+        return number_format($total,2,'.','');
     }
 
     public function get_total_amount(){
@@ -30,7 +30,7 @@ class receipt_record extends active_record{
             /* @val $receipt_line receipt_line_record */
             $total+= $receipt_line->get_amount();
         }
-        return number_format($total,2);
+        return number_format($total,2,'.','');
     }
 
     public function get_total_vat(){
@@ -39,7 +39,7 @@ class receipt_record extends active_record{
             /* @val $receipt_line receipt_line_record */
             $total = $total + $receipt_line->get_vat();
         }
-        return number_format($total,2);
+        return number_format($total,2,'.','');
     }
 
     public function get_summary(){
