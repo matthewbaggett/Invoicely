@@ -50,7 +50,7 @@ foreach($available_financial_years as $available_financial_year){
 
   $total_after_expenses = $year_invoice_total_results->amount_paid_cumulative - $year_receipts_total_results->amount_cumulative - $year_mileage_total_results->mileage_allowance;
 
-  krumo($year_invoice_total_results, $year_mileage_total_results, $year_receipts_total_results)
+  //krumo($year_invoice_total_results, $year_mileage_total_results, $year_receipts_total_results)
   ?>
   <div class="widget">
     <h3><?php echo t("Liability for year :year", array(':year' => $available_financial_year)); ?></h3>
