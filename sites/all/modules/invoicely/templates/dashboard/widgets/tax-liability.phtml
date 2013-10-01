@@ -13,7 +13,7 @@ foreach($available_financial_years_results as $available_financial_year){
   $available_financial_years[] = $available_financial_year->financial_year;
 }
 foreach($available_financial_years as $available_financial_year){
-  $year_invoice_total_results = db_query("
+  $year_invoice_total_results = active_record_dumb_model::query("
     SELECT
       SUM(amount_paid_cumulative) as amount_paid_cumulative,
       financial_year
@@ -21,10 +21,11 @@ foreach($available_financial_years as $available_financial_year){
       invoicely_invoice_view_monthly_totals
     WHERE
       financial_year = '{$available_financial_year}'
+      AND uid = {$user->uid}
     GROUP BY financial_year
-  ");
+  ", 'stdClass', 'financial_year');
 
-  $year_mileage_total_results = db_query("
+  $year_mileage_total_results = active_record_dumb_model::query("
     SELECT
       financial_year,
       distance,
@@ -33,27 +34,28 @@ foreach($available_financial_years as $available_financial_year){
       invoicely_mileage_view_yearly_amounts
     WHERE
       financial_year = '{$available_financial_year}'
-  ");
+      AND uid = {$user->uid}
+  ", 'stdClass', 'financial_year');
+
+  $year_receipts_total_results = active_record_dumb_model::query("
+    SELECT
+      financial_year,
+      amount_cumulative
+    FROM
+      invoicely_reciept_view_yearly_totals
+    WHERE
+      financial_year = '{$available_financial_year}'
+      AND uid = {$user->uid}
+  ", 'stdClass', 'financial_year');
 
   $tax_liability = 0;
+
+  krumo($year_invoice_total_results, $year_mileage_total_results, $year_receipts_total_results)
   ?>
   <div class="widget">
     <h3><?php echo t("Liability for year :year", array(':year' => $available_financial_year)); ?></h3>
     <dl>
-      <?php foreach($year_invoice_total_results as $year_total_result): ?>
-        <?php $tax_liability += $year_total_result->amount_paid_cumulative; ?>
-        <dt><?php echo t("Invoices :year", array(':year' => $year_total_result->financial_year)); ?></dt>
-        <dd>&pound; <?php echo $year_total_result->amount_paid_cumulative; ?></dd>
-      <?php endforeach; ?>
-      <?php foreach($year_mileage_total_results as $year_mileage_result): ?>
-        <?php $tax_liability -= $year_mileage_result->mileage_allowance; ?>
-        <dt><?php echo t("Mileage :year", array(':year' => $year_mileage_result->financial_year)); ?></dt>
-        <dd><?php echo $year_mileage_result->distance; ?> miles worth &pound;<?php echo $year_mileage_result->mileage_allowance;?></dd>
-      <?php endforeach; ?>
-      <dt><?php echo t("Liability"); ?>:</dt>
-      <dd>&pound;<?php echo $tax_liability; ?></dd>
-      <dt><?php echo t("Crude taxation ceiling"); ?>:</dt>
-      <dd>&pound;<?php echo $tax_liability*0.2; ?> (<?php echo t("Calculated as 20% of Liability"); ?>)</dd>
+
     </dl>
   </div>
 
