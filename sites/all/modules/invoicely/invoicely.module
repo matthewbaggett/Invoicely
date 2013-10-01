@@ -143,5 +143,5 @@ function invoicely_template_view($file, $view = null)
 }
 
 function invoicely_get_currency(){
-  return "&pound";
+  return "£";
 }
