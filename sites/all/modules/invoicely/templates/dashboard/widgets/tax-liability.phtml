@@ -48,14 +48,23 @@ foreach($available_financial_years as $available_financial_year){
       AND uid = {$user->uid}
   ");
 
-  $tax_liability = 0;
+  $total_after_expenses = $year_invoice_total_results->amount_paid_cumulative - $year_receipts_total_results->amount_cumulative - $year_mileage_total_results->mileage_allowance;
 
   krumo($year_invoice_total_results, $year_mileage_total_results, $year_receipts_total_results)
   ?>
   <div class="widget">
     <h3><?php echo t("Liability for year :year", array(':year' => $available_financial_year)); ?></h3>
     <dl>
-
+      <dt><?php echo t("Total Invoices"); ?>:</dt>
+      <dt><?php echo t(":currency :money", array(':currency' => invoicely_get_currency(), ':money' => $year_invoice_total_results->amount_paid_cumulative)); ?></dt>
+      <dt><?php echo t("Total Receipts"); ?>:</dt>
+      <dt><?php echo t(":currency :money", array(':currency' => invoicely_get_currency(), ':money' => $year_receipts_total_results->amount_cumulative)); ?></dt>
+      <dt><?php echo t("Total Mileage"); ?>:</dt>
+      <dd><?php echo t(":miles miles, for :currency :money", array(':miles' => $year_mileage_total_results->distance, ':currency' => invoicely_get_currency(), ':money' => $year_mileage_total_results->mileage_allowance)); ?></dd>
+      <dt><?php echo t("Total After Expenses & Mileage"); ?>:</dt>
+      <dt><?php echo t(":currency :money", array(':currency' => invoicely_get_currency(), ':money' => $total_after_expenses)); ?></dt>
+      <dt><?php echo t("Total Liability"); ?>:</dt>
+      <dt><?php echo t(":currency :money", array(':currency' => invoicely_get_currency(), ':money' => $total_after_expenses * 0.20)); ?></dt>
     </dl>
   </div>
 
