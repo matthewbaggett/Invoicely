@@ -38,7 +38,7 @@ foreach($view->monthly_totals as $receipt){
     invoicely_get_currency() . " " . number_format($receipt->amount_max,2),
     invoicely_get_currency() . " " . number_format($receipt->amount_average,2),
     "<ul>" .
-    "  <li>" . l("View Receipts in {$receipt->yearmonth}", 'reciepts/list', array('query' => array('year' => $date_bits[0], 'month' => $date_bits[1]))) . "</li>" .
+    "  <li>" . l("View Receipts in {$receipt->yearmonth}", 'receipts/list', array('query' => array('year' => $date_bits[0], 'month' => $date_bits[1]))) . "</li>" .
     "</ul>"
   );
 }
