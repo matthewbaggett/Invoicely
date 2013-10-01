@@ -34,4 +34,13 @@ class receipt_repeated_record extends receipt_record{
   public function get_occurrence_dates(){
     return $this->get_frequency()->get_following_dates($this->get_date_first_occurrence());
   }
+
+  public function get_occurrence_dates_html(){
+    $output = "<ul>";
+    foreach($this->get_occurrence_dates() as $occurence_date){
+      $output.= "<li>" . l($occurence_date, "#") . "</li>";
+    }
+    $output.= "</ul>";
+    return $output;
+  }
 }
