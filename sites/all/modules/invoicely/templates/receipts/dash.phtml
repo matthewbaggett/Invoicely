@@ -44,5 +44,5 @@ foreach($view->monthly_totals as $receipt){
 }
 ?>
 <?php echo l(t("Add new Receipt"), "receipts/add"); ?>
-<?php echo theme('table', array('header' => $header, 'rows' => $rows, 'empty' => t('No receipts'))); ?>
+<?php echo theme('table', array('header' => $header, 'rows' => $rows, 'empty' => t('No receipts'), 'attributes' => array('class' => array('tablesorter')))); ?>
 

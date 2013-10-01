@@ -41,4 +41,4 @@ foreach($view->invoice_chart_results as $month){
 $rows[] = array(t('Total'), '', invoicely_get_currency() . " " . $cumulative_amount, '');
 ?>
 <?php echo l(t("Add new Invoice"), "invoices/add"); ?>
-<?php echo theme('table', array('header' => $header, 'rows' => $rows, 'empty' => t('No invoices'))); ?>
+<?php echo theme('table', array('header' => $header, 'rows' => $rows, 'empty' => t('No invoices'), 'attributes' => array('class' => array('tablesorter')))); ?>
