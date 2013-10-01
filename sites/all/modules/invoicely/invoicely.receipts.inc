@@ -13,11 +13,28 @@ function invoicely_receipts_dash(){
 function invoicely_receipts_list(){
     $user = user_active_record::current();
     $view = new StdClass();
-    $view->receipts = receipt_record::search()
+    $view->receipts_search = receipt_record::search()
         ->where('uid', $user->uid)
         ->where('deleted', 'No')
-        ->order('date','DESC')
-        ->exec();
+        ->order('date','DESC');
+
+    // Search by dates
+    if(isset($_REQUEST['year']) && isset($_REQUEST['month'])){
+      $date       = strtotime("{$_REQUEST['year']}-{$_REQUEST['month']}-01");
+      $view->receipts_search->where('date', date("Y-m-01", $date), '>=');
+      $view->receipts_search->where('date', date("Y-m-31", $date), '<=');
+    }elseif(isset($_REQUEST['year'])){
+      $date       = strtotime("{$_REQUEST['year']}-01-01");
+      $view->receipts_search->where('date', date("Y-01-01", $date), '>=');
+      $view->receipts_search->where('date', date("Y-12-31", $date), '<=');
+    }elseif(isset($_REQUEST['year_start']) && isset($_REQUEST['year_end']) && isset($_REQUEST['month_start']) && isset($_REQUEST['month_end'])){
+      $date_start = strtotime("{$_REQUEST['year_start']}-{$_REQUEST['month_start']}-01");
+      $date_end   = strtotime("{$_REQUEST['year_end']}-{$_REQUEST['month_end']}-01");
+      $view->receipts_search->where('date', date("Y-m-01", $date_start), '>=');
+      $view->receipts_search->where('date', date("Y-m-31", $date_end), '<=');
+    }
+
+    $view->receipts = $view->receipts_search->exec();
     return invoicely_template_view('templates/receipts/list.phtml', $view);
 }
 
