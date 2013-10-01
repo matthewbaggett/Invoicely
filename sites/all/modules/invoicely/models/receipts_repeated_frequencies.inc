@@ -14,6 +14,10 @@ class receipts_repeated_frequencies_record extends receipt_line_record{
       switch($this->machine_name){
         case 'monthly':
           $month++;
+          if($month > 12){
+            $month = 1;
+            $year++;
+          }
           echo "{$this->machine_name}: " . date("Y-m-d", $timestamp) . " - " . "{$year}-{$month}-{$day} <br />";
           return $this->parse("{$year}-{$month}-{$day}");
         case 'weekly':
@@ -22,6 +26,10 @@ class receipts_repeated_frequencies_record extends receipt_line_record{
           return $this->parse("{$year}-{$month}-{$day}");
         case 'quarterly':
           $month = $month + 3;
+          if($month > 12){
+            $month = $month - 12;
+            $year++;
+          }
           echo "{$this->machine_name}: " . date("Y-m-d", $timestamp) . " - " . "{$year}-{$month}-{$day} <br />";
           return $this->parse("{$year}-{$month}-{$day}");
         default:
