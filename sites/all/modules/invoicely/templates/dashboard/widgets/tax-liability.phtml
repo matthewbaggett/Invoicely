@@ -13,7 +13,7 @@ foreach($available_financial_years_results as $available_financial_year){
   $available_financial_years[] = $available_financial_year->financial_year;
 }
 foreach($available_financial_years as $available_financial_year){
-  $year_invoice_total_results = active_record_dumb_model::query("
+  $year_invoice_total_results = active_record_dumb_model::queryOne("
     SELECT
       SUM(amount_paid_cumulative) as amount_paid_cumulative,
       financial_year
@@ -23,9 +23,9 @@ foreach($available_financial_years as $available_financial_year){
       financial_year = '{$available_financial_year}'
       AND uid = {$user->uid}
     GROUP BY financial_year
-  ", 'stdClass', 'financial_year');
+  ");
 
-  $year_mileage_total_results = active_record_dumb_model::query("
+  $year_mileage_total_results = active_record_dumb_model::queryOne("
     SELECT
       financial_year,
       distance,
@@ -35,9 +35,9 @@ foreach($available_financial_years as $available_financial_year){
     WHERE
       financial_year = '{$available_financial_year}'
       AND uid = {$user->uid}
-  ", 'stdClass', 'financial_year');
+  ");
 
-  $year_receipts_total_results = active_record_dumb_model::query("
+  $year_receipts_total_results = active_record_dumb_model::queryOne("
     SELECT
       financial_year,
       amount_cumulative
@@ -46,7 +46,7 @@ foreach($available_financial_years as $available_financial_year){
     WHERE
       financial_year = '{$available_financial_year}'
       AND uid = {$user->uid}
-  ", 'stdClass', 'financial_year');
+  ");
 
   $tax_liability = 0;
 
