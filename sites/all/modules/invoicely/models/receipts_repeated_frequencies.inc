@@ -47,7 +47,7 @@ class receipts_repeated_frequencies_record extends receipt_line_record {
     $timestamp      = strtotime($date);
     $array_of_dates = array();
     $done           = false;
-    $cycle          = 0;
+
     while ($done == false) {
       $next_date = $this->get_next_date($timestamp);
       if (!time() < strtotime($next_date)) {
@@ -56,12 +56,10 @@ class receipts_repeated_frequencies_record extends receipt_line_record {
       } else {
         $done = true;
       }
-      $cycle++;
-      if ($cycle > 15) {
-        $done = true;
-      }
     }
+
     ksort($array_of_dates);
+    $array_of_dates = array_values($array_of_dates);
     krumo($array_of_dates);
     return $array_of_dates;
   }
