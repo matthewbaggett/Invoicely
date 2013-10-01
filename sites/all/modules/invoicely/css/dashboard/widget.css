@@ -5,9 +5,11 @@
 .widgets .widget{
     float: left; display: block;
     border: 1px solid #555555;
-    width: 31%;
+    width: 29%;
     margin-right: 2%;
     margin-bottom: 2%;
+    padding-right: 1%;
+    padding-left: 1%;
 }
 .widgets .widget:nth-child(3n){
     margin-right: 0%;
@@ -26,4 +28,6 @@
 .widgets .widget dl dt{
     clear: left;
 }
-.widgets .widget dl dd{}
+.widgets .widget dl dd{
+    margin-left: 10px;
+}
