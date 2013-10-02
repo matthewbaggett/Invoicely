@@ -46,6 +46,9 @@ foreach ($commands AS $command) {
   $output .= htmlentities(trim($tmp)) . "\n";
 }
 
+// Log revision to txt file
+exec("echo `git rev-parse --short HEAD`: `git log -n 1 HEAD --format=%s` > version.txt");
+
 if (PHP_SAPI !== 'cli') {
   ?>
   <!DOCTYPE HTML>
