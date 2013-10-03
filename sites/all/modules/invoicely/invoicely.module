@@ -70,7 +70,15 @@ function invoicely_menu() {
   $items['invoices/add']           = array(
     'title'            => 'My Invoices - Add',
     'description'      => 'Add new Invoice',
-    'page callback'    => 'invoicely_invoices_add',
+    'page callback'    => 'invoicely_invoices_edit',
+    'file'             => 'invoicely.invoices.inc',
+    'access arguments' => array('view invoices')
+  );
+  $items['invoices/edit/%']           = array(
+    'title'            => 'My Invoices - Add',
+    'description'      => 'Add new Invoice',
+    'page callback'    => 'invoicely_invoices_edit',
+    'page arguments'   => array(2),
     'file'             => 'invoicely.invoices.inc',
     'access arguments' => array('view invoices')
   );
