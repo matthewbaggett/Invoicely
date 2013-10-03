@@ -10,4 +10,4 @@ JOIN invoicely_receipt_lines irl
 JOIN invoicely_companies c
   ON ir.cid = c.cid
 -- WHERE `date` >= '2012-10-01' AND `date` <= '2012-10-31'
-GROUP BY irl.amount
+GROUP BY irl.rid
