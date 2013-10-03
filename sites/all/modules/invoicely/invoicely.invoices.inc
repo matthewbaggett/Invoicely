@@ -112,6 +112,7 @@ function invoicely_invoices_edit($invoice_id = null){
     $invoice->amount_paid     = $form->get_field('amount_paid')->get_value();
     $invoice->paid            = $form->get_field('paid')->get_value();
     $invoice->cid             = $form->get_field('company')->get_value();
+    var_dump($_POST);exit;
     $invoice->file            = $form->get_field('attachment')->get_value();
     $invoice->notes           = $form->get_field('notes')->get_value();
     $invoice->deleted         = "No";
