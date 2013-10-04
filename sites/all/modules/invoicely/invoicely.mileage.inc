@@ -5,7 +5,16 @@ function invoicely_mileage_dashboard(){
     $view = new StdClass();
 
     $view->mileage_chart_data = array(array('Date', 'Miles', 'Cumulative'));
-    $results = db_query("SELECT yearmonth, SUM(distance) as distance FROM invoicely_mileage_view GROUP BY yearmonth ORDER BY yearmonth");
+    $results = db_query("
+    SELECT
+      yearmonth,
+      SUM(distance) as distance
+    FROM
+      invoicely_mileage_view
+    WHERE
+      uid = {$user->uid}
+    GROUP BY yearmonth
+    ORDER BY yearmonth");
 
     $cumulative = 0;
     foreach($results as $result){
