@@ -1,8 +1,9 @@
 <?php
 
 function invoicely_receipts_dash(){
+  $user = user_active_record::current();
   $view = new StdClass();
-  $view->monthly_totals = active_record_dumb_model::query("SELECT * FROM invoicely.invoicely_reciept_view_monthly_totals WHERE uid = 1");
+  $view->monthly_totals = active_record_dumb_model::query("SELECT * FROM invoicely.invoicely_reciept_view_monthly_totals WHERE uid = {$user->uid}");
   $view->monthly_totals_chart_data = array();
   foreach($view->monthly_totals as $monthly_total){
     $view->monthly_totals_chart_data[] = array($monthly_total->yearmonth, $monthly_total->amount_cumulative);
