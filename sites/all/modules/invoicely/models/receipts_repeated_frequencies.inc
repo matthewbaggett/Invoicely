@@ -54,7 +54,12 @@ class receipts_repeated_frequencies_record extends receipt_line_record {
       if (time() < strtotime($next_date)) {
         $done = true;
       } else {
-        $array_of_dates[strtotime($next_date)] = $next_date;
+        $occurrence = new StdClass();
+        $occurrence->date = $next_date;
+        $occurrence->exists = false; // TODO: Make this do a look up for a matching receipt.
+        // $occurrence->receipt = ?? // TODO: And write the receipt into here.
+
+        $array_of_dates[strtotime($next_date)] = $occurrence;
         $timestamp                             = strtotime($next_date);
       }
     }

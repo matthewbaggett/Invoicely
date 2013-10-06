@@ -3,7 +3,14 @@
 function invoicely_receipts_dash(){
   $user = user_active_record::current();
   $view = new StdClass();
-  $view->monthly_totals = active_record_dumb_model::query("SELECT * FROM invoicely.invoicely_reciept_view_monthly_totals WHERE uid = {$user->uid}");
+  $view->monthly_totals = active_record_dumb_model::query("
+    SELECT
+      *
+    FROM
+      invoicely_reciept_view_monthly_totals -- TODO: Rename this view - I can't spell.
+    WHERE
+      uid = {$user->uid}
+  ");
   $view->monthly_totals_chart_data = array();
   foreach($view->monthly_totals as $monthly_total){
     $view->monthly_totals_chart_data[] = array($monthly_total->yearmonth, $monthly_total->amount_cumulative);
@@ -45,6 +52,17 @@ function invoicely_receipts_list(){
 }
 
 function invoicely_receipts_add(){
-    $form = receipt_record::magic_form();
-    return $form->__toString();
+    return receipt_record::magic_form()->__toString();
+}
+
+function invoicely_receipts_edit($receipt_slug){
+  $receipt_id = reset(explode("-",$receipt_slug,2));
+  $receipt = receipt_record::loadById($receipt_id);
+  return $receipt->_get_magic_form()->__toString();
+}
+
+function invoicely_receipts_view($receipt_slug){
+  $receipt_id = reset(explode("-", $receipt_slug, 2));
+  $receipt = receipt_record::loadById($receipt_id);
+  return $receipt->_get_magic_form()->__toString();
 }

@@ -37,8 +37,14 @@ class receipt_repeated_record extends receipt_record{
 
   public function get_occurrence_dates_html(){
     $output = "<ul>";
-    foreach($this->get_occurrence_dates() as $occurence_date){
-      $output.= "<li>" . l($occurence_date, "#") . "</li>";
+    foreach($this->get_occurrence_dates() as $occurrence){
+      $output.= "<li>";
+      if($occurrence->exists){
+        $output.= l($occurrence->date, "receipts/view/{$occurrence->receipt->get_slug()}");
+      }else{
+        $output.= $occurrence->date . " (" . t("Receipt Missing.") . " " . l("receipts/add", "Create it?") . ")";
+      }
+      $output.= "</li>";
     }
     $output.= "</ul>";
     return $output;

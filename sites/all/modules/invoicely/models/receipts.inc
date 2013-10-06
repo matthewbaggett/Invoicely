@@ -46,7 +46,7 @@ class receipt_record extends active_record{
       $output = "<ul>";
       foreach($this->get_receipt_lines() as $receipt_line){
         /** var $receipt_line receipt_line_record */
-        $output .= "<li>" . l($receipt_line->name, "receipts/repeated/list/{$this->get_id()}") . "</li>";
+        $output .= "<li>" . l($receipt_line->name, "receipts/view/{$this->get_slug()}") . "</li>";
       }
       $output.= "</ul>";
       return $output;

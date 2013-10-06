@@ -36,6 +36,14 @@ function invoicely_menu() {
     'file'             => 'invoicely.receipts.inc',
     'access arguments' => array('view receipts')
   );
+  $items['receipts/view/%']        = array(
+    'title'            => 'View Receipt',
+    'description'      => 'Edit a Receipt',
+    'page callback'    => 'invoicely_receipts_edit',
+    'page arguments'   => array(2),
+    'file'             => 'invoicely.receipts.inc',
+    'access arguments' => array('view receipts')
+  );
   $items['receipts/import']        = array(
     'title'            => 'Import',
     'page callback'    => 'invoicely_receipts_import',
