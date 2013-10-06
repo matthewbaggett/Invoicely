@@ -42,7 +42,7 @@ class receipt_repeated_record extends receipt_record{
       if($occurrence->exists){
         $output.= l($occurrence->date, "receipts/view/{$occurrence->receipt->get_slug()}");
       }else{
-        $output.= $occurrence->date . " (" . t("Receipt Missing.") . " " . l("receipts/add", "Create it?") . ")";
+        $output.= $occurrence->date . " (" . t("Receipt Missing.") . " " . l("Create it?", "receipts/add") . ")";
       }
       $output.= "</li>";
     }
