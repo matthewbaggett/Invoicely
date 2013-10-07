@@ -11,7 +11,7 @@ foreach($view->repeated_receipts as $receipt){
     /* @var $receipt receipt_repeated_record */
     $rows[] = array(
         $receipt->get_retailer()->name,
-        $receipt->get_date_first_occurrence('Y-m-d H:i:s'),
+        $receipt->get_date_first_occurrence('Y-m-d'),
         $receipt->get_summary(),
         $receipt->get_frequency()->get_label(),
         $receipt->get_occurrence_dates_html(),
