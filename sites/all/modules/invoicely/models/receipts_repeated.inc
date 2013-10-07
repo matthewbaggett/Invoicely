@@ -69,7 +69,16 @@ class receipt_repeated_record extends receipt_record{
     foreach($occurrences as $occurrence){
       $output.= "<li>";
       if($occurrence->exists){
-        $output.= l($occurrence->date, "receipts/view/{$occurrence->receipt->get_slug()}");
+        if(count($occurrence->receipts) > 0){
+          $output.= t("Warning: Found multiple receipts for this period")."<br />";
+          foreach($occurrence->receipts as $receipt){
+            $output.= l($occurrence->date, "receipts/view/{$receipt->get_slug()}");
+          }
+        }else{
+          $receipt = reset($occurrence->receipts);
+          $output.= l($occurrence->date, "receipts/view/{$receipt->get_slug()}");
+        }
+
       }else{
         $output.= $occurrence->date . " (" . t("Receipt Missing.") . " " . l("Create it?", "receipts/add") . ")";
       }
