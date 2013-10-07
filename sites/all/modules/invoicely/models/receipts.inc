@@ -55,4 +55,10 @@ class receipt_record extends active_record{
       $output.= "</ul>";
       return $output;
     }
+
+    static public function magic_form(){
+      $magic_form = parent::magic_form();
+
+      return $magic_form;
+    }
 }
