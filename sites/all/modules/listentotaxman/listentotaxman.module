@@ -5,6 +5,34 @@ define("LISTENTOTAXMAN_AGE_65_TO_75", 1);
 define("LISTENTOTAXMAN_AGE_OVER_75", 2);
 define("LISTENTOTAXMAN_AGE_60_TO_65_FEMALE", 3);
 
-function listentotaxman_query($income, $year, $age){
+define("LISTENTOTAXMAN_URL", "http://www.listentotaxman.com/index.php");
+
+function listentotaxman_query($income, $year, $age = LISTENTOTAXMAN_AGE_UNDER_65){
+  global $user;
+  $curl = new listentotaxman_curl(TRUE, DRUPAL_ROOT . "/cookies.txt");
+  $response = $curl->post(
+    LISTENTOTAXMAN_URL,
+    array(
+      'add' => 0,
+      'age' => $age,
+      'c' => 1,
+      'calculate' => 'Calculate',
+      'childcare' => 0,
+      'childcare_freq' => 12,
+      'code' => '',
+      'email' => $user->mail,
+      'ingr' => $income,
+      'pension' => 0,
+      'time' => 1,
+      'vw' => array('yr','mth','wk'),
+      'year' => $year,
+    )
+  );
+  if ($curl->get_status() !== 200) {
+    drupal_set_message(t('Could not communicate with listentotaxman.com Code: :code', array(':code' => $curl->get_status())));
+    return FALSE;
+  }
+
+  var_dump($response);
 
 }
