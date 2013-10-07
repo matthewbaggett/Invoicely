@@ -80,7 +80,19 @@ class receipt_repeated_record extends receipt_record{
           $output.= l($occurrence->date, "receipts/view/{$receipt->get_slug()}") . " (" . invoicely_get_currency() . $receipt->get_total_amount() . ")\n";
         }
       }else{
-        $output.= $occurrence->date . " (" . t("Receipt Missing.") . " " . l("Create it?", "receipts/add") . ")";
+        $output.= $occurrence->date . " (" . t("Receipt Missing.") . " ";
+        $output.= l(
+          "Create it?",
+          "receipts/add",
+          array(
+            'query' => array(
+              'company' => $this->cid,
+              'date' => $occurrence->date,
+              'repeated_receipt_id' => $this->get_id()
+            )
+          )
+        );
+        $output.= ")";
       }
       $output.= "</li>";
     }
