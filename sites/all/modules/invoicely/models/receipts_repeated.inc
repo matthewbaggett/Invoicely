@@ -58,8 +58,10 @@ class receipt_repeated_record extends receipt_record{
   }
 
   public function get_occurrence_dates_html(){
-    $output = "<ul>";
-    foreach($this->get_occurrence_dates() as $occurrence){
+    $occurrences = $this->get_occurrence_dates();
+    $output = t("There are :count occurrences", array(':count', count($occurrences))) . "\n";
+    $output.= "<ul>";
+    foreach($occurrences as $occurrence){
       $output.= "<li>";
       if($occurrence->exists){
         $output.= l($occurrence->date, "receipts/view/{$occurrence->receipt->get_slug()}");
