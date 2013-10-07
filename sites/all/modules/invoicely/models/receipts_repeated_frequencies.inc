@@ -82,7 +82,7 @@ class receipts_repeated_frequencies_record extends receipt_line_record {
         throw new exception("Missing frequency machine name: {$this->machine_name}");
     }
     $output_date = date("Y-m-d", strtotime(date($date_filter, $timestamp)));
-    drupal_set_message("Max Date: {$timestamp} Filter: {$date_filter} Output: {$output_date}");
+    //drupal_set_message("Max Date: {$timestamp} Filter: {$date_filter} Output: {$output_date}");
     return $output_date;
   }
 
@@ -105,7 +105,7 @@ class receipts_repeated_frequencies_record extends receipt_line_record {
         throw new exception("Missing frequency machine name: {$this->machine_name}");
     }
     $output_date = date("Y-m-d", strtotime(date($date_filter, $timestamp)));
-    drupal_set_message("Min Date: {$timestamp} Filter: {$date_filter} Output: {$output_date}");
+    //drupal_set_message("Min Date: {$timestamp} Filter: {$date_filter} Output: {$output_date}");
     return $output_date;
   }
 }
