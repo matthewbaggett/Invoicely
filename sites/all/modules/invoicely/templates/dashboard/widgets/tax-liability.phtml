@@ -13,7 +13,8 @@ foreach($available_financial_years_results as $available_financial_year){
   $available_financial_years[] = $available_financial_year->financial_year;
 }
 foreach($available_financial_years as $available_financial_year){
-  $available_financial_year_short = end(explode("-", $available_financial_year, 2));
+  $year_bits = explode("-", $available_financial_year, 2);
+  $available_financial_year_short = end($year_bits);
 
   $year_invoice_total_results = active_record_dumb_model::queryOne("
     SELECT
