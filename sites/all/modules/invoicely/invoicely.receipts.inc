@@ -55,9 +55,13 @@ function invoicely_receipts_add(){
     return receipt_record::magic_form()->__toString();
 }
 
-function invoicely_receipts_edit($receipt_slug){
-  $receipt_id = reset(explode("-",$receipt_slug,2));
-  $receipt = receipt_record::loadById($receipt_id);
+function invoicely_receipts_edit($receipt_slug = false){
+  if($receipt_slug){
+    $receipt_id = reset(explode("-",$receipt_slug,2));
+    $receipt = receipt_record::loadById($receipt_id);
+  }else{
+    $receipt = new receipt_record();
+  }
   return $receipt->_get_magic_form()->__toString();
 }
 
