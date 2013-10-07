@@ -50,8 +50,8 @@ class receipt_repeated_record extends receipt_record{
 
       // Create the new occurrence object
       $occurrence = new StdClass();
-      $occurrence->date = $date;
-      $occurrence->exists = count($related_receipts) > 0 ? true:false;
+      $occurrence->date     = $date;
+      $occurrence->exists   = count($related_receipts) > 0 ? true : false;
       $occurrence->receipts = $related_receipts;
 
       // Add it to the array
