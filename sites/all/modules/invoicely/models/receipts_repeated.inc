@@ -59,7 +59,7 @@ class receipt_repeated_record extends receipt_record{
 
   public function get_occurrence_dates_html(){
     $occurrences = $this->get_occurrence_dates();
-    $output = t("There are :count occurrences", array(':count', count($occurrences))) . "\n";
+    $output = t("There are :count occurrences", array(':count' => count($occurrences))) . "\n";
     $output.= "<ul>";
     foreach($occurrences as $occurrence){
       $output.= "<li>";
