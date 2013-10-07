@@ -69,7 +69,7 @@ class receipt_repeated_record extends receipt_record{
     foreach($occurrences as $occurrence){
       $output.= "<li>";
       if($occurrence->exists){
-        if(count($occurrence->receipts) > 0){
+        if(count($occurrence->receipts) > 1){
           $output.= t("Found multiple receipts for this period")."\n";
           foreach($occurrence->receipts as $receipt){
             $output.= l($occurrence->date, "receipts/view/{$receipt->get_slug()}") . "\n";
