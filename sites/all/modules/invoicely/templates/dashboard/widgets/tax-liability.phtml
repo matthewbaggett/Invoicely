@@ -76,6 +76,8 @@ foreach($available_financial_years as $available_financial_year){
       <dd><?php echo t(":currency :money", array(':currency' => invoicely_get_currency(), ':money' => number_format($income_tax_breakdown->personal_total_deductions, 2,'.',''))); ?></dd>
       <dt><?php echo t("Total Deductions"); ?>:</dt>
       <dd><?php echo t(":currency :money", array(':currency' => invoicely_get_currency(), ':money' => number_format($income_tax_breakdown->personal_total_deductions + $income_tax_breakdown->employers_national_insurance, 2,'.',''))); ?></dd>
+      <dt><?php echo t("Percentage tax"); ?>:</dt>
+      <dd><?php echo number_format((100/$income_tax_breakdown->net) * ($income_tax_breakdown->personal_total_deductions + $income_tax_breakdown->employers_national_insurance), 4,'.','') . "%"; ?></dd>
     </dl>
   </div>
 
