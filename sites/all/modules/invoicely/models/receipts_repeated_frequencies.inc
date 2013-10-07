@@ -54,12 +54,7 @@ class receipts_repeated_frequencies_record extends receipt_line_record {
       if (time() < strtotime($next_date)) {
         $done = true;
       } else {
-        $occurrence = new StdClass();
-        $occurrence->date = $next_date;
-        $occurrence->exists = false; // TODO: Make this do a look up for a matching receipt.
-        // $occurrence->receipt = ?? // TODO: And write the receipt into here.
-
-        $array_of_dates[strtotime($next_date)] = $occurrence;
+        $array_of_dates[strtotime($next_date)] = $next_date;
         $timestamp                             = strtotime($next_date);
       }
     }
@@ -68,5 +63,47 @@ class receipts_repeated_frequencies_record extends receipt_line_record {
     $array_of_dates = array_values($array_of_dates);
     #krumo($array_of_dates);
     return $array_of_dates;
+  }
+
+  public function get_date_max($date){
+    $timestamp = strtotime($date);
+    switch ($this->machine_name) {
+      case 'monthly':
+        $date_filter = "Y-m-\3\1";
+        break;
+
+      case 'weekly':
+        // TODO: Write date filter.
+        break;
+
+      case 'quarterly':
+        // TODO: Write date filter.
+        break;
+
+      default:
+        throw new exception("Missing frequency machine name: {$this->machine_name}");
+    }
+    return date("Y-m-d", strtotime(date($date_filter, $timestamp)));
+  }
+
+  public function get_date_min($date){
+    $timestamp = strtotime($date);
+    switch ($this->machine_name) {
+      case 'monthly':
+        $date_filter = "Y-m-\0\1";
+        break;
+
+      case 'weekly':
+        // TODO: Write date filter.
+        break;
+
+      case 'quarterly':
+        // TODO: Write date filter.
+        break;
+
+      default:
+        throw new exception("Missing frequency machine name: {$this->machine_name}");
+    }
+    return date("Y-m-d", strtotime(date($date_filter, $timestamp)));
   }
 }

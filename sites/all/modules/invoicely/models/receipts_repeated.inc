@@ -32,7 +32,29 @@ class receipt_repeated_record extends receipt_record{
   }
 
   public function get_occurrence_dates(){
-    return $this->get_frequency()->get_following_dates($this->get_date_first_occurrence());
+    $frequency = $this->get_frequency();
+    $dates = $frequency->get_following_dates($this->get_date_first_occurrence());
+
+    $occurrences = array();
+    foreach($dates as $date){
+      $date_min = $frequency->get_date_min($date);
+      $date_max = $frequency->get_date_max($date);
+
+      $occurrence = new StdClass();
+      $related_receipts = receipt_record::search()
+        ->where('rrid', $this->rrid)
+        ->where('date', $date_max, '<=')
+        ->where('date', $date_min, '>=')
+        ->exec();
+
+      drupal_set_message("Found " . count($related_receipts) . " between {$date_min} and {$date_max} for rrid {$this->rrid}");
+
+      $occurrence->date = $date;
+      $occurrence->exists = count($related_receipts) > 0 ? true:false;
+      $occurrence->receipts = $related_receipts;
+    }
+
+    return $occurrences;
   }
 
   public function get_occurrence_dates_html(){
