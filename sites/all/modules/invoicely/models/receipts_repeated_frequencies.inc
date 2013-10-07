@@ -69,7 +69,7 @@ class receipts_repeated_frequencies_record extends receipt_line_record {
     $timestamp = strtotime($date);
     switch ($this->machine_name) {
       case 'monthly':
-        $date_filter = "Y-m-\3\1";
+        $date_filter = "Y-m-31";
         break;
 
       case 'weekly':
@@ -90,7 +90,7 @@ class receipts_repeated_frequencies_record extends receipt_line_record {
     $timestamp = strtotime($date);
     switch ($this->machine_name) {
       case 'monthly':
-        $date_filter = "Y-m-\0\1";
+        $date_filter = "Y-m-01";
         break;
 
       case 'weekly':
