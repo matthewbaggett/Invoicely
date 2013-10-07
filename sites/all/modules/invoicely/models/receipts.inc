@@ -2,6 +2,10 @@
 class receipt_record extends active_record{
     protected $_table = "invoicely_receipts";
 
+    public function get_label(){
+      return $this->get_retailer()->get_label() . " - " . invoicely_get_currency() . $this->get_total_amount();
+    }
+
     public function get_date($format = "Y-m-d"){
         return date($format, strtotime($this->date));
     }
