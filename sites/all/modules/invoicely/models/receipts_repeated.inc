@@ -47,7 +47,7 @@ class receipt_repeated_record extends receipt_record{
         ->where('date', $date_min, '>=')
         ->exec();
 
-      drupal_set_message("Found " . count($related_receipts) . " between {$date_min} and {$date_max} for rrid {$this->rrid}");
+      drupal_set_message("Found " . count($related_receipts) . " between {$date_min} and {$date_max} (based on {$date}) for rrid {$this->rrid}");
 
       $occurrence->date = $date;
       $occurrence->exists = count($related_receipts) > 0 ? true:false;
