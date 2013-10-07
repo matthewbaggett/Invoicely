@@ -1,6 +1,5 @@
 name = Listen to Tax Man API
 description = Little hacky API gubbins to query www.listentotaxman.com
 core = 7.x
-files[] = lib/curl.inc
-files[] = lib/simple_html_dom.inc
+
 

@@ -1,5 +1,8 @@
 <?php
 
+require_once('lib/curl.inc');
+require_once('lib/simple_html_dom.inc');
+
 define("LISTENTOTAXMAN_AGE_UNDER_65", 0);
 define("LISTENTOTAXMAN_AGE_65_TO_75", 1);
 define("LISTENTOTAXMAN_AGE_OVER_75", 2);
