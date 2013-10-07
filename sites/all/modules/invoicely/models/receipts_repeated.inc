@@ -70,21 +70,21 @@ class receipt_repeated_record extends receipt_record{
       $output.= "<li>";
       if($occurrence->exists){
         if(count($occurrence->receipts) > 0){
-          $output.= t("Warning: Found multiple receipts for this period")."<br />";
+          $output.= t("Found multiple receipts for this period")."\n";
           foreach($occurrence->receipts as $receipt){
-            $output.= l($occurrence->date, "receipts/view/{$receipt->get_slug()}");
+            $output.= l($occurrence->date, "receipts/view/{$receipt->get_slug()}") . "\n";
           }
         }else{
           $receipt = reset($occurrence->receipts);
-          $output.= l($occurrence->date, "receipts/view/{$receipt->get_slug()}");
+          $output.= l($occurrence->date, "receipts/view/{$receipt->get_slug()}") . "\n";
         }
-
       }else{
         $output.= $occurrence->date . " (" . t("Receipt Missing.") . " " . l("Create it?", "receipts/add") . ")";
       }
       $output.= "</li>";
     }
     $output.= "</ul>";
+    $output = nl2br($output);
     return $output;
   }
 }
