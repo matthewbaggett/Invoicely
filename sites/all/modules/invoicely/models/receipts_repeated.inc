@@ -55,7 +55,7 @@ class receipt_repeated_record extends receipt_record{
       $occurrence->receipts = $related_receipts;
 
       // Add it to the array
-      $occurrences[$occurrences->date] = $occurrence;
+      $occurrences[$occurrence->date] = $occurrence;
     }
 
     ksort($occurrences);
