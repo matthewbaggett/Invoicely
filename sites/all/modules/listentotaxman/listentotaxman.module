@@ -53,5 +53,5 @@ function listentotaxman_query($income, $year, $age = LISTENTOTAXMAN_AGE_UNDER_65
 }
 
 function listentotaxman_parse_value($money){
-  return trim(str_replace(",", "", str_replace("&pound;", "", trim($money))));
+  return trim(str_replace(",", "", str_replace("&pound;", "", trim(strip_tags($money)))));
 }
