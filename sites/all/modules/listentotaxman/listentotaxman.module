@@ -40,14 +40,14 @@ function listentotaxman_query($income, $year, $age = LISTENTOTAXMAN_AGE_UNDER_65
   $data = new StdClass();
   $data->income_tax = array();
 
-  $data->taxable_year                 = $html->find('tr.row-taxable td.yr')->__toString();
-  $data->net                          = $html->find('tr.row-net-wage td.yr')->__toString();
-  $data->personal_national_insurance  = $html->find('tr.row-ni td.yr')->__toString();
-  $data->employers_national_insurance = $html->find('tr.row-employers-ni td.yr')->__toString();
-  $data->income_tax['20%']            = $html->find('tr.row-taxband-0 td.yr')->__toString();
-  $data->income_tax['40%']            = $html->find('tr.row-taxband-1 td.yr')->__toString();
-  $data->income_tax['45%']            = $html->find('tr.row-taxband-2 td.yr')->__toString();
-  $data->personal_total_deductions    = $html->find('tr.row-total-deductions td.yr')->__toString();
+  $data->taxable_year                 = $html->find('tr.row-taxable td.yr')->innertext;
+  $data->net                          = $html->find('tr.row-net-wage td.yr')->innertext;
+  $data->personal_national_insurance  = $html->find('tr.row-ni td.yr')->innertext;
+  $data->employers_national_insurance = $html->find('tr.row-employers-ni td.yr')->innertext;
+  $data->income_tax['20%']            = $html->find('tr.row-taxband-0 td.yr')->innertext;
+  $data->income_tax['40%']            = $html->find('tr.row-taxband-1 td.yr')->innertext;
+  $data->income_tax['45%']            = $html->find('tr.row-taxband-2 td.yr')->innertext;
+  $data->personal_total_deductions    = $html->find('tr.row-total-deductions td.yr')->innertext;
 
   return $data;
 }
