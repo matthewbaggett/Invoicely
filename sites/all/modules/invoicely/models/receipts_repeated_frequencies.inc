@@ -71,11 +71,11 @@ class receipts_repeated_frequencies_record extends receipt_line_record {
         break;
 
       case 'weekly':
-        // TODO: Write date filter.
+        $date_filter = "Y-m-d"; // TODO: Write date filter.
         break;
 
       case 'quarterly':
-        // TODO: Write date filter.
+        $date_filter = "Y-m-d"; // TODO: Write date filter.
         break;
 
       default:
@@ -94,11 +94,11 @@ class receipts_repeated_frequencies_record extends receipt_line_record {
         break;
 
       case 'weekly':
-        // TODO: Write date filter.
+        $date_filter = "Y-m-d"; // TODO: Write date filter.
         break;
 
       case 'quarterly':
-        // TODO: Write date filter.
+        $date_filter = "Y-m-d"; // TODO: Write date filter.
         break;
 
       default:
