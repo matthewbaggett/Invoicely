@@ -65,7 +65,7 @@ foreach($available_financial_years as $available_financial_year){
       <dt><?php echo t("Total Mileage"); ?>:</dt>
       <dd><?php echo t(":miles miles, for :currency :money", array(':miles' => number_format($year_mileage_total_results->distance,0,'.',''), ':currency' => invoicely_get_currency(), ':money' => number_format($year_mileage_total_results->mileage_allowance, 2))); ?></dd>
       <dt><?php echo t("Total After Expenses & Mileage"); ?>:</dt>
-      <dd><?php echo t(":currency :money", array(':currency' => invoicely_get_currency(), ':money' => number_format($total_after_expenses), 2,'.','')); ?></dd>
+      <dd><?php echo t(":currency :money", array(':currency' => invoicely_get_currency(), ':money' => number_format($total_after_expenses, 2,'.',''))); ?></dd>
       <dt><?php echo t("Total Liability"); ?>:</dt>
       <dd><?php echo t(":currency :money", array(':currency' => invoicely_get_currency(), ':money' => number_format($total_after_expenses * 0.20, 2,'.',''))); ?></dd>
       <dt><?php echo t("Net Income"); ?>:</dt>
