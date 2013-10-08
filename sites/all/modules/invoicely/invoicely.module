@@ -112,7 +112,44 @@ function invoicely_menu() {
   return $items;
 }
 
-/**
+function invoicely_block_info() {
+  $blocks['version'] = array(
+    'info' => t('Git Version Control'),
+    'weight' => '10',
+    'cache' => DRUPAL_NO_CACHE,
+  );
+  $blocks['designed-and-developed'] = array(
+    'info' => t('Designed & Developed...'),
+    'weight' => '10',
+    'cache' => DRUPAL_NO_CACHE,
+  );
+  return $blocks;
+}
+
+function invoicely_block_view($delta = '') {
+  $block = array();
+  switch ($delta) {
+
+    case 'version':
+      $block['subject'] = NULL;
+      $block['content'] = theme('version_control_version');
+      return $block;
+    case 'designed-and-developed':
+      $block['subject'] = NULL;
+      $block['content'] = theme('designed_and_developed');
+      return $block;
+  }
+}
+
+function theme_version_control_version() {
+  return '<span>' . t('Github: <a href="@url">@version</a>', array('@url' => 'https://github.com/matthewbaggett/Invoicely', '@version' => substr(ace_get_git_revision(),0,10))) . '</span>';
+}
+
+function theme_designed_and_developed() {
+  return '<span>' . t('<a href="@designer">Designed</a> & <a href="@developer">Developed</a>', array('@designer' => 'mailto:matthew@fouroneone.us', '@developer' => 'mailto:matthew@fouroneone.us')) . '</span>';
+}
+
+  /**
  * Implements hook_permission().
  *
  * Defines a permission for managing the mail_system variable.
