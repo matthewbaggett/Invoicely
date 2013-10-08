@@ -23,7 +23,8 @@ $commands = array(
   'git reset --hard',
   'git pull',
   'git submodule init',
-  'git submodule update'
+  'git submodule update',
+  'git submodule foreach "git checkout master; git pull"'
 );
 
 if(count($libraries) > 0){
@@ -81,7 +82,7 @@ $to = "matthew@fouroneone.us";
 $headers = 'MIME-Version: 1.0' . "\r\n";
 $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
 $headers .= 'To: ' . $to . "\r\n";
-$headers .= 'From: GitHub AutoDeploy on ' . gethostname() . " <service@pushy.fouroneone.us>\r\n";
+$headers .= 'From: GitHub AutoDeploy on ' . gethostname() . " <service@fouroneone.us>\r\n";
 
 mail(
   $to,
