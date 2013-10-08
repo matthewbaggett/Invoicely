@@ -1,4 +1,8 @@
 <?php
+function invoicely_page_alter(){
+  drupal_add_js("https://www.google.com/jsapi");
+  drupal_add_js('google.load("visualization", "1", {packages:["corechart"]});', 'inline');
+}
 function invoicely_menu() {
   $items['dashboard']              = array(
     'title'            => 'My Dashboard',

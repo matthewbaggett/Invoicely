@@ -27,8 +27,6 @@ function invoicely_invoices_dash(){
       floatval($result->amount_paid_cumulative)
     );
   }
-  drupal_add_js("https://www.google.com/jsapi");
-  drupal_add_js('google.load("visualization", "1", {packages:["corechart"]});', 'inline');
 
   return invoicely_template_view('templates/invoices/dash.phtml', $view);
 }
