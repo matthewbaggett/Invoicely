@@ -1,0 +1,57 @@
+<?php
+
+require_once('lib/curl.inc');
+require_once('lib/simple_html_dom.inc');
+
+define("LISTENTOTAXMAN_AGE_UNDER_65", 0);
+define("LISTENTOTAXMAN_AGE_65_TO_75", 1);
+define("LISTENTOTAXMAN_AGE_OVER_75", 2);
+define("LISTENTOTAXMAN_AGE_60_TO_65_FEMALE", 3);
+
+define("LISTENTOTAXMAN_URL", "http://www.listentotaxman.com/index.php");
+
+function listentotaxman_query($income, $year, $age = LISTENTOTAXMAN_AGE_UNDER_65){
+  global $user;
+  $curl = new listentotaxman_curl(TRUE, DRUPAL_ROOT . "/cookies.txt");
+  $response = $curl->post(
+    LISTENTOTAXMAN_URL,
+    array(
+      'add' => 0,
+      'age' => $age,
+      'c' => 1,
+      'calculate' => 'Calculate',
+      'childcare' => 0,
+      'childcare_freq' => 12,
+      'code' => '',
+      'email' => $user->mail,
+      'ingr' => $income,
+      'pension' => 0,
+      'time' => 1,
+      'vw' => array('yr','mth','wk'),
+      'year' => $year,
+    )
+  );
+  if ($curl->get_status() !== 200) {
+    drupal_set_message(t('Could not communicate with listentotaxman.com Code: :code', array(':code' => $curl->get_status())));
+    return FALSE;
+  }
+
+  $html = str_get_html($response);
+  $data = new StdClass();
+  $data->income_tax = array();
+
+  $data->taxable_year                 = listentotaxman_parse_value($html->find('tr.row-taxable td.yr', 0)->innertext);
+  $data->net                          = listentotaxman_parse_value($html->find('tr.row-net-wage td.yr', 0)->innertext);
+  $data->personal_national_insurance  = listentotaxman_parse_value($html->find('tr.row-ni td.yr', 0)->innertext);
+  $data->employers_national_insurance = listentotaxman_parse_value($html->find('tr.row-employers-ni td.yr', 0)->innertext);
+  $data->income_tax['20%']            = listentotaxman_parse_value($html->find('tr#row-taxband-0 td.yr', 0)->innertext);
+  $data->income_tax['40%']            = listentotaxman_parse_value($html->find('tr#row-taxband-1 td.yr', 0)->innertext);
+  $data->income_tax['45%']            = listentotaxman_parse_value($html->find('tr#row-taxband-2 td.yr', 0)->innertext);
+  $data->personal_total_deductions    = listentotaxman_parse_value($html->find('tr.row-total-deductions td.yr', 0)->innertext);
+
+  return $data;
+}
+
+function listentotaxman_parse_value($money){
+  return trim(str_replace(",", "", str_replace("&pound;", "", trim(strip_tags($money)))));
+}

@@ -3,6 +3,7 @@ description = Invoicing system
 core = 7.x
 
 dependencies[] = active_record
+dependencies[] = listentotaxman
 
 files[] = models/company.inc
 files[] = models/invoices.inc
