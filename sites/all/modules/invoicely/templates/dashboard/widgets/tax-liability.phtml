@@ -55,7 +55,7 @@ foreach($available_financial_years as $available_financial_year){
 
   $income_tax_breakdown = listentotaxman_query($total_after_expenses, $available_financial_year_short);
   ?>
-  <div class="widget">
+  <div class="col-sm-4">
     <h3><?php echo t("Liability for year :year", array(':year' => $available_financial_year)); ?></h3>
     <dl>
       <dt><?php echo t("Total Invoices"); ?>:</dt>

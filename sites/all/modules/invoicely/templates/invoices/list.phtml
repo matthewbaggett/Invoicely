@@ -30,6 +30,18 @@ foreach($view->invoices as $invoice){
 }
 $rows[] = array(t('Total'), "", "", invoicely_get_currency() . " {$cumulative_amount}", '', '');
 ?>
-<a class="btn btn-app btn-primary no-radius" href="<?php echo url("invoices/add"); ?>"><i class="icon-edit bigger-230"></i><?php echo t("Add Invoice"); ?></a>
-<?php echo theme('table', array('header' => $header, 'rows' => $rows, 'empty' => t('No invoices'), 'attributes' => array('class' => array('tablesorter')))); ?>
+<div class="row">
+  <div class="col-sm-12">
+    <a class="btn btn-app btn-primary no-radius" href="<?php echo url("invoices/add"); ?>"><i class="icon-edit bigger-230"></i><?php echo t("Add Invoice"); ?></a>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-8">
+    <?php echo theme('table', array('header' => $header, 'rows' => $rows, 'empty' => t('No invoices'), 'attributes' => array('class' => array('tablesorter')))); ?>
+  </div>
+  <div class="col-sm-4">
+    <div class="dash_chart" id="chart_div"></div>
+  </div>
+</div>
+
 
