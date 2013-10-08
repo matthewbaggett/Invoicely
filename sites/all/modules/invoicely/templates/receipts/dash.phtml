@@ -43,6 +43,6 @@ foreach($view->monthly_totals as $receipt){
   );
 }
 ?>
-<?php echo l(t("Add new Receipt"), "receipts/add"); ?>
+<a class="btn btn-app btn-primary radius-4" href="<?php echo url("receipts/add"); ?>"><i class="icon-edit bigger-230"></i><?php echo t("Add Receipt"); ?></a>
 <?php echo theme('table', array('header' => $header, 'rows' => $rows, 'empty' => t('No receipts'), 'attributes' => array('class' => array('tablesorter')))); ?>
 
