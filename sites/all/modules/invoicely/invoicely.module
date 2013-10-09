@@ -9,14 +9,14 @@ function invoicely_menu() {
     'description'      => 'Welcome',
     'page callback'    => 'invoicely_welcome',
     'file'             => 'invoicely.welcome.inc',
-    'access callback'  => array('view welcome')
+    'access arguments'  => array('view welcome')
   );
   $items['plans']              = array(
     'title'            => 'Service Plans',
     'description'      => 'Service Plans',
     'page callback'    => 'invoicely_plans',
     'file'             => 'invoicely.welcome.inc',
-    'access callback'  => array('view welcome')
+    'access arguments'  => array('view welcome')
   );
   $items['dashboard']              = array(
     'title'            => 'My Dashboard',
