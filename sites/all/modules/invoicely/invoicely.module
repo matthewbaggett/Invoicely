@@ -122,6 +122,20 @@ function invoicely_menu() {
     'file'             => 'invoicely.options.inc',
     'access arguments' => array('configure account auditors')
   );
+  $items['options/currencies']                = array(
+    'title'            => 'Currency',
+    'description'      => 'Configure Currency',
+    'page callback'    => 'invoicely_options_currency',
+    'file'             => 'invoicely.options.inc',
+    'access arguments' => array('configure account')
+  );
+  $items['options/payment']                = array(
+    'title'            => 'Payment',
+    'description'      => 'Pay usss, yesssss',
+    'page callback'    => 'invoicely_options_payment',
+    'file'             => 'invoicely.options.inc',
+    'access arguments' => array('configure account payment')
+  );
 
   return $items;
 }
@@ -194,6 +208,9 @@ function invoicely_permission()
           'title' => t("Configure a given account's auditors"),
           'description' => t('Allow a user to appoint account auditors to their account'),
         ),
+        'configure account payment' => array(
+          'title' => t("Configure a given account's payment methods"),
+        )
     );
 }
 
