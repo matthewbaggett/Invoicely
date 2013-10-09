@@ -20,8 +20,8 @@ foreach($view->invoices as $invoice){
     invoicely_get_currency() . " "  . $invoice->amount_charged,
     (
       $invoice->paid == "No" ?
-        invoicely_get_currency() . " "  . ($invoice->amount_charged - $invoice->amount_paid) . " " . t("unpaid.") :
-        ($invoice->date_paid ? t("Yes, on :datepaid", array(':datepaid' => $invoice->get_date_paid())) : t("Yes."))
+        "<span class=\"label label-danger arrowed\">" . invoicely_get_currency() . " "  . ($invoice->amount_charged - $invoice->amount_paid) . " " . t("unpaid.") . "</span>" :
+        "<span class=\"label label-success arrowed\">" . ($invoice->date_paid ? t("Yes, on :datepaid", array(':datepaid' => $invoice->get_date_paid())) : t("Yes.")) . "</span>"
     ),
     $invoice->notes,
     l("Edit", "invoices/edit/{$invoice->get_id()}")
