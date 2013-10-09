@@ -4,6 +4,13 @@ function invoicely_page_alter(){
   drupal_add_js('google.load("visualization", "1", {packages:["corechart"]});', 'inline');
 }
 function invoicely_menu() {
+  $items['welcome']              = array(
+    'title'            => 'Welcome',
+    'description'      => 'Welcome',
+    'page callback'    => 'invoicely_welcome',
+    'file'             => 'invoicely.welcome.inc',
+    'access arguments' => true
+  );
   $items['dashboard']              = array(
     'title'            => 'My Dashboard',
     'description'      => 'Invoicely Dashboard',
