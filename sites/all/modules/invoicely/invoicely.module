@@ -19,14 +19,14 @@ function invoicely_menu() {
     'access arguments' => array('view receipts')
   );
   $items['receipts/list']          = array(
-    'title'            => 'My Receipts - List',
+    'title'            => 'List Receipts',
     'description'      => 'Administer My Receipts',
     'page callback'    => 'invoicely_receipts_list',
     'file'             => 'invoicely.receipts.inc',
     'access arguments' => array('view receipts')
   );
   $items['receipts/add']           = array(
-    'title'            => 'New',
+    'title'            => 'New Receipt',
     'description'      => 'Add a new Receipt',
     'page callback'    => 'invoicely_receipts_edit',
     'file'             => 'invoicely.receipts.inc',
@@ -49,25 +49,25 @@ function invoicely_menu() {
     'access arguments' => array('view receipts')
   );
   $items['receipts/import']        = array(
-    'title'            => 'Import',
+    'title'            => 'Import Receipts',
     'page callback'    => 'invoicely_receipts_import',
     'file'             => 'invoicely.receipts.import-export.inc',
     'access arguments' => array('view receipts')
   );
   $items['receipts/export']        = array(
-    'title'            => 'Export',
+    'title'            => 'Export Receipts',
     'page callback'    => 'invoicely_receipts_export',
     'file'             => 'invoicely.receipts.import-export.inc',
     'access arguments' => array('view receipts')
   );
   $items['receipts/repeated/list'] = array(
-    'title'            => 'Repeated Receipts - View',
+    'title'            => 'View Repeated Receipts',
     'page callback'    => 'invoicely_receipts_repeated_list',
     'file'             => 'invoicely.receipts-repeated.inc',
     'access arguments' => array('view receipts')
   );
   $items['receipts/repeated/add']  = array(
-    'title'            => 'Repeated Receipts - Add',
+    'title'            => 'New Repeated Receipt',
     'page callback'    => 'invoicely_receipts_repeated_add',
     'file'             => 'invoicely.receipts-repeated.inc',
     'access arguments' => array('view receipts')
@@ -80,14 +80,14 @@ function invoicely_menu() {
     'access arguments' => array('view invoices')
   );
   $items['invoices/add']           = array(
-    'title'            => 'My Invoices - Add',
+    'title'            => 'Add Invoice',
     'description'      => 'Add new Invoice',
     'page callback'    => 'invoicely_invoices_edit',
     'file'             => 'invoicely.invoices.inc',
     'access arguments' => array('view invoices')
   );
   $items['invoices/edit/%']           = array(
-    'title'            => 'My Invoices - Add',
+    'title'            => 'Edit Invoice',
     'description'      => 'Add new Invoice',
     'page callback'    => 'invoicely_invoices_edit',
     'page arguments'   => array(2),
@@ -95,7 +95,7 @@ function invoicely_menu() {
     'access arguments' => array('view invoices')
   );
   $items['invoices/list']          = array(
-    'title'            => 'My Invoices - List',
+    'title'            => 'List Invoices',
     'description'      => 'Administer My Invoices',
     'page callback'    => 'invoicely_invoices_list',
     'file'             => 'invoicely.invoices.inc',
