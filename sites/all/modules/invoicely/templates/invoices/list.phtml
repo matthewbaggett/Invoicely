@@ -47,7 +47,7 @@ $rows[] = array(
   "",
   invoicely_get_currency() . $cumulative_amount_charged,
   invoicely_get_currency() . $cumulative_amount_paid,
-  invoicely_get_currency() . $cumulative_amount_unpaid,
+  ($cumulative_amount_unpaid>0?"<span class=\"label label-danger arrowed\">" . invoicely_get_currency() . $cumulative_amount_unpaid . " " . t("unpaid.") . "</span>":''),
   '',
   ''
 );
