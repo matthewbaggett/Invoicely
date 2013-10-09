@@ -120,7 +120,7 @@ function invoicely_menu() {
     'description'      => 'Administer Auditor Accounts',
     'page callback'    => 'invoicely_options_auditors',
     'file'             => 'invoicely.options.inc',
-    'access arguments' => array('configure account', 'configure account auditors')
+    'access arguments' => array('configure account auditors')
   );
 
   return $items;
