@@ -9,7 +9,7 @@ function invoicely_menu() {
     'description'      => 'Welcome',
     'page callback'    => 'invoicely_welcome',
     'file'             => 'invoicely.welcome.inc',
-    'access arguments' => true
+    'access callback'  => true
   );
   $items['dashboard']              = array(
     'title'            => 'My Dashboard',
