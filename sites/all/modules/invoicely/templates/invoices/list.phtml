@@ -18,10 +18,10 @@ foreach($view->invoices as $invoice){
   $rows[] = array(
     l($invoice->get_client()->name . ($invoice->get_client()->agency?" ({$invoice->get_client()->agency})":""), "clients/view/{$invoice->get_client()->cid}"),
     $invoice->get_date_issued(),
-    $invoice->get_date_paid('U')>0?$invoice->get_date_paid() . " " . $invoice->get_date_paid('U'):t('--'),
-    $invoice->get_date_paid('U')>0?ceil(($invoice->get_date_paid('U') - $invoice->get_date_issued('U')) / 86400):t("N/A"),
+    $invoice->get_date_paid('U') > 0 ? $invoice->get_date_paid() : t('--'),
+    $invoice->get_date_paid('U') > 0 ? ceil(($invoice->get_date_paid('U') - $invoice->get_date_issued('U')) / 86400) : t("N/A"),
     l($invoice->invoice_number, "invoices/view/{$invoice->iid}"),
-    invoicely_get_currency() . " "  . $invoice->amount_charged,
+    invoicely_get_currency() . $invoice->amount_charged,
     (
       $invoice->paid == "No" ?
         "<span class=\"label label-danger arrowed\">" . invoicely_get_currency() . " "  . ($invoice->amount_charged - $invoice->amount_paid) . " " . t("unpaid.") . "</span>" :
