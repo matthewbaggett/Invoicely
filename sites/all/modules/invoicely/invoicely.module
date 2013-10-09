@@ -132,20 +132,20 @@ function invoicely_block_view($delta = '') {
 
     case 'version':
       $block['subject'] = NULL;
-      $block['content'] = theme('version_control_version');
+      $block['content'] = invoicely_version_control_version();
       return $block;
     case 'designed-and-developed':
       $block['subject'] = NULL;
-      $block['content'] = theme('designed_and_developed');
+      $block['content'] = invoicely_designed_and_developed();
       return $block;
   }
 }
 
-function theme_version_control_version() {
+function invoicely_version_control_version() {
   return '<span>' . t('Github: <a href="@url">@version</a>', array('@url' => 'https://github.com/matthewbaggett/Invoicely', '@version' => substr(ace_get_git_revision(),0,10))) . '</span>';
 }
 
-function theme_designed_and_developed() {
+function invoicely_designed_and_developed() {
   return '<span>' . t('<a href="@designer">Designed</a> & <a href="@developer">Developed</a>', array('@designer' => 'mailto:matthew@fouroneone.us', '@developer' => 'mailto:matthew@fouroneone.us')) . '</span>';
 }
 
