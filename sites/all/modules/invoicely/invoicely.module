@@ -108,6 +108,20 @@ function invoicely_menu() {
     'file'             => 'invoicely.mileage.inc',
     'access arguments' => array('view mileage')
   );
+  $items['options']                = array(
+    'title'            => 'Options',
+    'description'      => 'Options & Account Administration',
+    'page callback'    => 'invoicely_options_dashboard',
+    'file'             => 'invoicely.options.inc',
+    'access arguments' => array('configure account')
+  );
+  $items['options/auditors']                = array(
+    'title'            => 'Auditors',
+    'description'      => 'Administer Auditor Accounts',
+    'page callback'    => 'invoicely_options_auditors',
+    'file'             => 'invoicely.options.inc',
+    'access arguments' => array('configure account', 'configure account auditors')
+  );
 
   return $items;
 }
@@ -172,6 +186,13 @@ function invoicely_permission()
         'view mileage' => array(
           'title' => t('View Mileage'),
           'description' => t('Allow a user to view their own mileage log'),
+        ),
+        'configure account' => array(
+          'title' => t("Configure a given account"),
+        ),
+        'configure account auditors' => array(
+          'title' => t("Configure a given account's auditors"),
+          'description' => t('Allow a user to appoint account auditors to their account'),
         ),
     );
 }
