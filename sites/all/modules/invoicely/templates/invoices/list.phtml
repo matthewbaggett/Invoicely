@@ -32,7 +32,7 @@ foreach($view->invoices as $invoice){
   );
 
 }
-$rows[] = array(t('Total'), "", "", invoicely_get_currency() . " {$cumulative_amount}", '', '');
+$rows[] = array(t('Total'), "", "", "", "", invoicely_get_currency() . " {$cumulative_amount}", '', '');
 ?>
 
 <?php require_once("buttons.phtml"); ?>
