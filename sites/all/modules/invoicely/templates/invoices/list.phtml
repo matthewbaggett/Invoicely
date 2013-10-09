@@ -33,7 +33,9 @@ $rows[] = array(t('Total'), "", "", invoicely_get_currency() . " {$cumulative_am
 <div class="row">
   <div class="col-sm-12">
     <div class="btn-group">
-      <a class="btn btn-primary no-radius" href="<?php echo url("invoices/add"); ?>"><i class="icon-edit bigger-230"></i><?php echo t("Add Invoice"); ?></a>
+      <a class="btn btn-primary radius-4" href="<?php echo url("invoices/add"); ?>"><i class="icon-edit bigger-230"></i><?php echo t("Add Invoice"); ?></a>
+      <a class="btn btn-primary radius-4" href="<?php echo url("invoices/import"); ?>"><i class="icon-cloud-upload bigger-230"></i><?php echo t("Import Invoices"); ?></a>
+      <a class="btn btn-primary radius-4" href="<?php echo url("invoices/export"); ?>"><i class="icon-cloud-download bigger-230"></i><?php echo t("Export Invoices"); ?></a>
     </div>
   </div>
 </div>
