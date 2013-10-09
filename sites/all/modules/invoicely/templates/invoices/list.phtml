@@ -39,7 +39,7 @@ foreach($view->invoices as $invoice){
   );
 
 }
-$rows[] = array(
+$footer = array(
   t('Total'),
   "",
   "",
@@ -57,7 +57,7 @@ $rows[] = array(
 
 <div class="row">
   <div class="col-sm-8">
-    <?php echo theme('table', array('header' => $header, 'rows' => $rows, 'empty' => t('No invoices'), 'attributes' => array('class' => array('tablesorter')))); ?>
+    <?php echo theme('table', array('header' => $header, 'footer' => $footer, 'rows' => $rows, 'empty' => t('No invoices'), 'attributes' => array('class' => array('tablesorter')))); ?>
   </div>
   <div class="col-sm-4">
     <div class="dash_chart" id="chart_div"></div>
