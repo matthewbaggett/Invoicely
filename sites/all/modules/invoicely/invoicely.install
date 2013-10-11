@@ -237,8 +237,7 @@ function invoicely_schema() {
       ),
       'amount' => array(
         'description' => 'TODO: please describe this field!',
-        'type'        => 'float',
-        'size'        => 'big',
+        'type'        => 'decimal',
         'not null'    => true,
         'precision'   => '10',
         'scale'       => '2',
@@ -284,8 +283,7 @@ function invoicely_schema() {
       ),
       'amount' => array(
         'description' => 'TODO: please describe this field!',
-        'type'        => 'float',
-        'size'        => 'big',
+        'type'        => 'decimal',
         'not null'    => true,
         'precision'   => '10',
         'scale'       => '2',
