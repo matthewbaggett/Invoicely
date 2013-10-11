@@ -166,7 +166,7 @@ function invoicely_schema() {
       'direction' => array(
         'description' => 'TODO: please describe this field!',
         'type'        => 'varchar',
-        'length'      => 3,
+        'length'      => 15,
         'not null'    => true,
         'default'     => 'Return',
       ),
