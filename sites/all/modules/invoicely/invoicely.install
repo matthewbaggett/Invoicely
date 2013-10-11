@@ -104,7 +104,7 @@ function invoicely_schema() {
       ),
       'paid'           => array(
         'description' => 'TODO: please describe this field!',
-        'type'        => 'text',
+        'type'        => 'varchar',
         'length'      => 3,
         'not null'    => true,
         'default'     => 'No',
@@ -117,7 +117,7 @@ function invoicely_schema() {
       ),
       'deleted'        => array(
         'description' => 'TODO: please describe this field!',
-        'type'        => 'text',
+        'type'        => 'varchar',
         'length'      => 3,
         'not null'    => true,
         'default'     => 'No',
@@ -165,8 +165,9 @@ function invoicely_schema() {
       ),
       'direction' => array(
         'description' => 'TODO: please describe this field!',
-        'type'        => 'text',
-        'length'      => 3, 'not null' => true,
+        'type'        => 'varchar',
+        'length'      => 3,
+        'not null'    => true,
         'default'     => 'Return',
       ),
       'notes'     => array(
@@ -345,8 +346,9 @@ function invoicely_schema() {
       ),
       'deleted' => array(
         'description' => 'TODO: please describe this field!',
-        'type'        => 'text',
-        'length'      => 3, 'not null' => true,
+        'type'        => 'varchar',
+        'length'      => 3,
+        'not null'    => true,
         'default'     => 'No',
       ),
     ),
@@ -395,8 +397,9 @@ function invoicely_schema() {
       ),
       'rolling'               => array(
         'description' => 'TODO: please describe this field!',
-        'type'        => 'text',
-        'length'      => 3, 'not null' => true,
+        'type'        => 'varchar',
+        'length'      => 3,
+        'not null'    => true,
         'default'     => 'No',
       ),
       'fid'                   => array(
@@ -412,8 +415,9 @@ function invoicely_schema() {
       ),
       'deleted'               => array(
         'description' => 'TODO: please describe this field!',
-        'type'        => 'text',
-        'length'      => 3, 'not null' => true,
+        'type'        => 'varchar',
+        'length'      => 3,
+        'not null'    => true,
         'default'     => 'No',
       ),
       'file'                  => array(
