@@ -1,213 +1,213 @@
 <?php
 
-function invoicely_schema(){
-  $schema['invoicely_companies'] = array(
+function invoicely_schema() {
+  $schema['invoicely_companies']                     = array(
     'description' => 'TODO: please describe this table!',
-    'fields' => array(
-      'cid' => array(
+    'fields'      => array(
+      'cid'        => array(
         'description' => 'TODO: please describe this field!',
-        'type' => 'serial',
-        'unsigned' => TRUE,
-        'not null' => TRUE,
+        'type'        => 'serial',
+        'unsigned'    => true,
+        'not null'    => true,
       ),
-      'uid' => array(
+      'uid'        => array(
         'description' => 'TODO: please describe this field!',
-        'type' => 'int',
-        'unsigned' => TRUE,
-        'not null' => TRUE,
+        'type'        => 'int',
+        'unsigned'    => true,
+        'not null'    => true,
       ),
-      'name' => array(
+      'name'       => array(
         'description' => 'TODO: please describe this field!',
-        'type' => 'text',
-        'not null' => TRUE,
+        'type'        => 'text',
+        'not null'    => true,
       ),
-      'agency' => array(
+      'agency'     => array(
         'description' => 'TODO: please describe this field!',
-        'type' => 'text',
-        'not null' => FALSE,
+        'type'        => 'text',
+        'not null'    => false,
       ),
       'vat_number' => array(
         'description' => 'TODO: please describe this field!',
-        'type' => 'varchar',
-        'length' => '32',
-        'not null' => TRUE,
+        'type'        => 'varchar',
+        'length'      => '32',
+        'not null'    => true,
       ),
     ),
     'primary key' => array('cid'),
-    'indexes' => array(
-      'uid' => array('uid'),
+    'indexes'     => array(
+      'uid'   => array('uid'),
       'uid_2' => array('uid'),
     ),
   );
   $schema['invoicely_get_financial_years_available'] = array(
     'description' => 'VIEW',
-    'fields' => array(
+    'fields'      => array(
       'financial_year' => array(
         'description' => 'TODO: please describe this field!',
-        'type' => 'varchar',
-        'length' => '9',
-        'not null' => FALSE,
+        'type'        => 'varchar',
+        'length'      => '9',
+        'not null'    => false,
       ),
-      'uid' => array(
+      'uid'            => array(
         'description' => 'TODO: please describe this field!',
-        'type' => 'int',
-        'unsigned' => TRUE,
-        'not null' => TRUE,
+        'type'        => 'int',
+        'unsigned'    => true,
+        'not null'    => true,
       ),
     ),
   );
-  $schema['invoicely_invoice_view_monthly_totals'] = array(
+  $schema['invoicely_invoice_view_monthly_totals']   = array(
     'description' => 'VIEW',
-    'fields' => array(
-      'uid' => array(
+    'fields'      => array(
+      'uid'                    => array(
         'description' => 'TODO: please describe this field!',
-        'type' => 'int',
-        'unsigned' => TRUE,
-        'not null' => TRUE,
+        'type'        => 'int',
+        'unsigned'    => true,
+        'not null'    => true,
       ),
-      'username' => array(
+      'username'               => array(
         'description' => 'Unique user name.',
-        'type' => 'varchar',
-        'length' => '60',
-        'not null' => TRUE,
-        'default' => '',
+        'type'        => 'varchar',
+        'length'      => '60',
+        'not null'    => true,
+        'default'     => '',
       ),
-      'yearmonth' => array(
+      'yearmonth'              => array(
         'description' => 'TODO: please describe this field!',
-        'type' => 'varchar',
-        'length' => '7',
-        'not null' => FALSE,
+        'type'        => 'varchar',
+        'length'      => '7',
+        'not null'    => false,
       ),
-      'financial_year' => array(
+      'financial_year'         => array(
         'description' => 'TODO: please describe this field!',
-        'type' => 'varchar',
-        'length' => '9',
-        'not null' => FALSE,
+        'type'        => 'varchar',
+        'length'      => '9',
+        'not null'    => false,
       ),
       'amount_paid_cumulative' => array(
         'description' => 'TODO: please describe this field!',
-        'type' => 'numeric',
-        'not null' => FALSE,
-        'precision' => '32',
-        'scale' => '2',
+        'type'        => 'numeric',
+        'not null'    => false,
+        'precision'   => '32',
+        'scale'       => '2',
       ),
     ),
   );
-  $schema['invoicely_invoices'] = array(
+  $schema['invoicely_invoices']                      = array(
     'description' => 'TODO: please describe this table!',
-    'fields' => array(
-      'iid' => array(
+    'fields'      => array(
+      'iid'            => array(
         'description' => 'TODO: please describe this field!',
-        'type' => 'serial',
-        'unsigned' => TRUE,
-        'not null' => TRUE,
+        'type'        => 'serial',
+        'unsigned'    => true,
+        'not null'    => true,
       ),
-      'uid' => array(
+      'uid'            => array(
         'description' => 'TODO: please describe this field!',
-        'type' => 'int',
-        'unsigned' => TRUE,
-        'not null' => TRUE,
+        'type'        => 'int',
+        'unsigned'    => true,
+        'not null'    => true,
       ),
       'invoice_number' => array(
         'description' => 'TODO: please describe this field!',
-        'type' => 'text',
-        'not null' => TRUE,
+        'type'        => 'text',
+        'not null'    => true,
       ),
-      'date_issued' => array(
+      'date_issued'    => array(
         'description' => 'TODO: please describe this field!',
-        'type' => 'datetime',
-        'not null' => TRUE,
+        'type'        => 'datetime', 'mysql_type' => 'datetime',
+        'not null'    => true,
       ),
-      'date_paid' => array(
+      'date_paid'      => array(
         'description' => 'TODO: please describe this field!',
-        'type' => 'datetime',
-        'not null' => FALSE,
+        'type'        => 'datetime', 'mysql_type' => 'datetime',
+        'not null'    => false,
       ),
       'amount_charged' => array(
         'description' => 'TODO: please describe this field!',
-        'type' => 'numeric',
-        'not null' => TRUE,
-        'default' => 0,
-        'precision' => '10',
-        'scale' => '2',
+        'type'        => 'numeric',
+        'not null'    => true,
+        'default'     => 0,
+        'precision'   => '10',
+        'scale'       => '2',
       ),
-      'amount_paid' => array(
+      'amount_paid'    => array(
         'description' => 'TODO: please describe this field!',
-        'type' => 'numeric',
-        'not null' => TRUE,
-        'default' => 0,
-        'precision' => '10',
-        'scale' => '2',
+        'type'        => 'numeric',
+        'not null'    => true,
+        'default'     => 0,
+        'precision'   => '10',
+        'scale'       => '2',
       ),
-      'paid' => array(
+      'paid'           => array(
         'description' => 'TODO: please describe this field!',
-        'type' => 'enum',
-        'not null' => TRUE,
-        'default' => 'No',
+        'type'        => 'enum',
+        'not null'    => true,
+        'default'     => 'No',
       ),
-      'cid' => array(
+      'cid'            => array(
         'description' => 'TODO: please describe this field!',
-        'type' => 'int',
-        'unsigned' => TRUE,
-        'not null' => TRUE,
+        'type'        => 'int',
+        'unsigned'    => true,
+        'not null'    => true,
       ),
-      'deleted' => array(
+      'deleted'        => array(
         'description' => 'TODO: please describe this field!',
-        'type' => 'enum',
-        'not null' => TRUE,
-        'default' => 'No',
+        'type'        => 'enum',
+        'not null'    => true,
+        'default'     => 'No',
       ),
-      'file' => array(
+      'file'           => array(
         'description' => 'TODO: please describe this field!',
-        'type' => 'blob',
-        'size' => 'big',
-        'not null' => FALSE,
+        'type'        => 'blob',
+        'size'        => 'big',
+        'not null'    => false,
       ),
-      'notes' => array(
+      'notes'          => array(
         'description' => 'TODO: please describe this field!',
-        'type' => 'text',
-        'not null' => FALSE,
+        'type'        => 'text',
+        'not null'    => false,
       ),
     ),
     'primary key' => array('iid'),
-    'indexes' => array(
+    'indexes'     => array(
       'cid' => array('cid'),
       'uid' => array('uid', 'cid'),
     ),
   );
-  $schema['invoicely_mileage'] = array(
+  $schema['invoicely_mileage']                       = array(
     'description' => 'TODO: please describe this table!',
-    'fields' => array(
-      'mid' => array(
+    'fields'      => array(
+      'mid'       => array(
         'description' => 'TODO: please describe this field!',
-        'type' => 'serial',
-        'not null' => TRUE,
+        'type'        => 'serial',
+        'not null'    => true,
       ),
-      'uid' => array(
+      'uid'       => array(
         'description' => 'TODO: please describe this field!',
-        'type' => 'int',
-        'not null' => TRUE,
+        'type'        => 'int',
+        'not null'    => true,
       ),
-      'date' => array(
+      'date'      => array(
         'description' => 'TODO: please describe this field!',
-        'type' => 'datetime',
-        'not null' => TRUE,
+        'type'        => 'datetime', 'mysql_type' => 'datetime',
+        'not null'    => true,
       ),
-      'rid' => array(
+      'rid'       => array(
         'description' => 'Route ID',
-        'type' => 'int',
-        'not null' => TRUE,
+        'type'        => 'int',
+        'not null'    => true,
       ),
       'direction' => array(
         'description' => 'TODO: please describe this field!',
-        'type' => 'enum',
-        'not null' => TRUE,
-        'default' => 'Return',
+        'type'        => 'enum',
+        'not null'    => true,
+        'default'     => 'Return',
       ),
-      'notes' => array(
+      'notes'     => array(
         'description' => 'TODO: please describe this field!',
-        'type' => 'text',
-        'not null' => FALSE,
+        'type'        => 'text',
+        'not null'    => false,
       ),
     ),
     'primary key' => array('mid'),
@@ -215,421 +215,425 @@ function invoicely_schema(){
       'mid_UNIQUE' => array('mid')
     ),
   );
-  $schema['invoicely_mileage_route'] = array(
+  $schema['invoicely_mileage_route']                 = array(
     'description' => 'TODO: please describe this table!',
-    'fields' => array(
-      'rid' => array(
+    'fields'      => array(
+      'rid'      => array(
         'description' => 'TODO: please describe this field!',
-        'type' => 'serial',
-        'not null' => TRUE,
+        'type'        => 'serial',
+        'not null'    => true,
       ),
-      'uid' => array(
+      'uid'      => array(
         'description' => 'TODO: please describe this field!',
-        'type' => 'int',
-        'not null' => TRUE,
+        'type'        => 'int',
+        'not null'    => true,
       ),
-      'cid' => array(
+      'cid'      => array(
         'description' => 'TODO: please describe this field!',
-        'type' => 'int',
-        'not null' => TRUE,
+        'type'        => 'int',
+        'not null'    => true,
       ),
-      'name' => array(
+      'name'     => array(
         'description' => 'TODO: please describe this field!',
-        'type' => 'text',
-        'not null' => TRUE,
+        'type'        => 'text',
+        'not null'    => true,
       ),
-      'start' => array(
+      'start'    => array(
         'description' => 'TODO: please describe this field!',
-        'type' => 'text',
-        'not null' => TRUE,
+        'type'        => 'text',
+        'not null'    => true,
       ),
-      'end' => array(
+      'end'      => array(
         'description' => 'TODO: please describe this field!',
-        'type' => 'text',
-        'not null' => TRUE,
+        'type'        => 'text',
+        'not null'    => true,
       ),
       'distance' => array(
         'description' => 'TODO: please describe this field!',
-        'type' => 'numeric',
-        'not null' => TRUE,
-        'precision' => '10',
-        'scale' => '2',
+        'type'        => 'numeric',
+        'not null'    => true,
+        'precision'   => '10',
+        'scale'       => '2',
       ),
     ),
     'primary key' => array('rid'),
   );
-  $schema['invoicely_mileage_view'] = array(
+  $schema['invoicely_mileage_view']                  = array(
     'description' => 'VIEW',
-    'fields' => array(
-      'uid' => array(
+    'fields'      => array(
+      'uid'            => array(
         'description' => 'TODO: please describe this field!',
-        'type' => 'int',
-        'not null' => TRUE,
+        'type'        => 'int',
+        'not null'    => true,
       ),
-      'username' => array(
+      'username'       => array(
         'description' => 'Unique user name.',
-        'type' => 'varchar',
-        'length' => '60',
-        'not null' => TRUE,
-        'default' => '',
+        'type'        => 'varchar',
+        'length'      => '60',
+        'not null'    => true,
+        'default'     => '',
       ),
-      'date' => array(
+      'date'           => array(
         'description' => 'TODO: please describe this field!',
-        'type' => 'datetime',
-        'not null' => TRUE,
+        'type'        => 'datetime',
+        'mysql_type'  => 'datetime',
+        'not null'    => true,
       ),
-      'direction' => array(
+      'direction'      => array(
         'description' => 'TODO: please describe this field!',
-        'type' => 'enum',
-        'not null' => TRUE,
-        'default' => 'Return',
+        'type'        => 'enum',
+        'not null'    => true,
+        'default'     => 'Return',
       ),
-      'route_name' => array(
+      'route_name'     => array(
         'description' => 'TODO: please describe this field!',
-        'type' => 'text',
-        'not null' => TRUE,
+        'type'        => 'text',
+        'not null'    => true,
       ),
-      'distance' => array(
+      'distance'       => array(
         'description' => 'TODO: please describe this field!',
-        'type' => 'numeric',
-        'not null' => TRUE,
-        'default' => 0,
-        'precision' => '11',
-        'scale' => '2',
+        'type'        => 'numeric',
+        'not null'    => true,
+        'default'     => 0,
+        'precision'   => '11',
+        'scale'       => '2',
       ),
-      'year' => array(
+      'year'           => array(
         'description' => 'TODO: please describe this field!',
-        'type' => 'int',
-        'not null' => FALSE,
+        'type'        => 'int',
+        'not null'    => false,
       ),
-      'month' => array(
+      'month'          => array(
         'description' => 'TODO: please describe this field!',
-        'type' => 'int',
-        'not null' => FALSE,
+        'type'        => 'int',
+        'not null'    => false,
       ),
-      'yearmonth' => array(
+      'yearmonth'      => array(
         'description' => 'TODO: please describe this field!',
-        'type' => 'varchar',
-        'length' => '7',
-        'not null' => FALSE,
+        'type'        => 'varchar',
+        'length'      => '7',
+        'not null'    => false,
       ),
       'financial_year' => array(
         'description' => 'TODO: please describe this field!',
-        'type' => 'varchar',
-        'length' => '9',
-        'not null' => FALSE,
+        'type'        => 'varchar',
+        'length'      => '9',
+        'not null'    => false,
       ),
     ),
   );
-  $schema['invoicely_mileage_view_yearly_amounts'] = array(
+  $schema['invoicely_mileage_view_yearly_amounts']   = array(
     'description' => 'VIEW',
-    'fields' => array(
-      'uid' => array(
+    'fields'      => array(
+      'uid'            => array(
         'description' => 'TODO: please describe this field!',
-        'type' => 'int',
-        'not null' => TRUE,
+        'type'        => 'int',
+        'not null'    => true,
       ),
-      'username' => array(
+      'username'       => array(
         'description' => 'Unique user name.',
-        'type' => 'varchar',
-        'length' => '60',
-        'not null' => TRUE,
-        'default' => '',
+        'type'        => 'varchar',
+        'length'      => '60',
+        'not null'    => true,
+        'default'     => '',
       ),
       'financial_year' => array(
         'description' => 'TODO: please describe this field!',
-        'type' => 'varchar',
-        'length' => '9',
-        'not null' => FALSE,
+        'type'        => 'varchar',
+        'length'      => '9',
+        'not null'    => false,
       ),
-      'distance' => array(
+      'distance'       => array(
         'description' => 'TODO: please describe this field!',
-        'type' => 'numeric',
-        'not null' => FALSE,
-        'precision' => '55',
-        'scale' => '2',
+        'type'        => 'numeric',
+        'not null'    => false,
+        'precision'   => '55',
+        'scale'       => '2',
       ),
-      'amount' => array(
+      'amount'         => array(
         'description' => 'TODO: please describe this field!',
-        'type' => 'numeric',
-        'not null' => FALSE,
-        'precision' => '38',
-        'scale' => '4',
+        'type'        => 'numeric',
+        'not null'    => false,
+        'precision'   => '38',
+        'scale'       => '4',
       ),
     ),
   );
-  $schema['invoicely_mileage_view_yearly_mileages'] = array(
+  $schema['invoicely_mileage_view_yearly_mileages']  = array(
     'description' => 'VIEW',
-    'fields' => array(
-      'uid' => array(
+    'fields'      => array(
+      'uid'                => array(
         'description' => 'TODO: please describe this field!',
-        'type' => 'int',
-        'not null' => TRUE,
+        'type'        => 'int',
+        'not null'    => true,
       ),
-      'username' => array(
+      'username'           => array(
         'description' => 'Unique user name.',
-        'type' => 'varchar',
-        'length' => '60',
-        'not null' => TRUE,
-        'default' => '',
+        'type'        => 'varchar',
+        'length'      => '60',
+        'not null'    => true,
+        'default'     => '',
       ),
-      'year' => array(
+      'year'               => array(
         'description' => 'TODO: please describe this field!',
-        'type' => 'int',
-        'not null' => FALSE,
+        'type'        => 'int',
+        'not null'    => false,
       ),
-      'financial_year' => array(
+      'financial_year'     => array(
         'description' => 'TODO: please describe this field!',
-        'type' => 'varchar',
-        'length' => '9',
-        'not null' => FALSE,
+        'type'        => 'varchar',
+        'length'      => '9',
+        'not null'    => false,
       ),
-      'distance' => array(
+      'distance'           => array(
         'description' => 'TODO: please describe this field!',
-        'type' => 'numeric',
-        'not null' => FALSE,
-        'precision' => '33',
-        'scale' => '2',
+        'type'        => 'numeric',
+        'not null'    => false,
+        'precision'   => '33',
+        'scale'       => '2',
       ),
       'distance_high_rate' => array(
         'description' => 'TODO: please describe this field!',
-        'type' => 'numeric',
-        'not null' => FALSE,
-        'precision' => '33',
-        'scale' => '2',
+        'type'        => 'numeric',
+        'not null'    => false,
+        'precision'   => '33',
+        'scale'       => '2',
       ),
-      'distance_low_rate' => array(
+      'distance_low_rate'  => array(
         'description' => 'TODO: please describe this field!',
-        'type' => 'numeric',
-        'not null' => FALSE,
-        'precision' => '34',
-        'scale' => '2',
+        'type'        => 'numeric',
+        'not null'    => false,
+        'precision'   => '34',
+        'scale'       => '2',
       ),
     ),
   );
-  $schema['invoicely_receipt_lines'] = array(
+  $schema['invoicely_receipt_lines']                 = array(
     'description' => 'TODO: please describe this table!',
-    'fields' => array(
-      'rlid' => array(
+    'fields'      => array(
+      'rlid'   => array(
         'description' => 'TODO: please describe this field!',
-        'type' => 'serial',
-        'unsigned' => TRUE,
-        'not null' => TRUE,
+        'type'        => 'serial',
+        'unsigned'    => true,
+        'not null'    => true,
       ),
-      'rid' => array(
+      'rid'    => array(
         'description' => 'TODO: please describe this field!',
-        'type' => 'int',
-        'unsigned' => TRUE,
-        'not null' => TRUE,
+        'type'        => 'int',
+        'unsigned'    => true,
+        'not null'    => true,
       ),
-      'name' => array(
+      'name'   => array(
         'description' => 'TODO: please describe this field!',
-        'type' => 'text',
-        'not null' => TRUE,
+        'type'        => 'text',
+        'not null'    => true,
       ),
       'amount' => array(
         'description' => 'TODO: please describe this field!',
-        'type' => 'float',
-        'size' => 'big',
-        'not null' => TRUE,
-        'precision' => '10',
-        'scale' => '2',
+        'type'        => 'float',
+        'size'        => 'big',
+        'not null'    => true,
+        'precision'   => '10',
+        'scale'       => '2',
       ),
-      'taxid' => array(
+      'taxid'  => array(
         'description' => 'TODO: please describe this field!',
-        'type' => 'int',
-        'unsigned' => TRUE,
-        'not null' => TRUE,
-        'default' => 4,
+        'type'        => 'int',
+        'unsigned'    => true,
+        'not null'    => true,
+        'default'     => 4,
       ),
-      'file' => array(
+      'file'   => array(
         'description' => 'TODO: please describe this field!',
-        'type' => 'blob',
-        'size' => 'big',
-        'not null' => FALSE,
+        'type'        => 'blob',
+        'size'        => 'big',
+        'not null'    => false,
       ),
     ),
     'primary key' => array('rlid'),
-    'indexes' => array(
+    'indexes'     => array(
       'rrid' => array('rid'),
     ),
   );
-  $schema['invoicely_receipt_lines_repeated'] = array(
+  $schema['invoicely_receipt_lines_repeated']        = array(
     'description' => 'TODO: please describe this table!',
-    'fields' => array(
-      'rrlid' => array(
+    'fields'      => array(
+      'rrlid'  => array(
         'description' => 'TODO: please describe this field!',
-        'type' => 'serial',
-        'unsigned' => TRUE,
-        'not null' => TRUE,
+        'type'        => 'serial',
+        'unsigned'    => true,
+        'not null'    => true,
       ),
-      'rrid' => array(
+      'rrid'   => array(
         'description' => 'TODO: please describe this field!',
-        'type' => 'int',
-        'unsigned' => TRUE,
-        'not null' => TRUE,
+        'type'        => 'int',
+        'unsigned'    => true,
+        'not null'    => true,
       ),
-      'name' => array(
+      'name'   => array(
         'description' => 'TODO: please describe this field!',
-        'type' => 'text',
-        'not null' => TRUE,
+        'type'        => 'text',
+        'not null'    => true,
       ),
       'amount' => array(
         'description' => 'TODO: please describe this field!',
-        'type' => 'float',
-        'size' => 'big',
-        'not null' => TRUE,
-        'precision' => '10',
-        'scale' => '2',
+        'type'        => 'float',
+        'size'        => 'big',
+        'not null'    => true,
+        'precision'   => '10',
+        'scale'       => '2',
       ),
-      'taxid' => array(
+      'taxid'  => array(
         'description' => 'TODO: please describe this field!',
-        'type' => 'int',
-        'unsigned' => TRUE,
-        'not null' => TRUE,
-        'default' => 4,
+        'type'        => 'int',
+        'unsigned'    => true,
+        'not null'    => true,
+        'default'     => 4,
       ),
     ),
     'primary key' => array('rrlid'),
-    'indexes' => array(
+    'indexes'     => array(
       'rrid' => array('rrid'),
     ),
   );
-  $schema['invoicely_receipts'] = array(
+  $schema['invoicely_receipts']                      = array(
     'description' => 'TODO: please describe this table!',
-    'fields' => array(
-      'rid' => array(
+    'fields'      => array(
+      'rid'     => array(
         'description' => 'TODO: please describe this field!',
-        'type' => 'serial',
-        'unsigned' => TRUE,
-        'not null' => TRUE,
+        'type'        => 'serial',
+        'unsigned'    => true,
+        'not null'    => true,
       ),
-      'rrid' => array(
+      'rrid'    => array(
         'description' => 'TODO: please describe this field!',
-        'type' => 'int',
-        'not null' => FALSE,
+        'type'        => 'int',
+        'not null'    => false,
       ),
-      'uid' => array(
+      'uid'     => array(
         'description' => 'TODO: please describe this field!',
-        'type' => 'int',
-        'unsigned' => TRUE,
-        'not null' => TRUE,
+        'type'        => 'int',
+        'unsigned'    => true,
+        'not null'    => true,
       ),
-      'date' => array(
+      'date'    => array(
         'description' => 'TODO: please describe this field!',
-        'type' => 'datetime',
-        'not null' => TRUE,
+        'type'        => 'datetime',
+        'mysql_type'  => 'datetime',
+        'not null'    => true,
       ),
-      'cid' => array(
+      'cid'     => array(
         'description' => 'TODO: please describe this field!',
-        'type' => 'int',
-        'unsigned' => TRUE,
-        'not null' => TRUE,
+        'type'        => 'int',
+        'unsigned'    => true,
+        'not null'    => true,
       ),
       'deleted' => array(
         'description' => 'TODO: please describe this field!',
-        'type' => 'enum',
-        'not null' => TRUE,
-        'default' => 'No',
+        'type'        => 'enum',
+        'not null'    => true,
+        'default'     => 'No',
       ),
     ),
     'primary key' => array('rid'),
-    'indexes' => array(
+    'indexes'     => array(
       'cid' => array('cid'),
       'uid' => array('uid', 'cid'),
     ),
   );
-  $schema['invoicely_receipts_repeated'] = array(
+  $schema['invoicely_receipts_repeated']             = array(
     'description' => 'TODO: please describe this table!',
-    'fields' => array(
-      'rrid' => array(
+    'fields'      => array(
+      'rrid'                  => array(
         'description' => 'TODO: please describe this field!',
-        'type' => 'serial',
-        'unsigned' => TRUE,
-        'not null' => TRUE,
+        'type'        => 'serial',
+        'unsigned'    => true,
+        'not null'    => true,
       ),
-      'uid' => array(
+      'uid'                   => array(
         'description' => 'TODO: please describe this field!',
-        'type' => 'int',
-        'unsigned' => TRUE,
-        'not null' => TRUE,
+        'type'        => 'int',
+        'unsigned'    => true,
+        'not null'    => true,
       ),
-      'name' => array(
+      'name'                  => array(
         'description' => 'Name of Recurring Reciept. ',
-        'type' => 'text',
-        'not null' => TRUE,
+        'type'        => 'text',
+        'not null'    => true,
       ),
       'date_first_occurrence' => array(
         'description' => 'TODO: please describe this field!',
-        'type' => 'datetime',
-        'not null' => TRUE,
+        'type'        => 'datetime',
+        'mysql_type'  => 'DATETIME',
+        'not null'    => true,
       ),
-      'date_last_occurrence' => array(
+      'date_last_occurrence'  => array(
         'description' => 'TODO: please describe this field!',
-        'type' => 'datetime',
-        'not null' => FALSE,
+        'type'        => 'datetime',
+        'mysql_type'  => 'DATETIME',
+        'not null'    => false,
       ),
-      'num_occurrences' => array(
+      'num_occurrences'       => array(
         'description' => 'Number of Occurrences',
-        'type' => 'int',
-        'not null' => FALSE,
+        'type'        => 'int',
+        'not null'    => false,
       ),
-      'rolling' => array(
+      'rolling'               => array(
         'description' => 'TODO: please describe this field!',
-        'type' => 'enum',
-        'not null' => TRUE,
-        'default' => 'No',
+        'type'        => 'enum',
+        'not null'    => true,
+        'default'     => 'No',
       ),
-      'fid' => array(
+      'fid'                   => array(
         'description' => 'Frequency ID',
-        'type' => 'int',
-        'not null' => TRUE,
+        'type'        => 'int',
+        'not null'    => true,
       ),
-      'cid' => array(
+      'cid'                   => array(
         'description' => 'Company ID',
-        'type' => 'int',
-        'unsigned' => TRUE,
-        'not null' => TRUE,
+        'type'        => 'int',
+        'unsigned'    => true,
+        'not null'    => true,
       ),
-      'deleted' => array(
+      'deleted'               => array(
         'description' => 'TODO: please describe this field!',
-        'type' => 'enum',
-        'not null' => TRUE,
-        'default' => 'No',
+        'type'        => 'enum',
+        'not null'    => true,
+        'default'     => 'No',
       ),
-      'file' => array(
+      'file'                  => array(
         'description' => 'Related file',
-        'type' => 'blob',
-        'size' => 'big',
-        'not null' => FALSE,
+        'type'        => 'blob',
+        'size'        => 'big',
+        'not null'    => false,
       ),
     ),
     'primary key' => array('rrid'),
-    'indexes' => array(
+    'indexes'     => array(
       'cid' => array('cid'),
       'uid' => array('uid', 'cid'),
     ),
   );
   $schema['invoicely_receipts_repeated_frequencies'] = array(
     'description' => 'TODO: please describe this table!',
-    'fields' => array(
-      'fid' => array(
+    'fields'      => array(
+      'fid'          => array(
         'description' => 'TODO: please describe this field!',
-        'type' => 'serial',
-        'unsigned' => TRUE,
-        'not null' => TRUE,
+        'type'        => 'serial',
+        'unsigned'    => true,
+        'not null'    => true,
       ),
-      'name' => array(
+      'name'         => array(
         'description' => 'TODO: please describe this field!',
-        'type' => 'varchar',
-        'length' => '32',
-        'not null' => TRUE,
+        'type'        => 'varchar',
+        'length'      => '32',
+        'not null'    => true,
       ),
       'machine_name' => array(
         'description' => 'TODO: please describe this field!',
-        'type' => 'varchar',
-        'length' => '32',
-        'not null' => TRUE,
+        'type'        => 'varchar',
+        'length'      => '32',
+        'not null'    => true,
       ),
     ),
     'primary key' => array('fid'),
@@ -637,184 +641,187 @@ function invoicely_schema(){
       'name' => array('name', 'machine_name')
     ),
   );
-  $schema['invoicely_reciept_view_list'] = array(
+  $schema['invoicely_reciept_view_list']             = array(
     'description' => 'VIEW',
-    'fields' => array(
-      'rid' => array(
+    'fields'      => array(
+      'rid'     => array(
         'description' => 'TODO: please describe this field!',
-        'type' => 'int',
-        'unsigned' => TRUE,
-        'not null' => TRUE,
-        'default' => 0,
+        'type'        => 'int',
+        'unsigned'    => true,
+        'not null'    => true,
+        'default'     => 0,
       ),
-      'rrid' => array(
+      'rrid'    => array(
         'description' => 'TODO: please describe this field!',
-        'type' => 'int',
-        'not null' => FALSE,
+        'type'        => 'int',
+        'not null'    => false,
       ),
-      'uid' => array(
+      'uid'     => array(
         'description' => 'TODO: please describe this field!',
-        'type' => 'int',
-        'unsigned' => TRUE,
-        'not null' => TRUE,
+        'type'        => 'int',
+        'unsigned'    => true,
+        'not null'    => true,
       ),
-      'date' => array(
+      'date'    => array(
         'description' => 'TODO: please describe this field!',
-        'type' => 'datetime',
-        'not null' => TRUE,
+        'type'        => 'datetime',
+        'mysql_type'  => 'DATETIME',
+        'not null'    => true,
       ),
-      'cid' => array(
+      'cid'     => array(
         'description' => 'TODO: please describe this field!',
-        'type' => 'int',
-        'unsigned' => TRUE,
-        'not null' => TRUE,
+        'type'        => 'int',
+        'unsigned'    => true,
+        'not null'    => true,
       ),
       'deleted' => array(
         'description' => 'TODO: please describe this field!',
-        'type' => 'enum',
-        'not null' => TRUE,
-        'default' => 'No',
+        'type'        => 'enum',
+        'not null'    => true,
+        'default'     => 'No',
       ),
       'company' => array(
         'description' => 'TODO: please describe this field!',
-        'type' => 'text',
-        'not null' => TRUE,
+        'type'        => 'text',
+        'not null'    => true,
       ),
-      'amount' => array(
+      'amount'  => array(
         'description' => 'TODO: please describe this field!',
-        'type' => 'float',
-        'size' => 'big',
-        'not null' => FALSE,
-        'precision' => '19',
-        'scale' => '2',
+        'type'        => 'float',
+        'size'        => 'big',
+        'not null'    => false,
+        'precision'   => '19',
+        'scale'       => '2',
       ),
     ),
   );
-  $schema['invoicely_reciept_view_monthly_totals'] = array(
+  $schema['invoicely_reciept_view_monthly_totals']   = array(
     'description' => 'VIEW',
-    'fields' => array(
-      'uid' => array(
+    'fields'      => array(
+      'uid'               => array(
         'description' => 'TODO: please describe this field!',
-        'type' => 'int',
-        'unsigned' => TRUE,
-        'not null' => TRUE,
+        'type'        => 'int',
+        'unsigned'    => true,
+        'not null'    => true,
       ),
-      'username' => array(
+      'username'          => array(
         'description' => 'Unique user name.',
-        'type' => 'varchar',
-        'length' => '60',
-        'not null' => TRUE,
-        'default' => '',
+        'type'        => 'varchar',
+        'length'      => '60',
+        'not null'    => true,
+        'default'     => '',
       ),
-      'yearmonth' => array(
+      'yearmonth'         => array(
         'description' => 'TODO: please describe this field!',
-        'type' => 'varchar',
-        'length' => '7',
-        'not null' => FALSE,
+        'type'        => 'varchar',
+        'length'      => '7',
+        'not null'    => false,
       ),
-      'financial_year' => array(
+      'financial_year'    => array(
         'description' => 'TODO: please describe this field!',
-        'type' => 'varchar',
-        'length' => '9',
-        'not null' => FALSE,
+        'type'        => 'varchar',
+        'length'      => '9',
+        'not null'    => false,
       ),
       'amount_cumulative' => array(
         'description' => 'TODO: please describe this field!',
-        'type' => 'float',
-        'size' => 'big',
-        'not null' => FALSE,
-        'precision' => '19',
-        'scale' => '2',
+        'type'        => 'float',
+        'size'        => 'big',
+        'not null'    => false,
+        'precision'   => '19',
+        'scale'       => '2',
       ),
-      'amount_min' => array(
+      'amount_min'        => array(
         'description' => 'TODO: please describe this field!',
-        'type' => 'float',
-        'size' => 'big',
-        'not null' => FALSE,
-        'precision' => '19',
-        'scale' => '2',
+        'type'        => 'float',
+        'size'        => 'big',
+        'not null'    => false,
+        'precision'   => '19',
+        'scale'       => '2',
       ),
-      'amount_max' => array(
+      'amount_max'        => array(
         'description' => 'TODO: please describe this field!',
-        'type' => 'float',
-        'size' => 'big',
-        'not null' => FALSE,
-        'precision' => '19',
-        'scale' => '2',
+        'type'        => 'float',
+        'size'        => 'big',
+        'not null'    => false,
+        'precision'   => '19',
+        'scale'       => '2',
       ),
-      'amount_average' => array(
+      'amount_average'    => array(
         'description' => 'TODO: please describe this field!',
-        'type' => 'float',
-        'size' => 'big',
-        'not null' => FALSE,
-        'precision' => '23',
-        'scale' => '6',
+        'type'        => 'float',
+        'size'        => 'big',
+        'not null'    => false,
+        'precision'   => '23',
+        'scale'       => '6',
       ),
     ),
   );
-  $schema['invoicely_reciept_view_yearly_totals'] = array(
+  $schema['invoicely_reciept_view_yearly_totals']    = array(
     'description' => 'VIEW',
-    'fields' => array(
-      'uid' => array(
+    'fields'      => array(
+      'uid'               => array(
         'description' => 'TODO: please describe this field!',
-        'type' => 'int',
-        'unsigned' => TRUE,
-        'not null' => TRUE,
+        'type'        => 'int',
+        'unsigned'    => true,
+        'not null'    => true,
       ),
-      'username' => array(
+      'username'          => array(
         'description' => 'Unique user name.',
-        'type' => 'varchar',
-        'length' => '60',
-        'not null' => TRUE,
-        'default' => '',
+        'type'        => 'varchar',
+        'length'      => '60',
+        'not null'    => true,
+        'default'     => '',
       ),
-      'financial_year' => array(
+      'financial_year'    => array(
         'description' => 'TODO: please describe this field!',
-        'type' => 'varchar',
-        'length' => '9',
-        'not null' => FALSE,
+        'type'        => 'varchar',
+        'length'      => '9',
+        'not null'    => false,
       ),
       'amount_cumulative' => array(
         'description' => 'TODO: please describe this field!',
-        'type' => 'float',
-        'size' => 'big',
-        'not null' => FALSE,
-        'precision' => '19',
-        'scale' => '2',
+        'type'        => 'float',
+        'size'        => 'big',
+        'not null'    => false,
+        'precision'   => '19',
+        'scale'       => '2',
       ),
     ),
   );
-  $schema['invoicely_tax_rates'] = array(
+  $schema['invoicely_tax_rates']                     = array(
     'description' => 'TODO: please describe this table!',
-    'fields' => array(
+    'fields'      => array(
       'taxid' => array(
         'description' => 'TODO: please describe this field!',
-        'type' => 'serial',
-        'unsigned' => TRUE,
-        'not null' => TRUE,
+        'type'        => 'serial',
+        'unsigned'    => true,
+        'not null'    => true,
       ),
-      'name' => array(
+      'name'  => array(
         'description' => 'TODO: please describe this field!',
-        'type' => 'text',
-        'not null' => TRUE,
+        'type'        => 'text',
+        'not null'    => true,
       ),
-      'rate' => array(
+      'rate'  => array(
         'description' => 'TODO: please describe this field!',
-        'type' => 'float',
-        'size' => 'big',
-        'not null' => TRUE,
-        'precision' => '10',
-        'scale' => '5',
+        'type'        => 'float',
+        'size'        => 'big',
+        'not null'    => true,
+        'precision'   => '10',
+        'scale'       => '5',
       ),
       'start' => array(
         'description' => 'TODO: please describe this field!',
-        'type' => 'datetime',
-        'not null' => TRUE,
+        'type'        => 'datetime',
+        'mysql_type'  => 'DATETIME',
+        'not null'    => true,
       ),
-      'end' => array(
+      'end'   => array(
         'description' => 'TODO: please describe this field!',
-        'type' => 'datetime',
-        'not null' => TRUE,
+        'type'        => 'datetime',
+        'mysql_type'  => 'DATETIME',
+        'not null'    => true,
       ),
     ),
     'primary key' => array('taxid'),
