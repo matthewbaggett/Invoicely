@@ -210,16 +210,19 @@
  *   );
  * @endcode
  */
+
+$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+
 $databases = array (
   'default' => 
   array (
     'default' => 
     array (
-      'database'  => $_SERVER['DRUPAL_DB_DATABASE'],
-      'username'  => $_SERVER['DRUPAL_DB_USERNAME'],
-      'password'  => $_SERVER['DRUPAL_DB_PASSWORD'],
-      'host'      => $_SERVER['DRUPAL_DB_HOSTNAME'],
-      'port'      => $_SERVER['DRUPAL_DB_PORT'],
+      'database'  => substr($url["path"],1),
+      'username'  => $url['user'],
+      'password'  => $url['pass'],
+      'host'      => $url['host'],
+      'port'      => $url['port'],
       'driver'    => 'mysql',
       'prefix'    => '',
     ),
