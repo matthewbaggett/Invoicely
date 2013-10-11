@@ -245,7 +245,20 @@ if(isset($_ENV['DRUPAL_DB_DATABASE'])){
     ),
   );
 }else{
-  die("No DB for youuuu...");
+  $databases = array (
+    'default' =>
+    array (
+      'default' =>
+      array (
+        'database'  => 'invoicely',
+        'username'  => 'root',
+        'password'  => '',
+        'host'      => 'localhost',
+        'driver'    => 'mysql',
+        'prefix'    => '',
+      ),
+    ),
+  );
 }
 /**
  * Access control for update.php script.
