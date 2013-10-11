@@ -211,24 +211,42 @@
  * @endcode
  */
 
-$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
-
-$databases = array (
-  'default' => 
-  array (
-    'default' => 
+if(isset($_ENV['DRUPAL_DB_DATABASE'])){
+  $databases = array (
+    'default' =>
     array (
-      'database'  => substr($url["path"],1),
-      'username'  => $url['user'],
-      'password'  => $url['pass'],
-      'host'      => $url['host'],
-      //'port'      => $url['port'],
-      'driver'    => 'mysql',
-      'prefix'    => '',
+      'default' =>
+      array (
+        'database'  => $_ENV['DRUPAL_DB_DATABASE'],
+        'username'  => $_ENV['DRUPAL_DB_USERNAME'],
+        'password'  => $_ENV['DRUPAL_DB_PASSWORD'],
+        'host'      => $_ENV['DRUPAL_DB_HOSTNAME'],
+        'port'      => $_ENV['DRUPAL_DB_PORT'],
+        'driver'    => 'mysql',
+        'prefix'    => '',
+      ),
     ),
-  ),
-);
-
+  );
+}elseif(isset($_ENV['CLEARDB_DATABASE_URL'])){
+  $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+  $databases = array (
+    'default' =>
+    array (
+      'default' =>
+      array (
+        'database'  => substr($url["path"],1),
+        'username'  => $url['user'],
+        'password'  => $url['pass'],
+        'host'      => $url['host'],
+        //'port'      => $url['port'],
+        'driver'    => 'mysql',
+        'prefix'    => '',
+      ),
+    ),
+  );
+}else{
+  die("No DB for youuuu...");
+}
 /**
  * Access control for update.php script.
  *
