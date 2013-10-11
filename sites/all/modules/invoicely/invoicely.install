@@ -505,6 +505,10 @@ function invoicely_install(){
   $to_run = scandir($dir_path);
   foreach($to_run as $file){
     $sql = file_get_contents($dir_path . $file);
-    db_query($sql);
+    foreach(explode(";", $sql) as $query){
+      watchdog("invoicely", "Running SQL file Query: {$file}: {$query}");
+      db_query($query);
+    }
+
   }
 }
