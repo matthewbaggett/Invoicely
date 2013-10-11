@@ -222,7 +222,7 @@ $databases = array (
       'username'  => $url['user'],
       'password'  => $url['pass'],
       'host'      => $url['host'],
-      'port'      => $url['port'],
+      //'port'      => $url['port'],
       'driver'    => 'mysql',
       'prefix'    => '',
     ),
