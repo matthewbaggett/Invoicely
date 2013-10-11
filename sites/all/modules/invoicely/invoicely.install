@@ -504,11 +504,17 @@ function invoicely_install(){
   $dir_path = dirname(__FILE__) . "/sql/";
   $to_run = scandir($dir_path);
   foreach($to_run as $file){
-    $sql = file_get_contents($dir_path . $file);
-    foreach(explode(";", $sql) as $query){
+    $file_path = $dir_path . $file;
+    echo "Loading {$file_path}\n";
+    $sql = file_get_contents($file_path);
+    $queries = explode(";", $sql);
+    foreach($queries as $query){
+      $query = trim($query);
+      echo "Running SQL file Query: {$file}: {$query}\n\n";
       watchdog("invoicely", "Running SQL file Query: {$file}: {$query}");
       db_query($query);
     }
+    echo "\n";
 
   }
 }
