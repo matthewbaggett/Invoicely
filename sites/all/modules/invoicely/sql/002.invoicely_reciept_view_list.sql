@@ -1,4 +1,4 @@
-CREATE OR REPLACE VIEW invoicely_reciept_view_list AS
+CREATE OR REPLACE VIEW {invoicely_reciept_view_list} AS
 
 SELECT 
 	ir.*, 

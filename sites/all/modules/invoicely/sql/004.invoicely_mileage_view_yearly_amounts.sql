@@ -1,4 +1,4 @@
-CREATE OR REPLACE VIEW invoicely_mileage_view_yearly_amounts AS
+CREATE OR REPLACE VIEW {invoicely_mileage_view_yearly_amounts} AS
 SELECT 
 	imvym.`uid`,
 	imvym.`username`,
