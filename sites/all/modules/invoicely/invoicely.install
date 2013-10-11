@@ -499,3 +499,12 @@ function invoicely_schema() {
   );
   return $schema;
 }
+
+function invoicely_install(){
+  $dir_path = dirname(__FILE__) . "/sql/";
+  $to_run = scandir($dir_path);
+  foreach($to_run as $file){
+    $sql = file_get_contents($dir_path . $file);
+    db_query($sql);
+  }
+}
