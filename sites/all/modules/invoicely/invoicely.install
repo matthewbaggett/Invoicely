@@ -28,7 +28,7 @@ function invoicely_schema() {
       ),
       'vat_number' => array(
         'description' => 'TODO: please describe this field!',
-        'type'        => 'varchar',
+        'type'        => 'text',
         'length'      => '32',
         'not null'    => true,
       ),
@@ -44,7 +44,7 @@ function invoicely_schema() {
     'fields'      => array(
       'financial_year' => array(
         'description' => 'TODO: please describe this field!',
-        'type'        => 'varchar',
+        'type'        => 'text',
         'length'      => '9',
         'not null'    => false,
       ),
@@ -67,20 +67,20 @@ function invoicely_schema() {
       ),
       'username'               => array(
         'description' => 'Unique user name.',
-        'type'        => 'varchar',
+        'type'        => 'text',
         'length'      => '60',
         'not null'    => true,
         'default'     => '',
       ),
       'yearmonth'              => array(
         'description' => 'TODO: please describe this field!',
-        'type'        => 'varchar',
+        'type'        => 'text',
         'length'      => '7',
         'not null'    => false,
       ),
       'financial_year'         => array(
         'description' => 'TODO: please describe this field!',
-        'type'        => 'varchar',
+        'type'        => 'text',
         'length'      => '9',
         'not null'    => false,
       ),
@@ -141,7 +141,8 @@ function invoicely_schema() {
       ),
       'paid'           => array(
         'description' => 'TODO: please describe this field!',
-        'type'        => 'enum',
+        'type'        => 'text',
+        'length'      => 3,
         'not null'    => true,
         'default'     => 'No',
       ),
@@ -153,7 +154,8 @@ function invoicely_schema() {
       ),
       'deleted'        => array(
         'description' => 'TODO: please describe this field!',
-        'type'        => 'enum',
+        'type'        => 'text',
+        'length'      => 3,
         'not null'    => true,
         'default'     => 'No',
       ),
@@ -200,8 +202,8 @@ function invoicely_schema() {
       ),
       'direction' => array(
         'description' => 'TODO: please describe this field!',
-        'type'        => 'enum',
-        'not null'    => true,
+        'type'        => 'text',
+        'length'      => 3, 'not null' => true,
         'default'     => 'Return',
       ),
       'notes'     => array(
@@ -268,7 +270,7 @@ function invoicely_schema() {
       ),
       'username'       => array(
         'description' => 'Unique user name.',
-        'type'        => 'varchar',
+        'type'        => 'text',
         'length'      => '60',
         'not null'    => true,
         'default'     => '',
@@ -281,8 +283,8 @@ function invoicely_schema() {
       ),
       'direction'      => array(
         'description' => 'TODO: please describe this field!',
-        'type'        => 'enum',
-        'not null'    => true,
+        'type'        => 'text',
+        'length'      => 3, 'not null' => true,
         'default'     => 'Return',
       ),
       'route_name'     => array(
@@ -310,13 +312,13 @@ function invoicely_schema() {
       ),
       'yearmonth'      => array(
         'description' => 'TODO: please describe this field!',
-        'type'        => 'varchar',
+        'type'        => 'text',
         'length'      => '7',
         'not null'    => false,
       ),
       'financial_year' => array(
         'description' => 'TODO: please describe this field!',
-        'type'        => 'varchar',
+        'type'        => 'text',
         'length'      => '9',
         'not null'    => false,
       ),
@@ -332,14 +334,14 @@ function invoicely_schema() {
       ),
       'username'       => array(
         'description' => 'Unique user name.',
-        'type'        => 'varchar',
+        'type'        => 'text',
         'length'      => '60',
         'not null'    => true,
         'default'     => '',
       ),
       'financial_year' => array(
         'description' => 'TODO: please describe this field!',
-        'type'        => 'varchar',
+        'type'        => 'text',
         'length'      => '9',
         'not null'    => false,
       ),
@@ -369,7 +371,7 @@ function invoicely_schema() {
       ),
       'username'           => array(
         'description' => 'Unique user name.',
-        'type'        => 'varchar',
+        'type'        => 'text',
         'length'      => '60',
         'not null'    => true,
         'default'     => '',
@@ -381,7 +383,7 @@ function invoicely_schema() {
       ),
       'financial_year'     => array(
         'description' => 'TODO: please describe this field!',
-        'type'        => 'varchar',
+        'type'        => 'text',
         'length'      => '9',
         'not null'    => false,
       ),
@@ -530,8 +532,8 @@ function invoicely_schema() {
       ),
       'deleted' => array(
         'description' => 'TODO: please describe this field!',
-        'type'        => 'enum',
-        'not null'    => true,
+        'type'        => 'text',
+        'length'      => 3, 'not null' => true,
         'default'     => 'No',
       ),
     ),
@@ -580,8 +582,8 @@ function invoicely_schema() {
       ),
       'rolling'               => array(
         'description' => 'TODO: please describe this field!',
-        'type'        => 'enum',
-        'not null'    => true,
+        'type'        => 'text',
+        'length'      => 3, 'not null' => true,
         'default'     => 'No',
       ),
       'fid'                   => array(
@@ -597,8 +599,8 @@ function invoicely_schema() {
       ),
       'deleted'               => array(
         'description' => 'TODO: please describe this field!',
-        'type'        => 'enum',
-        'not null'    => true,
+        'type'        => 'text',
+        'length'      => 3, 'not null' => true,
         'default'     => 'No',
       ),
       'file'                  => array(
@@ -625,13 +627,13 @@ function invoicely_schema() {
       ),
       'name'         => array(
         'description' => 'TODO: please describe this field!',
-        'type'        => 'varchar',
+        'type'        => 'text',
         'length'      => '32',
         'not null'    => true,
       ),
       'machine_name' => array(
         'description' => 'TODO: please describe this field!',
-        'type'        => 'varchar',
+        'type'        => 'text',
         'length'      => '32',
         'not null'    => true,
       ),
@@ -676,7 +678,8 @@ function invoicely_schema() {
       ),
       'deleted' => array(
         'description' => 'TODO: please describe this field!',
-        'type'        => 'enum',
+        'type'        => 'text',
+        'length'      => 3,
         'not null'    => true,
         'default'     => 'No',
       ),
@@ -706,20 +709,20 @@ function invoicely_schema() {
       ),
       'username'          => array(
         'description' => 'Unique user name.',
-        'type'        => 'varchar',
+        'type'        => 'text',
         'length'      => '60',
         'not null'    => true,
         'default'     => '',
       ),
       'yearmonth'         => array(
         'description' => 'TODO: please describe this field!',
-        'type'        => 'varchar',
+        'type'        => 'text',
         'length'      => '7',
         'not null'    => false,
       ),
       'financial_year'    => array(
         'description' => 'TODO: please describe this field!',
-        'type'        => 'varchar',
+        'type'        => 'text',
         'length'      => '9',
         'not null'    => false,
       ),
@@ -768,14 +771,14 @@ function invoicely_schema() {
       ),
       'username'          => array(
         'description' => 'Unique user name.',
-        'type'        => 'varchar',
+        'type'        => 'text',
         'length'      => '60',
         'not null'    => true,
         'default'     => '',
       ),
       'financial_year'    => array(
         'description' => 'TODO: please describe this field!',
-        'type'        => 'varchar',
+        'type'        => 'text',
         'length'      => '9',
         'not null'    => false,
       ),
