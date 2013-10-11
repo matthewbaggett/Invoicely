@@ -470,8 +470,7 @@ function invoicely_schema() {
       ),
       'rate'  => array(
         'description' => 'TODO: please describe this field!',
-        'type'        => 'float',
-        'size'        => 'big',
+        'type'        => 'numeric',
         'not null'    => true,
         'precision'   => '10',
         'scale'       => '5',
