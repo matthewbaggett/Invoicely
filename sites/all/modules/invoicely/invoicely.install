@@ -503,7 +503,11 @@ function invoicely_schema() {
 function invoicely_install(){
   $dir_path = dirname(__FILE__) . "/sql/";
   $to_run = scandir($dir_path);
+
   foreach($to_run as $file){
+    if($file == '.' || $file == '..'){
+      continue;
+    }
     $file_path = $dir_path . $file;
     echo "Loading {$file_path}\n";
     $sql = file_get_contents($file_path);
