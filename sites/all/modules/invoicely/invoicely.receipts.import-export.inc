@@ -39,8 +39,8 @@ function invoicely_receipts_import(){
                 $tax_rate = new tax_rate_record();
                 $tax_rate->name = $tax_rate_number . "% VAT";
                 $tax_rate->rate = $tax_rate_number;
-                $tax_rate->start = date("Y-m-d H:i:s");
-                $tax_rate->end = date("Y-m-d H:i:s");
+                $tax_rate->start_effective = date("Y-m-d H:i:s");
+                $tax_rate->end_effective = date("Y-m-d H:i:s");
                 $tax_rate->save();
             }
 

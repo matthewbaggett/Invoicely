@@ -195,12 +195,12 @@ function invoicely_schema() {
         'type'        => 'text',
         'not null'    => true,
       ),
-      'start'    => array(
+      'start_location'    => array(
         'description' => 'TODO: please describe this field!',
         'type'        => 'text',
         'not null'    => true,
       ),
-      'end'      => array(
+      'end_location'      => array(
         'description' => 'TODO: please describe this field!',
         'type'        => 'text',
         'not null'    => true,
@@ -476,14 +476,14 @@ function invoicely_schema() {
         'precision'   => '10',
         'scale'       => '5',
       ),
-      'start' => array(
+      'start_effective' => array(
         'description' => 'TODO: please describe this field!',
         'type'        => 'datetime',
         'mysql_type'  => 'DATETIME',
         'pgsql_type'  => 'timestamp without time zone',
         'not null'    => true,
       ),
-      'end'   => array(
+      'end_effective'   => array(
         'description' => 'TODO: please describe this field!',
         'type'        => 'datetime',
         'mysql_type'  => 'DATETIME',
