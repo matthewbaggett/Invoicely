@@ -237,7 +237,8 @@ function invoicely_schema() {
       ),
       'amount' => array(
         'description' => 'TODO: please describe this field!',
-        'type'        => 'decimal',
+        'type'        => 'numeric',
+        'pgsql_type'  => 'DECIMAL',
         'not null'    => true,
         'precision'   => '10',
         'scale'       => '2',
@@ -283,7 +284,8 @@ function invoicely_schema() {
       ),
       'amount' => array(
         'description' => 'TODO: please describe this field!',
-        'type'        => 'decimal',
+        'type'        => 'numeric',
+        'pgsql_type'  => 'DECIMAL',
         'not null'    => true,
         'precision'   => '10',
         'scale'       => '2',
