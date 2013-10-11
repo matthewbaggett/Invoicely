@@ -514,9 +514,11 @@ function invoicely_install(){
     $queries = explode(";", $sql);
     foreach($queries as $query){
       $query = trim($query);
-      echo "Running SQL file Query: {$file}: {$query}\n\n";
-      watchdog("invoicely", "Running SQL file Query: {$file}: {$query}");
-      db_query($query);
+      if(strlen($query)){
+        echo "Running SQL file: '{$file}' Query: {$query}\n\n";
+        watchdog("invoicely", "Running SQL file Query: {$file}: {$query}");
+        db_query($query);
+      }
     }
     echo "\n";
 
