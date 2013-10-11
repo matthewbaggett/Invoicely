@@ -227,8 +227,8 @@ if(isset($_SERVER['DRUPAL_DB_DATABASE'])){
       ),
     ),
   );
-}elseif(isset($_SERVER['CLEARDB_DATABASE_URL'])){
-  $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+}elseif(isset($_SERVER['HEROKU_POSTGRESQL_NAVY_URL'])){
+  $url = parse_url(getenv("HEROKU_POSTGRESQL_NAVY_URL"));
   $databases = array (
     'default' =>
     array (
@@ -238,27 +238,14 @@ if(isset($_SERVER['DRUPAL_DB_DATABASE'])){
         'username'  => $url['user'],
         'password'  => $url['pass'],
         'host'      => $url['host'],
-        //'port'      => $url['port'],
-        'driver'    => 'mysql',
-        'prefix'    => '',
+        //'port' => '',
+        'driver' => 'pgsql',
+        'prefix' => '',
       ),
     ),
   );
 }else{
-  $databases = array (
-    'default' =>
-    array (
-      'default' =>
-      array (
-        'database'  => 'invoicely',
-        'username'  => 'root',
-        'password'  => '',
-        'host'      => 'localhost',
-        'driver'    => 'mysql',
-        'prefix'    => '',
-      ),
-    ),
-  );
+  die("No DB for you... ");
 }
 /**
  * Access control for update.php script.
