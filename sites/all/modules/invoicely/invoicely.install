@@ -28,7 +28,7 @@ function invoicely_schema() {
       ),
       'vat_number' => array(
         'description' => 'TODO: please describe this field!',
-        'type'        => 'text',
+        'type'        => 'varchar',
         'length'      => '32',
         'not null'    => true,
       ),
@@ -44,7 +44,7 @@ function invoicely_schema() {
     'fields'      => array(
       'financial_year' => array(
         'description' => 'TODO: please describe this field!',
-        'type'        => 'text',
+        'type'        => 'varchar',
         'length'      => '9',
         'not null'    => false,
       ),
@@ -444,13 +444,13 @@ function invoicely_schema() {
       ),
       'name'         => array(
         'description' => 'TODO: please describe this field!',
-        'type'        => 'text',
+        'type'        => 'varchar',
         'length'      => '32',
         'not null'    => true,
       ),
       'machine_name' => array(
         'description' => 'TODO: please describe this field!',
-        'type'        => 'text',
+        'type'        => 'varchar',
         'length'      => '32',
         'not null'    => true,
       ),
