@@ -61,12 +61,18 @@ function invoicely_schema() {
       ),
       'date_issued'    => array(
         'description' => 'TODO: please describe this field!',
-        'type'        => 'datetime', 'mysql_type' => 'datetime',
+        'type'        => 'datetime',
+        'mysql_type'  => 'datetime',
+        'pgsql_type'  => 'timestamp without time zone',
+
         'not null'    => true,
       ),
       'date_paid'      => array(
         'description' => 'TODO: please describe this field!',
-        'type'        => 'datetime', 'mysql_type' => 'datetime',
+        'type'        => 'datetime',
+        'mysql_type'  => 'datetime',
+        'pgsql_type'  => 'timestamp without time zone',
+
         'not null'    => false,
       ),
       'amount_charged' => array(
@@ -138,7 +144,9 @@ function invoicely_schema() {
       ),
       'date'      => array(
         'description' => 'TODO: please describe this field!',
-        'type'        => 'datetime', 'mysql_type' => 'datetime',
+        'type'        => 'datetime',
+        'mysql_type'  => 'datetime',
+        'pgsql_type'  => 'timestamp without time zone',
         'not null'    => true,
       ),
       'rid'       => array(
@@ -318,7 +326,8 @@ function invoicely_schema() {
       'date'    => array(
         'description' => 'TODO: please describe this field!',
         'type'        => 'datetime',
-        'mysql_type'  => 'datetime',
+        'mysql_type'  => 'DATETIME',
+        'pgsql_type'  => 'timestamp without time zone',
         'not null'    => true,
       ),
       'cid'     => array(
@@ -365,12 +374,14 @@ function invoicely_schema() {
         'description' => 'TODO: please describe this field!',
         'type'        => 'datetime',
         'mysql_type'  => 'DATETIME',
+        'pgsql_type'  => 'timestamp without time zone',
         'not null'    => true,
       ),
       'date_last_occurrence'  => array(
         'description' => 'TODO: please describe this field!',
         'type'        => 'datetime',
         'mysql_type'  => 'DATETIME',
+        'pgsql_type'  => 'timestamp without time zone',
         'not null'    => false,
       ),
       'num_occurrences'       => array(
@@ -469,12 +480,14 @@ function invoicely_schema() {
         'description' => 'TODO: please describe this field!',
         'type'        => 'datetime',
         'mysql_type'  => 'DATETIME',
+        'pgsql_type'  => 'timestamp without time zone',
         'not null'    => true,
       ),
       'end'   => array(
         'description' => 'TODO: please describe this field!',
         'type'        => 'datetime',
         'mysql_type'  => 'DATETIME',
+        'pgsql_type'  => 'timestamp without time zone',
         'not null'    => true,
       ),
     ),
@@ -483,21 +496,21 @@ function invoicely_schema() {
   return $schema;
 }
 
-function invoicely_install(){
+function invoicely_install() {
   $dir_path = dirname(__FILE__) . "/sql/";
-  $to_run = scandir($dir_path);
+  $to_run   = scandir($dir_path);
 
-  foreach($to_run as $file){
-    if($file == '.' || $file == '..'){
+  foreach ($to_run as $file) {
+    if ($file == '.' || $file == '..') {
       continue;
     }
     $file_path = $dir_path . $file;
     echo "Invoicely: Executing SQL: {$file}\n";
-    $sql = file_get_contents($file_path);
+    $sql     = file_get_contents($file_path);
     $queries = explode(";", $sql);
-    foreach($queries as $query){
+    foreach ($queries as $query) {
       $query = trim($query);
-      if(strlen($query)){
+      if (strlen($query)) {
         watchdog("invoicely", "Running SQL file Query: {$file}: {$query}");
         db_query($query);
       }
