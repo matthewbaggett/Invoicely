@@ -492,7 +492,7 @@ function invoicely_install(){
       continue;
     }
     $file_path = $dir_path . $file;
-    echo "Loading {$file_path}\n";
+    echo "Invoicely: Executing SQL: {$file}\n";
     $sql = file_get_contents($file_path);
     $queries = explode(";", $sql);
     foreach($queries as $query){
@@ -502,7 +502,5 @@ function invoicely_install(){
         db_query($query);
       }
     }
-    echo "\n";
-
   }
 }
