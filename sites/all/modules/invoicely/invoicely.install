@@ -39,23 +39,6 @@ function invoicely_schema() {
       'uid_2' => array('uid'),
     ),
   );
-  $schema['invoicely_get_financial_years_available'] = array(
-    'description' => 'VIEW',
-    'fields'      => array(
-      'financial_year' => array(
-        'description' => 'TODO: please describe this field!',
-        'type'        => 'varchar',
-        'length'      => '9',
-        'not null'    => false,
-      ),
-      'uid'            => array(
-        'description' => 'TODO: please describe this field!',
-        'type'        => 'int',
-        'unsigned'    => true,
-        'not null'    => true,
-      ),
-    ),
-  );
   $schema['invoicely_invoices']                      = array(
     'description' => 'TODO: please describe this table!',
     'fields'      => array(
