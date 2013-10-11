@@ -1,0 +1,11 @@
+name = Invoicely Timesheets
+description = Timesheet implementation
+core = 7.x
+
+dependencies[] = active_record
+dependencies[] = magic_forms
+
+files[] = models/timesheet.inc
+files[] = models/timesheet_event.inc
+
+stylesheets[all][] = css/timesheet.css
