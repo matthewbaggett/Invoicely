@@ -454,6 +454,39 @@ function invoicely_schema() {
       'name' => array('name', 'machine_name')
     ),
   );
+  $schema['invoicely_financial_year'] = array(
+    'description' => 'Financial years',
+    'fields'      => array(
+      'fyid'          => array(
+        'description' => 'Financial year ID',
+        'type'        => 'serial',
+        'unsigned'    => true,
+        'not null'    => true,
+      ),
+      'financial_year' => array(
+        'description' => 'Financial year ID',
+        'type'        => 'varchar',
+        'length'      => '9',
+        'not null'    => true,
+      ),
+      'year_effective_from'         => array(
+        'description' => 'Year effective from',
+        'mysql_type'  => 'DATETIME',
+        'pgsql_type'  => 'timestamp without time zone',
+        'not null'    => true,
+      ),
+      'year_effective_to' => array(
+        'description' => 'Year effective to',
+        'mysql_type'  => 'DATETIME',
+        'pgsql_type'  => 'timestamp without time zone',
+        'not null'    => true,
+      ),
+    ),
+    'primary key' => array('fid'),
+    'unique keys' => array(
+      'name' => array('name', 'machine_name')
+    ),
+  );
   $schema['invoicely_tax_rates']                     = array(
     'description' => 'TODO: please describe this table!',
     'fields'      => array(

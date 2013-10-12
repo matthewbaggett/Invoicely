@@ -9,5 +9,7 @@ SELECT
 FROM invoicely_invoices ii
 JOIN users u
   ON u.`uid` = ii.`uid`
+JOIN invoicely_financial_year ify
+  ON ii.`date_issued` BETWEEN ify.year_effective_from AND ify.year_effective_to
 GROUP BY yearmonth
 ORDER BY yearmonth ASC
