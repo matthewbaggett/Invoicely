@@ -4,7 +4,7 @@ SELECT
 	ii.uid as uid,
 	u.name as username,
 	DATE_FORMAT(ii.date_issued,'%Y-%m') as yearmonth,
-	get_financial_year(ii.date_issued) as financial_year,
+  ify.financial_year as financial_year,
 	SUM(ii.amount_paid) as amount_paid_cumulative
 FROM invoicely_invoices ii
 JOIN users u

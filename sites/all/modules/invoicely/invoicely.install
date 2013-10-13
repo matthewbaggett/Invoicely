@@ -529,6 +529,17 @@ function invoicely_schema() {
 }
 
 function invoicely_install() {
+  
+  for($year = 1990; $year <= 2020; $year++){
+    $next_year = $year++;
+    $fy = new financial_year();
+    $fy->financial_year = "{$year}-{$next_year}";
+    $fy->year_effective_from = "{$year}-04-01";
+    $fy->year_effective_to = "{$next_year}-03-31";
+    $fy->save();
+  }
+
+  // Run SQL view installers
   $dir_path = dirname(__FILE__) . "/sql/";
   $to_run   = scandir($dir_path);
 
