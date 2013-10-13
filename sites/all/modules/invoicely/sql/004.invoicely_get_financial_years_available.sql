@@ -1,4 +1,4 @@
-CREATE OR REPLACE VIEW {invoicely_get_financial_years_available} AS
+CREATE OR REPLACE VIEW invoicely_get_financial_years_available AS
 SELECT 
 	iivmt.financial_year,
 	iivmt.uid
