@@ -85,7 +85,7 @@ if(isset($_SERVER['DRUPAL_DB_DATABASE'])){
       ),
     ),
   );
-}else if(gethostname() == 'lincoln'){
+}else if(gethostname() == 'lincoln' || gethostname() == 'surrey.greynet'){
   $databases = array (
     'default' =>
       array (
@@ -102,7 +102,7 @@ if(isset($_SERVER['DRUPAL_DB_DATABASE'])){
       ),
   );
 }else{
-  die("No DB for you... ");
+  die("No DB for you, " . gethostname(). "... ");
 }
 /**
  * Access control for update.php script.

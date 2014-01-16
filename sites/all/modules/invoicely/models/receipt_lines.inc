@@ -2,6 +2,13 @@
 class receipt_line_record extends active_record{
     protected $_table = "invoicely_receipt_lines";
 
+    public $rlid;
+    public $rid;
+    public $name;
+    public $amount;
+    public $taxid;
+    public $file;
+
     public function get_amount(){
         return $this->amount;
     }
