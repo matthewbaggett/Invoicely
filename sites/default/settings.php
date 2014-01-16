@@ -52,8 +52,6 @@
  * @see conf_path()
  */
 
-
-
 if(isset($_SERVER['DRUPAL_DB_DATABASE'])){
   $databases = array (
     'default' =>
@@ -86,6 +84,22 @@ if(isset($_SERVER['DRUPAL_DB_DATABASE'])){
         'prefix' => '',
       ),
     ),
+  );
+}else if(gethostname() == 'lincoln'){
+  $databases = array (
+    'default' =>
+      array (
+        'default' =>
+          array (
+            'database'  => "invoicely",
+            'username'  => "invoicely",
+            'password'  => "zPvHMyaGaCLpX9jV",
+            'host'      => "localhost",
+            'port'      => "3306",
+            'driver'    => 'mysql',
+            'prefix'    => '',
+          ),
+      ),
   );
 }else{
   die("No DB for you... ");
