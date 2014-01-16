@@ -10,3 +10,6 @@
 [submodule "sites/all/themes/ace"]
 	path = sites/all/themes/ace
 	url = git@github.com:matthewbaggett/drupal_theme_ace.git
+[submodule "sites/all/modules/simple_cache"]
+	path = sites/all/modules/simple_cache
+	url = git@github.com:matthewbaggett/drupal_simple_cache.git
