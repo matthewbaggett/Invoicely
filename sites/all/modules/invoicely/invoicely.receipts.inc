@@ -51,10 +51,6 @@ function invoicely_receipts_list(){
     return invoicely_template_view('templates/receipts/list.phtml', $view);
 }
 
-function invoicely_receipts_add(){
-    return receipt_record::magic_form()->__toString();
-}
-
 function invoicely_receipts_edit($receipt_slug = false){
   if($receipt_slug){
     $receipt_id = reset(explode("-",$receipt_slug,2));
@@ -62,7 +58,27 @@ function invoicely_receipts_edit($receipt_slug = false){
   }else{
     $receipt = new receipt_record();
   }
-  return $receipt->_get_magic_form()->__toString();
+  $form = $receipt->_get_magic_form();
+  $form->remove_fields('rrid', 'uid');
+  $form->get_field('date')->set_label('Date');
+  $form->get_field('cid')->set_label('Company');
+
+  $receipt_lines = receipt_line_record::search()->where('rid', $receipt->rid)->exec();
+  $receipt_lines[] = new receipt_line_record();
+
+  $receipt_lines_group = new magic_form_group('Receipt Lines');
+  foreach($receipt_lines as $receipt_line){
+    /* @var $receipt_line receipt_line_record */
+    $receipt_line_subgroup = magic_form_group::factory("Receipt Line {$receipt_line->rlid}");
+    $receipt_line_subgroup->add_field(magic_form_field_text::factory('description', 'Description'));
+    $receipt_line_subgroup->add_field(magic_form_field_text::factory('price', 'price'));
+    $receipt_line_subgroup->add_field(magic_form_field_text::factory('vat', 'vat'));
+
+    $receipt_lines_group->add_field($receipt_line_subgroup);
+  }
+
+  $form->add_field($receipt_lines_group);
+  return $form->__toString();
 }
 
 function invoicely_receipts_view($receipt_slug){
