@@ -52,17 +52,17 @@
  * @see conf_path()
  */
 
-if(isset($_SERVER['DRUPAL_DB_DATABASE'])){
+if(gethostname() == "quillan"){
   $databases = array (
     'default' =>
     array (
       'default' =>
       array (
-        'database'  => $_SERVER['DRUPAL_DB_DATABASE'],
-        'username'  => $_SERVER['DRUPAL_DB_USERNAME'],
-        'password'  => $_SERVER['DRUPAL_DB_PASSWORD'],
-        'host'      => $_SERVER['DRUPAL_DB_HOSTNAME'],
-        'port'      => $_SERVER['DRUPAL_DB_PORT'],
+        'database'  => "invoicely",
+        'username'  => "invoicely",
+        'password'  => "dRU9eHan",
+        'host'      => "localhost",
+        'port'      => 3306,
         'driver'    => 'mysql',
         'prefix'    => '',
       ),
